@@ -25,7 +25,6 @@ class DocForm extends Component{
       };
    }
 
-
 //Открывание и закрывание формы
    newStateAddForm(){
       this.props.newStateAddForm(false);
@@ -255,20 +254,21 @@ class DocForm extends Component{
       }
 
       this.setState({
-        [name]: value
+          [name]: value
       });
    }
 
-//Отправка редюсера документа в стор
+//Метод отправки редюсера документа в state;
    handleSend(){
-     //переделать!!!!
-    delete this.state.selectedDate;
-    delete this.state.showHintPosition;
-    delete this.state.hintSubdivision;
-    delete this.state.hintPosition;
-    delete this.state.showHintSubdivision;
-
-     this.props.newDocument(this.state);
+     //убираем из объекта state лишниие;
+    var clearState = {};
+    for(var key in this.state){
+      if(typeof(this.state[key]) === 'string'){
+        clearState[key] = this.state[key];
+      }
+    }
+    //диспатчем наш документ в state;
+    this.props.newDocument(clearState);
      //закрытие формы
      this.props.newStateAddForm(false);
    }
@@ -277,7 +277,7 @@ class DocForm extends Component{
    handleClickHintSubdivision(event){
     document.getElementById('subdivision').value = event.target.innerHTML;
     this.setState({
-      subdivision: event.target.innerHTML,
+      newDocument: {subdivision: event.target.innerHTML},
       hintSubdivision: [],
       showHintSubdivision: false,
     })
@@ -286,18 +286,14 @@ class DocForm extends Component{
     handleClickHintPosition(event){
       document.getElementById('position').value = event.target.innerHTML;
       this.setState({
-        position: event.target.innerHTML,
+        newDocument: {position: event.target.innerHTML},
         hintSubdivision: [],
         showHintPosition: false,
       })
     }
 
    render(){
-
-
     //  console.log(this.state);
-
-
       return(
          <div className="DocForm">
             <div className="headerWindow">
