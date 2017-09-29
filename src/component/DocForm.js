@@ -259,7 +259,7 @@ class DocForm extends Component{
       });
    }
 
-//Отправка редюсера документа
+//Отправка редюсера документа в стор
    handleSend(){
     delete this.state.selectedDate;
     delete this.state.showHintPosition;
