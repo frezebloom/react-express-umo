@@ -261,6 +261,7 @@ class DocForm extends Component{
 
 //Отправка редюсера документа в стор
    handleSend(){
+     //переделать!!!
     delete this.state.selectedDate;
     delete this.state.showHintPosition;
     delete this.state.hintSubdivision;
