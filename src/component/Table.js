@@ -4,7 +4,6 @@ import edit from '../img/edit.png';
 
 class Table extends Component {
    render(){
-     console.log(this.props);
       var keys = new Date().getTime();
       return(
          <table>
