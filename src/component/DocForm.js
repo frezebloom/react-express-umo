@@ -14,14 +14,14 @@ class DocForm extends Component{
       this.handleUserInput = this.handleUserInput.bind(this);
       this.handleClickHintSubdivision = this.handleClickHintSubdivision.bind(this);
       this.handleClickHintPosition = this.handleClickHintPosition.bind(this);
-      this.handleUserInputDate = this.handleUserInputDate.bind(this);
+      this.termOfTraining = this.termOfTraining.bind(this);
+
 
       this.state = {
          hintSubdivision: [],
          hintPosition: [],
          showHintSubdivision: false,
-         showHintPosition: false,
-         selectedDate: ''
+         showHintPosition: false
       };
    }
 
@@ -30,7 +30,8 @@ class DocForm extends Component{
       this.props.newStateAddForm(false);
    }
 
-   handleUserInputDate(date) {
+   //Форматирование даты
+   formatDate(date){
      var dd = date.getDate();
      if (dd < 10) dd = '0' + dd;
 
@@ -40,11 +41,17 @@ class DocForm extends Component{
      var yy = date.getFullYear() % 100;
      if (yy < 10) yy = '0' + yy;
 
-     var formatDate =  dd + '.' + mm + '.' + yy;
+     return dd + '.' + mm + '.' + yy;
 
+   }
+
+   termOfTraining(date){
+     if(typeof(date) !== 'string'){
+       var d = this.formatDate(date)
+     }
      this.setState({
-       termOfTraining: formatDate
-     });
+       termOfTraining: d
+     })
    }
 
 //Обработка данных юзера,
@@ -302,8 +309,7 @@ class DocForm extends Component{
     }
 
    render(){
-     var date = this.state.selectedDate;
-     console.log(date);
+
       return(
          <div className="DocForm">
             <div className="headerWindow">
@@ -363,19 +369,19 @@ class DocForm extends Component{
                <input className="form-control" type="text" name="distributionOfTraining" placeholder="Распределение обучения" onChange={this.handleUserInput} />
             </div>
             <div className="col-xs-6">
-            <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" onChange={this.handleUserInputDate} />
+              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" onChange={this.handleInputDate} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="trainingInTheUTC" placeholder="Обучение в УТЦ" onChange={this.handleUserInput} />
+               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" onChange={this.handleInputDate} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="trainingInTheUnit" placeholder="Обучение в подразделении" onChange={this.handleUserInput} />
+               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" onChange={this.handleInputDate} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="registrationDateOfTheProgram" placeholder="Дата регистрации программы" onChange={this.handleUserInput} />
+               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" onChange={this.handleInputDate} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="dateOfDelivery" placeholder="Дата сдачи программы" onChange={this.handleUserInput} />
+               <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" onChange={this.handleInputDate} />
             </div>
             <div className="col-xs-6">
                <input className="form-control" type="text" name="fullName2" placeholder="Ф.И.О." onChange={this.handleUserInput} />
