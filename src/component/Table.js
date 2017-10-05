@@ -40,7 +40,7 @@ class Table extends Component {
                      <td key={index+(12*keys)}>{doc.trainingInTheUnit}</td>
                      <td key={index+(13*keys)}>{doc.registrationDateOfTheProgram}</td>
                      <td key={index+(14*keys)}>{doc.dateOfDelivery}</td>
-                     <td key={index+(15*keys)}>{doc.fullName2}</td>
+                     <td key={index+(15*keys)}>{doc.fullNameProgram}</td>
                      <td key={index+(16*keys)}>{doc.link}</td>
                   </tr>
                )}

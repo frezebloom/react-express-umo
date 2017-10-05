@@ -439,7 +439,7 @@ class DocForm extends Component{
                <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" onChange={this.dateOfDelivery} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="fullName2" placeholder="Ф.И.О. (Сдающий программу)" onChange={this.handleUserInput} />
+               <input className="form-control" type="text" name="fullNameProgram" placeholder="Ф.И.О. (Сдающий программу)" onChange={this.handleUserInput} />
             </div>
             <div className="col-xs-6">
                <input className="form-control" type="text" name="link" placeholder="Ссылка" onChange={this.handleUserInput} />
