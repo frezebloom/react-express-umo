@@ -15,6 +15,11 @@ class DocForm extends Component{
       this.handleClickHintSubdivision = this.handleClickHintSubdivision.bind(this);
       this.handleClickHintPosition = this.handleClickHintPosition.bind(this);
       this.termOfTraining = this.termOfTraining.bind(this);
+      this.trainingInTheUTC = this.trainingInTheUTC.bind(this);
+      this.trainingInTheUnit = this.trainingInTheUnit.bind(this);
+      this.registrationDateOfTheProgram = this.registrationDateOfTheProgram.bind(this);
+      this.dateOfDelivery = this.dateOfDelivery.bind(this);
+
 
 
       this.state = {
@@ -44,7 +49,7 @@ class DocForm extends Component{
      return dd + '.' + mm + '.' + yy;
 
    }
-
+//Дата срока подготовки обучения
    termOfTraining(date){
      if(typeof(date) !== 'string'){
        var d = this.formatDate(date)
@@ -53,6 +58,48 @@ class DocForm extends Component{
        termOfTraining: d
      })
    }
+
+  //Дата обучения в УТЦ
+    trainingInTheUTC(date){
+      if(typeof(date) !== 'string'){
+        var d = this.formatDate(date)
+      }
+      this.setState({
+        trainingInTheUTC: d
+      })
+    }
+
+  //Дата обучения в подразделении
+    trainingInTheUnit(date){
+      if(typeof(date) !== 'string'){
+        var d = this.formatDate(date)
+      }
+      this.setState({
+        trainingInTheUnit: d
+      })
+    }
+
+  //Дата регистрации программы
+    registrationDateOfTheProgram(date){
+      if(typeof(date) !== 'string'){
+        var d = this.formatDate(date)
+      }
+      this.setState({
+        registrationDateOfTheProgram: d
+      })
+    }
+  //Дата сдачи программы
+    dateOfDelivery(date){
+      if(typeof(date) !== 'string'){
+        var d = this.formatDate(date)
+      }
+      this.setState({
+        dateOfDelivery: d
+      })
+    }
+
+
+
 
 //Обработка данных юзера,
    handleUserInput(event){
@@ -274,7 +321,7 @@ class DocForm extends Component{
       });
    }
 
-//Метод отправки редюсера документа в state;
+//Метод отправки редюсера документа в store;
    handleSend(){
      //убираем из объекта state лишниие;
     var clearState = {};
@@ -366,25 +413,31 @@ class DocForm extends Component{
                 </div>
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="distributionOfTraining" placeholder="Распределение обучения" onChange={this.handleUserInput} />
+               <input className="form-control" type="text" name="theoreticalTraining" placeholder="Теоретическая подготовка" onChange={this.handleUserInput} />
             </div>
             <div className="col-xs-6">
-              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" onChange={this.handleInputDate} />
+               <input className="form-control" type="text" name="practicalTraining" placeholder="Практическая подготовка" onChange={this.handleUserInput} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" onChange={this.handleInputDate} />
+               <input className="form-control" type="text" name="Internship" placeholder="Стажировка" onChange={this.handleUserInput} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" onChange={this.handleInputDate} />
+              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" onChange={this.termOfTraining} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" onChange={this.handleInputDate} />
+               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" onChange={this.trainingInTheUTC} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" onChange={this.handleInputDate} />
+               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" onChange={this.trainingInTheUnit} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="fullName2" placeholder="Ф.И.О." onChange={this.handleUserInput} />
+               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" onChange={this.registrationDateOfTheProgram} />
+            </div>
+            <div className="col-xs-6">
+               <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" onChange={this.dateOfDelivery} />
+            </div>
+            <div className="col-xs-6">
+               <input className="form-control" type="text" name="fullName2" placeholder="Ф.И.О. (Сдающий программу)" onChange={this.handleUserInput} />
             </div>
             <div className="col-xs-6">
                <input className="form-control" type="text" name="link" placeholder="Ссылка" onChange={this.handleUserInput} />
