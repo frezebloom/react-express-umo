@@ -6,8 +6,9 @@ import DocForm from './DocForm.js';
 import Table from './Table.js';
 
 class App extends Component {
-   render(){
 
+   render(){
+   console.log(this.props.data);
    if(this.props.data.newAddForm){
       var docForm = <DocForm />
    }

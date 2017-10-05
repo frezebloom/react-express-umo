@@ -321,6 +321,7 @@ class DocForm extends Component{
       });
    }
 
+
 //Метод отправки редюсера документа в store;
    handleSend(){
      //убираем из объекта state лишниие;
@@ -335,6 +336,7 @@ class DocForm extends Component{
      //закрытие формы
      this.props.newStateAddForm(false);
    }
+
 
 //Выбор элемента из списка подсказок подразделений
    handleClickHintSubdivision(event){
@@ -419,7 +421,7 @@ class DocForm extends Component{
                <input className="form-control" type="text" name="practicalTraining" placeholder="Практическая подготовка" onChange={this.handleUserInput} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="Internship" placeholder="Стажировка" onChange={this.handleUserInput} />
+               <input className="form-control" type="text" name="internship" placeholder="Стажировка" onChange={this.handleUserInput} />
             </div>
             <div className="col-xs-6">
               <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" onChange={this.termOfTraining} />

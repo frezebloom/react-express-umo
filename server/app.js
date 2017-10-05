@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
 const PORT = 3000;
 
 //добавление нового документа
-app.get('/newdoc', (req, res) => {
+app.post('/newdoc', (req, res) => {
 connection.query('INSERT INTO test (a, b, c, d) VALUES ("hello", "my", "free", "man")', function(err, rows, fields) {
   console.log(err);
   console.log(fields);
