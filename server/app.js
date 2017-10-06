@@ -16,6 +16,7 @@ const connection = mysql.createConnection({
 })
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.post('/', function(req, res) {
     var name = req.body.name
@@ -25,14 +26,34 @@ app.post('/', function(req, res) {
 
 //добавление нового документа
 app.post('/newdoc', (req, res) => {
-connection.query('INSERT INTO test (a, b, c, d) VALUES ("hello", "my", "free", "man")', function(err, rows, fields) {
-  console.log(err);
-  console.log(fields);
-  console.log(rows);
-});
-connection.end();
-});
 
+  var sql = "INSERT INTO umodoc (programmNumber, fullName, company, personnelCategory, subdivision, position, theoreticalTraining, practicalTraining, internship, termOfTraining, trainingInTheUTC, trainingInTheUnit, registrationDateOfTheProgram, dateOfDelivery, fullNameProgram, link, status) VALUES ?";
+  var values = [
+    [req.body.programmNumber,
+     req.body.fullName,
+     req.body.company,
+     req.body.personnelCategory,
+     req.body.subdivision,
+     req.body.position,
+     req.body.theoreticalTraining,
+     req.body.practicalTraining,
+     req.body.internship,
+     req.body.termOfTraining,
+     req.body.trainingInTheUTC,
+     req.body.trainingInTheUnit,
+     req.body.registrationDateOfTheProgram,
+     req.body.dateOfDelivery,
+     req.body.fullNameProgram,
+     req.body.link,
+     req.body.status
+    ],
+  ];
+
+  connection.query(sql, [values], function (err, result) {
+    console.log('Добавлен новый документ');
+  });
+
+});
 
 
 app.listen(PORT, () => {
