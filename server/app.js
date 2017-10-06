@@ -1,5 +1,7 @@
 const express = require('express');
 
+const path = require('path');
+
 const mysql = require('mysql');
 
 const bodyParser = require('body-parser')
@@ -17,12 +19,11 @@ const connection = mysql.createConnection({
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/views'));
 
-app.post('/', function(req, res) {
-    var name = req.body.name
-    console.log(name);
+app.get('/',function(req,res){
+  res.sendFile('index.html');
 });
-
 
 //добавление нового документа
 app.post('/newdoc', (req, res) => {
