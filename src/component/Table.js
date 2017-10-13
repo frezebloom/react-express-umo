@@ -27,21 +27,21 @@ class Table extends Component {
                </tr>
                {this.props.data.newDocument.map((doc, index) =>
                   <tr key={index+(1*keys)}>
-                     <td key={index+(2*keys)}><img src={edit} className="iconEdit" alt="Изменить" /></td>
-                     <td key={index+(3*keys)}>{doc.programmNumber}</td>
-                     <td key={index+(4*keys)}>{doc.fullName}</td>
-                     <td key={index+(5*keys)}>{doc.company}</td>
-                     <td key={index+(6*keys)}>{doc.personnelCategory}</td>
-                     <td key={index+(7*keys)}>{doc.subdivision}</td>
-                     <td key={index+(8*keys)}>{doc.position}</td>
-                     <td key={index+(9*keys)}>{doc.distributionOfTraining}</td>
-                     <td key={index+(10*keys)}>{doc.termOfTraining}</td>
-                     <td key={index+(11*keys)}>{doc.trainingInTheUTC}</td>
-                     <td key={index+(12*keys)}>{doc.trainingInTheUnit}</td>
-                     <td key={index+(13*keys)}>{doc.registrationDateOfTheProgram}</td>
-                     <td key={index+(14*keys)}>{doc.dateOfDelivery}</td>
-                     <td key={index+(15*keys)}>{doc.fullNameProgram}</td>
-                     <td key={index+(16*keys)}>{doc.link}</td>
+                     <td><img src={edit} className="iconEdit" alt="Изменить" /></td>
+                     <td>{doc.programmNumber}</td>
+                     <td>{doc.fullName}</td>
+                     <td>{doc.company}</td>
+                     <td>{doc.personnelCategory}</td>
+                     <td>{doc.subdivision}</td>
+                     <td>{doc.position}</td>
+                     <td>{doc.distributionOfTraining}</td>
+                     <td>{doc.termOfTraining}</td>
+                     <td>{doc.trainingInTheUTC}</td>
+                     <td>{doc.trainingInTheUnit}</td>
+                     <td>{doc.registrationDateOfTheProgram}</td>
+                     <td>{doc.dateOfDelivery}</td>
+                     <td>{doc.fullNameProgram}</td>
+                     <td>{doc.link}</td>
                   </tr>
                )}
             </tbody>

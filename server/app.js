@@ -25,6 +25,13 @@ app.get('/',function(req,res){
   res.sendFile('index.html');
 });
 
+app.get('/w',function(req,res){
+  var sql = "SELECT * FROM umodoc"
+  connection.query(sql, function(err, result){
+    res.send(result);
+  });
+});
+
 //добавление нового документа
 app.post('/newdoc', (req, res) => {
 
@@ -50,7 +57,7 @@ app.post('/newdoc', (req, res) => {
     ],
   ];
 
-  connection.query(sql, [values], function (err, result) {
+  connection.query(sql, [values], function(err, result) {
     console.log('Добавлен новый документ');
   });
 
