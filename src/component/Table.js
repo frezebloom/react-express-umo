@@ -4,6 +4,7 @@ import edit from '../img/edit.png';
 
 class Table extends Component {
    render(){
+    
       var keys = new Date().getTime();
       return(
          <table>
@@ -25,7 +26,7 @@ class Table extends Component {
                   <td className="cap">Ф.И.О.</td>
                   <td className="cap">Ссылка</td>
                </tr>
-               {this.props.data.newDocument.map((doc, index) =>
+               {this.props.data.allDocuments.map((doc, index) =>
                   <tr key={index+(1*keys)}>
                      <td><img src={edit} className="iconEdit" alt="Изменить" /></td>
                      <td>{doc.programmNumber}</td>

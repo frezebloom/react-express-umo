@@ -25,7 +25,8 @@ app.get('/',function(req,res){
   res.sendFile('index.html');
 });
 
-app.get('/w',function(req,res){
+//получение всех документов
+app.post('/',function(req,res){
   var sql = "SELECT * FROM umodoc"
   connection.query(sql, function(err, result){
     res.send(result);
