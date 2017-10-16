@@ -10,18 +10,25 @@ class App extends Component {
 
    componentDidMount(){
 
-     axios.post('/', {})
-      .then(function (response) {
-        this.props.allDocuments(response.data);
-      }.bind(this))
+    //  axios.post('/', {})
+    //   .then(function (response) {
+    //     this.props.allDocuments(response.data);
+    //   }.bind(this))
+     //
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
 
-      .catch(function (error) {
-        console.log(error);
-      });
+      var test = [
+       {"id":22,"programmNumber":"18365","fullName":"Ярема Михаил Николаевич","company":"ЛАЭС-1","personnelCategory":"1","subdivision":"2","position":"3","theoreticalTraining":"4","practicalTraining":"5","internship":"6","termOfTraining":"7","trainingInTheUTC":"8","trainingInTheUnit":"9","registrationDateOfTheProgram":"10","dateOfDelivery":"1","fullNameProgram":"5","link":"4","status":1},
+       {"id":23,"programmNumber":"18366","fullName":"Барисполь Валентин Иванович","company":"ЛАЭС-2","personnelCategory":"5","subdivision":"3","position":"3","theoreticalTraining":"4","practicalTraining":"5","internship":"2","termOfTraining":"5","trainingInTheUTC":"83","trainingInTheUnit":"91","registrationDateOfTheProgram":"12","dateOfDelivery":"3","fullNameProgram":"2","link":"2","status":0}
+     ];
+     this.props.allDocuments(test);
+   }
 
-    }
 
    render(){
+   console.log(this.props.data);
    if(this.props.data.newAddForm){
       var docForm = <DocForm />
    }

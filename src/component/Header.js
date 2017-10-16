@@ -12,6 +12,7 @@ class Header extends Component{
       this.props.newStateAddForm(true);
    }
 
+   //Быстрый поиск
    eventQuickSearch(event){
       this.props.quickSearch(event.target.value);
    }
