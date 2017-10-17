@@ -21,15 +21,15 @@ class App extends Component {
     //   });
 
       var test = [
-       {"id":22,"programmNumber":"18365","fullName":"Ярема Михаил Николаевич","company":"ЛАЭС-1","personnelCategory":"1","subdivision":"2","position":"3","theoreticalTraining":"4","practicalTraining":"5","internship":"6","termOfTraining":"7","trainingInTheUTC":"8","trainingInTheUnit":"9","registrationDateOfTheProgram":"10","dateOfDelivery":"1","fullNameProgram":"5","link":"4","status":1},
-       {"id":23,"programmNumber":"18366","fullName":"Барисполь Валентин Иванович","company":"ЛАЭС-2","personnelCategory":"5","subdivision":"3","position":"3","theoreticalTraining":"4","practicalTraining":"5","internship":"2","termOfTraining":"5","trainingInTheUTC":"83","trainingInTheUnit":"91","registrationDateOfTheProgram":"12","dateOfDelivery":"3","fullNameProgram":"2","link":"2","status":0}
+       {"id":22,"programmNumber":"18365","fullName":"Ярема Михаил Николаевич","company":"ЛАЭС-1","personnelCategory":"Оперативный","subdivision":"2","position":"3","theoreticalTraining":"4","practicalTraining":"5","internship":"6","termOfTraining":"7","trainingInTheUTC":"8","trainingInTheUnit":"9","registrationDateOfTheProgram":"10","dateOfDelivery":"1","fullNameProgram":"5","link":"4","status":1},
+       {"id":23,"programmNumber":"18366","fullName":"Барисполь Валентин Иванович","company":"ЛАЭС-2","personnelCategory":"Рабочие","subdivision":"3","position":"3","theoreticalTraining":"4","practicalTraining":"5","internship":"2","termOfTraining":"5","trainingInTheUTC":"83","trainingInTheUnit":"91","registrationDateOfTheProgram":"12","dateOfDelivery":"3","fullNameProgram":"2","link":"2","status":0}
      ];
      this.props.allDocuments(test);
    }
 
 
    render(){
-   console.log(this.props.data);
+
    if(this.props.data.showAddForm){
       var docForm = <DocForm />
    }
