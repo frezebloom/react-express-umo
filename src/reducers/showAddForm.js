@@ -1,5 +1,5 @@
 export default function newStateAddForm(state = false, action) {
-   if(action.type === 'NEW_ADDFORM'){
+   if(action.type === 'SHOW_ADDFORM'){
       return action.payload;
    }
    return state;

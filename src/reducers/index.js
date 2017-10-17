@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
 
-import newAddForm from './newAddForm'
-import newDocument from './newDocument'
+import showAddForm from './showAddForm'
 import quickSearch from './quickSearch'
 import allDocuments from './allDocuments'
+import updateDocument from './updateDocument'
+import showUpdateForm from './showUpdateForm'
 
 export default combineReducers({
-   newAddForm,
-   newDocument,
+   showAddForm,
+   showUpdateForm,
    quickSearch,
-   allDocuments
+   allDocuments,
+   updateDocument
 })

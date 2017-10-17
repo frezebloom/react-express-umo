@@ -12,19 +12,27 @@ class Table extends Component {
 
   newStateUpdateForm(event){
 
+    this.props.newStateUpdateForm(true);
+
     var arrayFilter = function(data) {
       var e = Number(event.target.id);
       return data.id === e;
     }
 
     var a = this.props.data.filter(arrayFilter)
-    console.log(a);
+    this.props.UpdateForm(a);
   }
 
    render(){
-     console.log(this.props.data);
+     if(this.props.data.showAddForm){
+        var updateForm = <updateForm />
+     }
       var keys = new Date().getTime();
       return(
+        <div>
+
+          {updateForm}
+
          <table>
             <tbody>
                <tr>
@@ -53,7 +61,7 @@ class Table extends Component {
                      <td>{doc.personnelCategory}</td>
                      <td>{doc.subdivision}</td>
                      <td>{doc.position}</td>
-                     <td>{doc.distributionOfTraining}</td> 
+                     <td>{doc.distributionOfTraining}</td>
                      <td>{doc.termOfTraining}</td>
                      <td>{doc.trainingInTheUTC}</td>
                      <td>{doc.trainingInTheUnit}</td>
@@ -65,6 +73,7 @@ class Table extends Component {
                )}
             </tbody>
          </table>
+        </div>
 
 
       );
@@ -88,6 +97,11 @@ export default connect(
                                       )
    }),
    dispatch => ({
-
-   })
+     UpdateForm: (state) => {
+        dispatch({ type: 'UPDATE_DOCUMENT', payload: state });
+     },
+     newStateUpdateForm: (state) => {
+       dispatch({ type: 'SHOW_UPDATEFORM', payload: state });
+     },
+   }),
 )(Table);

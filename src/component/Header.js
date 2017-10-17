@@ -45,7 +45,7 @@ export default connect(
    }),
    dispatch => ({
       newStateAddForm: (state) => {
-         dispatch({ type: 'NEW_ADDFORM', payload: state });
+         dispatch({ type: 'SHOW_ADDFORM', payload: state });
       },
       quickSearch: (data) => {
          dispatch({ type: 'QUICK_SEARCH', payload: data });

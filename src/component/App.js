@@ -5,6 +5,7 @@ import axios from 'axios';
 import Header from './Header.js';
 import DocForm from './DocForm.js';
 import Table from './Table.js';
+import UpdateForm from './UpdateForm.js'
 
 class App extends Component {
 
@@ -29,8 +30,11 @@ class App extends Component {
 
    render(){
    console.log(this.props.data);
-   if(this.props.data.newAddForm){
+   if(this.props.data.showAddForm){
       var docForm = <DocForm />
+   }
+   if(this.props.data.showUpdateForm){
+      var docForm = <UpdateForm />
    }
 
    return(
@@ -38,6 +42,7 @@ class App extends Component {
             <Header />
             <Table />
             {docForm}
+            {UpdateForm}
          </div>
       )
    }

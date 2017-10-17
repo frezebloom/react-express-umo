@@ -461,7 +461,7 @@ export default connect(
    }),
    dispatch => ({
       newStateAddForm: (state) => {
-         dispatch({ type: 'NEW_ADDFORM', payload: state });
+         dispatch({ type: 'SHOW_ADDFORM', payload: state });
       },
       newDocument: (state) => {
          dispatch({ type: 'NEW_DOCUMENT', payload: state });
