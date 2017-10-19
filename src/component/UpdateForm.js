@@ -10,8 +10,33 @@ class DocForm extends Component{
       super(props);
 
       this.newStateUpdateForm = this.newStateUpdateForm.bind(this)
+      this.dateOfDelivery = this.dateOfDelivery.bind(this)
 
    }
+   //Форматирование даты
+   formatDate(date){
+     var dd = date.getDate();
+     if (dd < 10) dd = '0' + dd;
+
+     var mm = date.getMonth() + 1;
+     if (mm < 10) mm = '0' + mm;
+
+     var yy = date.getFullYear() % 100;
+     if (yy < 10) yy = '0' + yy;
+
+     return dd + '.' + mm + '.' + yy;
+
+   }
+
+   //Дата сдачи программы
+     dateOfDelivery(date){
+       if(typeof(date) !== 'string'){
+         var d = this.formatDate(date)
+       }
+       this.setState({
+         dateOfDelivery: d
+       })
+     }
 
 //Открывание и закрывание формы
    newStateUpdateForm(){
@@ -19,28 +44,54 @@ class DocForm extends Component{
    }
 
    componentDidMount(){
-      var data = this.props.data.updateDocument[0];
+      let data = this.props.data.updateDocument[0];
      //Выбор selected COMPANY по умолчанию
-     var companyData = document.getElementById("company");
-     for(var i = 0; companyData.length > i; i++){
+     let companyData = document.getElementById("company");
+     for(let i = 0; companyData.length > i; i++){
        if(companyData[i].value === data.company){
-         var select = companyData[i].value;
-         var option = '<option selected value="'+select+'">'+select+'</option>';
+         let select = companyData[i].value;
+         let option = '<option selected value="'+select+'">'+select+'</option>';
          document.getElementById("company").innerHTML+=option;
          break;
        }
      }
 
      //Выбор selected personnelCategory по умолчанию
-     var personnelCategoryData = document.getElementById("personnelCategory");
-     for(var i = 0; personnelCategoryData.length > i; i++){
+     let personnelCategoryData = document.getElementById("personnelCategory");
+     for(let i = 0; personnelCategoryData.length > i; i++){
        if(personnelCategoryData[i].value === data.personnelCategory){
-         var select = personnelCategoryData[i].value;
-         var option = '<option selected value="'+select+'">'+select+'</option>';
+         let select = personnelCategoryData[i].value;
+         let option = '<option selected value="'+select+'">'+select+'</option>';
          document.getElementById("personnelCategory").innerHTML+=option;
          break;
        }
      }
+
+     //Форматирование даты под нужды DatePickerInput
+
+     let datepickerClass = document.getElementsByClassName('react-datepicker-input has-value');
+     console.log(datepickerClass);
+
+     let dataStart = [data.termOfTraining, data.trainingInTheUTC, data.trainingInTheUnit,
+                      data.registrationDateOfTheProgram, data.dateOfDelivery]
+     let dataEnd = [];
+
+     let editArrayData = dataStart.map((item, index)=>{
+       let day = item.substring(3, 5);
+       let month = item.substring(2, 0);
+       let year = item.substring(6);
+       let dataFinish = `${month}.${day}.${year}`
+       return dataFinish;
+     })
+
+     for(let i = 0; i < datepickerClass.length; i++) {
+
+       let a = datepickerClass[i].getElementsByTagName('input')[0].value = editArrayData[i];
+       console.log(a);
+
+     }
+
+
 
    }
 
@@ -77,40 +128,40 @@ class DocForm extends Component{
                </select>
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" id="subdivision" name="subdivision" placeholder="Подразделение" />
+               <input className="form-control" type="text" id="subdivision" name="subdivision" placeholder="Подразделение" defaultValue={data.subdivision} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" id="position" name="position" placeholder="Должность" />
+               <input className="form-control" type="text" id="position" name="position" placeholder="Должность" defaultValue={data.position} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="theoreticalTraining" placeholder="Теоретическая подготовка" />
+               <input className="form-control" type="text" name="theoreticalTraining" placeholder="Теоретическая подготовка" defaultValue={data.theoreticalTraining} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="practicalTraining" placeholder="Практическая подготовка" />
+               <input className="form-control" type="text" name="practicalTraining" placeholder="Практическая подготовка" defaultValue={data.practicalTraining} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="internship" placeholder="Стажировка" />
+               <input className="form-control" type="text" name="internship" placeholder="Стажировка" defaultValue={data.internship} />
             </div>
             <div className="col-xs-6">
-              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" />
+              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" defaultValue={data.termOfTraining} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" />
+               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" defaultValue={data.trainingInTheUTC} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" />
+               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" defaultValue={data.trainingInTheUnit} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" />
+               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" defaultValue={data.registrationDateOfTheProgram} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" />
+               <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" defaultValue={data.dateOfDelivery} onChange={this.dateOfDelivery} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="fullNameProgram" placeholder="Ф.И.О. (Сдающий программу)" />
+               <input className="form-control" type="text" name="fullNameProgram" placeholder="Ф.И.О. (Сдающий программу)" defaultValue={data.fullNameProgram} />
             </div>
             <div className="col-xs-6">
-               <input className="form-control" type="text" name="link" placeholder="Ссылка" />
+               <input className="form-control" type="text" name="link" placeholder="Ссылка" defaultValue={data.link} />
             </div>
             <div className="col-xs-6">
                <button type="button" className="btn btn-danger btn-lg btn-block" onClick={this.newStateUpdateForm}>Закрыть</button>
