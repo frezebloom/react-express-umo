@@ -220,3 +220,44 @@ table tr:hover td{
    width: 32px;
    border: none;
 }
+
+/*Validation*/
+
+.validation{
+  position: fixed;
+  width: 400px;
+  height: auto;
+  z-index: 2;
+  top: 15%;
+  left: 30%;
+  background: #ffffff;
+  border: 1px double #e7e7e7;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+ }
+.validationHeader{
+   display: block;
+   width: 100%;
+   margin: 0 auto;
+   padding: 8px;
+   background: #f8f8f8;
+   border-width: 0px 0px 1px 0px;
+   border-style: solid;
+   border-color: #e7e7e7;
+   text-align: center;
+   font-size: 16px;
+}
+.messageAction{
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+.buttonSuccess{
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}

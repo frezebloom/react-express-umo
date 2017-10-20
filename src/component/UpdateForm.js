@@ -70,11 +70,10 @@ class DocForm extends Component{
      //Форматирование даты под нужды DatePickerInput
 
      let datepickerClass = document.getElementsByClassName('react-datepicker-input has-value');
-     console.log(datepickerClass);
 
      let dataStart = [data.termOfTraining, data.trainingInTheUTC, data.trainingInTheUnit,
                       data.registrationDateOfTheProgram, data.dateOfDelivery]
-     let dataEnd = [];
+
 
      let editArrayData = dataStart.map((item, index)=>{
        let day = item.substring(3, 5);
@@ -86,8 +85,7 @@ class DocForm extends Component{
 
      for(let i = 0; i < datepickerClass.length; i++) {
 
-       let a = datepickerClass[i].getElementsByTagName('input')[0].value = editArrayData[i];
-       console.log(a);
+       datepickerClass[i].getElementsByTagName('input')[0].value = editArrayData[i];
 
      }
 
