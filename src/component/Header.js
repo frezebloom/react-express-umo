@@ -18,7 +18,6 @@ class Header extends Component{
    }
 
    render(){
-      // console.log(this.props.data)
       return(
         <div className="header">
           <div className="row">

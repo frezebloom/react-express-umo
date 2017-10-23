@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+// import axios from 'axios';
 
 import Header from './Header.js';
 import DocForm from './DocForm.js';
@@ -30,21 +30,19 @@ class App extends Component {
 
 
    render(){
-   console.log(this.props.data);
-   if(this.props.data.showAddForm){
-      var docForm = <DocForm />
-   }
    if(this.props.data.showUpdateForm){
       var docForm = <UpdateForm />
    }
+  //  console.log(this.props.data);
 
    return(
          <div>
             <Header />
             <Table />
-            
             {docForm}
-            {UpdateForm}
+            <div style={{display: this.props.data.showValidationForm ? 'block' : 'none' }}><Validation /></div>
+            <div style={{display: this.props.data.showAddForm ? 'block' : 'none' }}><DocForm /></div>
+
          </div>
       )
    }

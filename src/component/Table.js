@@ -24,15 +24,8 @@ class Table extends Component {
   }
 
    render(){
-     if(this.props.data.showAddForm){
-        var updateForm = <updateForm />
-     }
       var keys = new Date().getTime();
       return(
-        <div>
-
-          {updateForm}
-
          <table>
             <tbody>
                <tr>
@@ -73,8 +66,6 @@ class Table extends Component {
                )}
             </tbody>
          </table>
-        </div>
-
 
       );
    }
