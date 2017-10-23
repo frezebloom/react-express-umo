@@ -354,6 +354,9 @@ handleUserInput(event){
         //диспатчем наш документ в state;
         this.props.newDocument(clearState);
 
+        //открывем validaton.js
+        this.props.validation(true);
+
          //закрываем форму
          this.props.newStateAddForm(false);
        }
@@ -463,6 +466,9 @@ export default connect(
    dispatch => ({
       newStateAddForm: (state) => {
          dispatch({ type: 'SHOW_ADDFORM', payload: state });
+      },
+      validation: (state) => {
+        dispatch({ type: 'SHOW_VALIDATION', payload: state });
       },
       newDocument: (state) => {
          dispatch({ type: 'VALIDATION', payload: state });

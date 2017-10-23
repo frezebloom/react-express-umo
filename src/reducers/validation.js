@@ -1,4 +1,4 @@
-export default function updateDocument(state = {open: false}, action){
+export default function updateDocument(state = [], action){
    if(action.type === 'VALIDATION'){
       return action.payload;
    }
