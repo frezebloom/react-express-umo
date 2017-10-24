@@ -254,6 +254,7 @@ table tr:hover td{
   margin-top: 25px;
   margin-bottom: 20px;
   font-size: 18px;
+  text-align: center;
 }
 .buttonSuccess{
   width: 75%;
