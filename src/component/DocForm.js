@@ -26,7 +26,8 @@ class DocForm extends Component{
          hintSubdivision: [],
          hintPosition: [],
          showHintSubdivision: false,
-         showHintPosition: false
+         showHintPosition: false,
+         dataDocument: {}
       };
    }
 
@@ -35,70 +36,39 @@ class DocForm extends Component{
       this.props.newStateAddForm(false);
    }
 
-   //Форматирование даты
-   formatDate(date){
-     var dd = date.getDate();
-     if (dd < 10) dd = '0' + dd;
-
-     var mm = date.getMonth() + 1;
-     if (mm < 10) mm = '0' + mm;
-
-     var yy = date.getFullYear() % 100;
-     if (yy < 10) yy = '0' + yy;
-
-     return dd + '.' + mm + '.' + yy;
-
-   }
 //Дата срока подготовки обучения
    termOfTraining(date){
-     if(typeof(date) !== 'string'){
-       var d = this.formatDate(date)
-     }
      this.setState({
-       termOfTraining: d
+       termOfTraining: date
      })
    }
 
   //Дата обучения в УТЦ
     trainingInTheUTC(date){
-      if(typeof(date) !== 'string'){
-        var d = this.formatDate(date)
-      }
       this.setState({
-        trainingInTheUTC: d
+        trainingInTheUTC: date
       })
     }
 
   //Дата обучения в подразделении
     trainingInTheUnit(date){
-      if(typeof(date) !== 'string'){
-        var d = this.formatDate(date)
-      }
       this.setState({
-        trainingInTheUnit: d
+        trainingInTheUnit: date
       })
     }
 
   //Дата регистрации программы
     registrationDateOfTheProgram(date){
-      if(typeof(date) !== 'string'){
-        var d = this.formatDate(date)
-      }
       this.setState({
-        registrationDateOfTheProgram: d
+        registrationDateOfTheProgram: date
       })
     }
   //Дата сдачи программы
     dateOfDelivery(date){
-      if(typeof(date) !== 'string'){
-        var d = this.formatDate(date)
-      }
       this.setState({
-        dateOfDelivery: d
+        dateOfDelivery: date
       })
     }
-
-
 
 
 //Обработка данных юзера,
@@ -344,15 +314,8 @@ handleUserInput(event){
 
     //Метод отправки редюсера документа в store;
        handleSend(){
-         //убираем из объекта state лишниие;
-        var clearState = {};
-        for(var key in this.state){
-          if(typeof(this.state[key]) === 'string'){
-            clearState[key] = this.state[key];
-          }
-        }
-        //диспатчем наш документ в state;
-        this.props.newDocument(clearState);
+        //диспатчим наш документ в state;
+        this.props.newDocument(this.state);
 
         //открывем validaton.js
         this.props.validation(true);
@@ -362,7 +325,6 @@ handleUserInput(event){
        }
 
    render(){
-
       return(
          <div className="DocForm">
             <div className="headerWindow">

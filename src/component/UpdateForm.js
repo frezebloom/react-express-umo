@@ -13,35 +13,6 @@ class DocForm extends Component{
       this.dateOfDelivery = this.dateOfDelivery.bind(this)
 
    }
-   //Форматирование даты
-   formatDate(date){
-     var dd = date.getDate();
-     if (dd < 10) dd = '0' + dd;
-
-     var mm = date.getMonth() + 1;
-     if (mm < 10) mm = '0' + mm;
-
-     var yy = date.getFullYear() % 100;
-     if (yy < 10) yy = '0' + yy;
-
-     return dd + '.' + mm + '.' + yy;
-
-   }
-
-   //Дата сдачи программы
-     dateOfDelivery(date){
-       if(typeof(date) !== 'string'){
-         var d = this.formatDate(date)
-       }
-       this.setState({
-         dateOfDelivery: d
-       })
-     }
-
-//Открывание и закрывание формы
-   newStateUpdateForm(){
-      this.props.newStateUpdateForm(false);
-   }
 
    componentDidMount(){
       let data = this.props.data.updateDocument[0];
@@ -88,10 +59,41 @@ class DocForm extends Component{
        datepickerClass[i].getElementsByTagName('input')[0].value = editArrayData[i];
 
      }
+   }
 
 
+   //Форматирование даты
+   formatDate(date){
+     var dd = date.getDate();
+     if (dd < 10) dd = '0' + dd;
+
+     var mm = date.getMonth() + 1;
+     if (mm < 10) mm = '0' + mm;
+
+     var yy = date.getFullYear() % 100;
+     if (yy < 10) yy = '0' + yy;
+
+     return dd + '.' + mm + '.' + yy;
 
    }
+
+   //Дата сдачи программы
+     dateOfDelivery(date){
+       if(typeof(date) !== 'string'){
+         var d = this.formatDate(date)
+       }
+       this.setState({
+         dateOfDelivery: d
+       })
+     }
+
+//Открывание и закрывание формы
+   newStateUpdateForm(){
+      this.props.newStateUpdateForm(false);
+   }
+
+
+   
 
    render(){
      var data = this.props.data.updateDocument[0];

@@ -80,14 +80,7 @@ class Validation extends Component{
        }
      })
 
-     //Отправка данных на сервер;
-     if(!danger){
-
-
-
-       console.log('отпрввка');
-     }
-
+     
       return(
          <div className="validation">
             <div className="validationHeader">
