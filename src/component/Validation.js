@@ -3,6 +3,19 @@ import { connect } from 'react-redux';
 
 
 class Validation extends Component{
+   constructor(props){
+     super(props);
+
+     this.clickOkay = this.clickOkay.bind(this);
+   }
+
+   clickOkay(event){
+     if(event.target.className === "btn btn-danger btn-lg btn-block"){
+       this.props.validation(false);
+       this.props.newStateAddForm(true);
+     }
+     this.props.validation(false);
+   }
 
    render(){
 
@@ -12,7 +25,7 @@ class Validation extends Component{
      let collectionDate = [validation.termOfTraining, validation.trainingInTheUTC,
                            validation.trainingInTheUnit, validation.registrationDateOfTheProgram,
                            validation.dateOfDelivery];
-     let danger = false;
+     var danger = false;
 
     //Проверка количества приходящих данных (должно быть не меньше 16);
      for(let key in validation){
@@ -23,6 +36,7 @@ class Validation extends Component{
        massage = 'Заполните все необходимые поля'
        danger = true;
      }
+
 
      //Функция проверки формата даты;
      var regExp = (data) => {
@@ -38,7 +52,13 @@ class Validation extends Component{
        }
      })
 
+     //Отправка данных на сервер;
+     if(!danger){
 
+
+
+       console.log('отпрввка');
+     }
 
       return(
          <div className="validation">
@@ -49,7 +69,7 @@ class Validation extends Component{
               {massage}
             </div>
             <div className="buttonSuccess">
-              <button type="button" className={danger ? "btn btn-danger btn-lg btn-block" : "btn btn-success btn-lg btn-block" }>Окей!</button>
+              <button type="button" className={danger ? "btn btn-danger btn-lg btn-block" : "btn btn-success btn-lg btn-block" } onClick={this.clickOkay}>Окей!</button>
             </div>
          </div>
       );
@@ -60,5 +80,12 @@ export default connect(
    state => ({
       data: state
    }),
-   dispatch => ({ })
+   dispatch => ({
+     newStateAddForm: (state) => {
+        dispatch({ type: 'SHOW_ADDFORM', payload: state });
+     },
+     validation: (state) => {
+       dispatch({ type: 'SHOW_VALIDATION', payload: state });
+     },
+   })
 )(Validation);

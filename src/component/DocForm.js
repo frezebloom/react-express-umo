@@ -357,8 +357,8 @@ handleUserInput(event){
         //открывем validaton.js
         this.props.validation(true);
 
-         //закрываем форму
-         this.props.newStateAddForm(false);
+        //закрываем форму документа
+        this.props.newStateAddForm(false);
        }
 
    render(){
