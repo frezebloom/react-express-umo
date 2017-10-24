@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 
 class Validation extends Component{
@@ -15,7 +16,34 @@ class Validation extends Component{
        this.props.newStateAddForm(true);
      }
      this.props.validation(false);
-   }
+     var d = this.props.data.validation;
+     axios.post('/newdoc', {
+       programmNumber:               d.programmNumber,
+       fullName:                     d.fullName,
+       company:                      d.company,
+       personnelCategory:            d.personnelCategory,
+       subdivision:                  d.subdivision,
+       position:                     d.position,
+       theoreticalTraining:          d.theoreticalTraining,
+       practicalTraining:            d.practicalTraining,
+       internship:                   d.internship,
+       termOfTraining:               d.termOfTraining,
+       trainingInTheUTC:             d.trainingInTheUTC,
+       trainingInTheUnit:            d.trainingInTheUnit,
+       registrationDateOfTheProgram: d.registrationDateOfTheProgram,
+       dateOfDelivery:               d.dateOfDelivery,
+       fullNameProgram:              d.fullNameProgram,
+       link:                         d.link,
+       status:                       true
+     })
+     .then(function (response) {
+       console.log(response);
+     })
+     .catch(function (error) {
+       console.log(error);
+     });
+
+    }
 
    render(){
 
