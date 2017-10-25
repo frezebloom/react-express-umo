@@ -296,7 +296,7 @@ handleUserInput(event){
    handleClickHintSubdivision(event){
     document.getElementById('subdivision').value = event.target.innerHTML;
     this.setState({
-      newDocument: {subdivision: event.target.innerHTML},
+      subdivision: event.target.innerHTML,
       hintSubdivision: [],
       showHintSubdivision: false,
     })
@@ -305,7 +305,7 @@ handleUserInput(event){
     handleClickHintPosition(event){
       document.getElementById('position').value = event.target.innerHTML;
       this.setState({
-        newDocument: {position: event.target.innerHTML},
+        position: event.target.innerHTML,
         hintSubdivision: [],
         showHintPosition: false,
       })
@@ -318,7 +318,7 @@ handleUserInput(event){
         this.props.newDocument(this.state);
 
         //открывем validaton.js
-        this.props.validation(true);
+        this.props.addValidation(true);
 
         //закрываем форму документа
         this.props.newStateAddForm(false);
@@ -429,7 +429,7 @@ export default connect(
       newStateAddForm: (state) => {
          dispatch({ type: 'SHOW_ADDFORM', payload: state });
       },
-      validation: (state) => {
+      addValidation: (state) => {
         dispatch({ type: 'SHOW_VALIDATION', payload: state });
       },
       newDocument: (state) => {

@@ -9,8 +9,13 @@ class DocForm extends Component{
    constructor(props){
       super(props);
 
-      this.newStateUpdateForm = this.newStateUpdateForm.bind(this)
-      this.dateOfDelivery = this.dateOfDelivery.bind(this)
+      this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
+
+      this.termOfTraining = this.termOfTraining.bind(this);
+      this.trainingInTheUTC = this.trainingInTheUTC.bind(this);
+      this.trainingInTheUnit = this.trainingInTheUnit.bind(this);
+      this.registrationDateOfTheProgram = this.registrationDateOfTheProgram.bind(this);
+      this.dateOfDelivery = this.dateOfDelivery.bind(this);
 
    }
 
@@ -37,63 +42,46 @@ class DocForm extends Component{
          break;
        }
      }
+   }
 
-     //Форматирование даты под нужды DatePickerInput
+   //Открывание и закрывание формы
+    newStateUpdateForm(){
+      this.props.newStateUpdateForm(false);
+    }
 
-     let datepickerClass = document.getElementsByClassName('react-datepicker-input has-value');
-
-     let dataStart = [data.termOfTraining, data.trainingInTheUTC, data.trainingInTheUnit,
-                      data.registrationDateOfTheProgram, data.dateOfDelivery]
-
-
-     let editArrayData = dataStart.map((item, index)=>{
-       let day = item.substring(3, 5);
-       let month = item.substring(2, 0);
-       let year = item.substring(6);
-       let dataFinish = `${month}.${day}.${year}`
-       return dataFinish;
-     })
-
-     for(let i = 0; i < datepickerClass.length; i++) {
-
-       datepickerClass[i].getElementsByTagName('input')[0].value = editArrayData[i];
-
+  //Дата срока подготовки обучения
+    termOfTraining(date){
+      this.setState({
+        termOfTraining: date
+      })
      }
-   }
 
-
-   //Форматирование даты
-   formatDate(date){
-     var dd = date.getDate();
-     if (dd < 10) dd = '0' + dd;
-
-     var mm = date.getMonth() + 1;
-     if (mm < 10) mm = '0' + mm;
-
-     var yy = date.getFullYear() % 100;
-     if (yy < 10) yy = '0' + yy;
-
-     return dd + '.' + mm + '.' + yy;
-
-   }
-
-   //Дата сдачи программы
-     dateOfDelivery(date){
-       if(typeof(date) !== 'string'){
-         var d = this.formatDate(date)
-       }
+   //Дата обучения в УТЦ
+     trainingInTheUTC(date){
        this.setState({
-         dateOfDelivery: d
+         trainingInTheUTC: date
+       })
+      }
+
+   //Дата обучения в подразделении
+     trainingInTheUnit(date){
+       this.setState({
+         trainingInTheUnit: date
+       })
+      }
+
+   //Дата регистрации программы
+     registrationDateOfTheProgram(date){
+       this.setState({
+         registrationDateOfTheProgram: date
        })
      }
-
-//Открывание и закрывание формы
-   newStateUpdateForm(){
-      this.props.newStateUpdateForm(false);
-   }
-
-
-   
+     //Дата сдачи программы
+      dateOfDelivery(date){
+        this.setState({
+          dateOfDelivery: date
+        })
+      }
 
    render(){
      var data = this.props.data.updateDocument[0];
@@ -143,16 +131,16 @@ class DocForm extends Component{
                <input className="form-control" type="text" name="internship" placeholder="Стажировка" defaultValue={data.internship} />
             </div>
             <div className="col-xs-6">
-              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" defaultValue={data.termOfTraining} />
+              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" defaultValue={data.termOfTraining} onChange={this.termOfTraining} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" defaultValue={data.trainingInTheUTC} />
+               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" defaultValue={data.trainingInTheUTC} onChange={this.trainingInTheUTC} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" defaultValue={data.trainingInTheUnit} />
+               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" defaultValue={data.trainingInTheUnit} onChange={this.trainingInTheUnit} />
             </div>
             <div className="col-xs-6">
-               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" defaultValue={data.registrationDateOfTheProgram} />
+               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" defaultValue={data.registrationDateOfTheProgram} onChange={this.registrationDateOfTheProgram} />
             </div>
             <div className="col-xs-6">
                <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" defaultValue={data.dateOfDelivery} onChange={this.dateOfDelivery} />

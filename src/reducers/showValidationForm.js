@@ -1,4 +1,4 @@
-export default function updateDocument(state = false, action){
+export default function addValidation(state = false, action){
    if(action.type === 'SHOW_VALIDATION'){
       return action.payload;
    }
