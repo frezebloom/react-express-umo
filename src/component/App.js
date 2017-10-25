@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Switch, Route } from 'react-router-dom'
 
 import Header from './Header.js';
 import DocForm from './DocForm.js';
@@ -30,18 +31,18 @@ class App extends Component {
 
 
    render(){
-   if(this.props.data.showUpdateForm){
-      var docForm = <UpdateForm />
-   }
-  //  console.log(this.props.data);
+
 
    return(
          <div>
-            <Header />
-            <Table />
-            {docForm}
-            <div style={{display: this.props.data.showValidationForm ? 'block' : 'none' }}><Validation /></div>
-            <div style={{display: this.props.data.showAddForm ? 'block' : 'none' }}><DocForm /></div>
+         <main>
+          <Switch>
+            <Route exact path='/' component={Header}/>
+            <Route exact path='/s' component={Table}/>
+          </Switch>
+         </main>
+
+
 
          </div>
       )
