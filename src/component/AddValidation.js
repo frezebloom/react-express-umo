@@ -18,7 +18,7 @@ class AddValidation extends Component{
    componentDidMount(){
      let count = 0;
 
-     let value = this.props.data.validation;
+     let value = this.props.data.addValidation;
 
      let collectionData = [value.programmNumber, value.fullName, value.company,
                            value.personnelCategory, value.subdivision, value.position,
@@ -66,7 +66,7 @@ class AddValidation extends Component{
        this.props.newStateAddForm(true);
      }
      else{
-       let value = this.props.data.validation;
+       let value = this.props.data.addValidation;
        this.props.addValidation(false);
        axios.post('/newdoc', {
          programmNumber:               value.programmNumber,
@@ -122,7 +122,7 @@ export default connect(
         dispatch({ type: 'SHOW_ADDFORM', payload: state });
      },
      addValidation: (state) => {
-       dispatch({ type: 'SHOW_VALIDATION', payload: state });
+       dispatch({ type: 'SHOW_ADDVALIDATION', payload: state });
      },
    })
 )(AddValidation);

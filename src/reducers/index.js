@@ -5,16 +5,16 @@ import quickSearch from './quickSearch'
 import allDocuments from './allDocuments'
 import updateDocument from './updateDocument'
 import showUpdateForm from './showUpdateForm'
-import validation from './validation'
-import showValidationForm from './showValidationForm'
+import addValidation from './addValidation'
+import showAddValidationForm from './showAddValidationForm'
 
 export default combineReducers({
    showAddForm,
    showUpdateForm,
-   showValidationForm,
+   showAddValidationForm,
    quickSearch,
    allDocuments,
    updateDocument,
-   validation
+   addValidation
 
 })

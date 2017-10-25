@@ -325,6 +325,7 @@ handleUserInput(event){
        }
 
    render(){
+     console.log(this.props.data);
       return(
          <div className="DocForm">
             <div className="headerWindow">
@@ -430,10 +431,10 @@ export default connect(
          dispatch({ type: 'SHOW_ADDFORM', payload: state });
       },
       addValidation: (state) => {
-        dispatch({ type: 'SHOW_VALIDATION', payload: state });
+        dispatch({ type: 'SHOW_ADDVALIDATION', payload: state });
       },
       newDocument: (state) => {
-         dispatch({ type: 'VALIDATION', payload: state });
+         dispatch({ type: 'ADD_VALIDATION', payload: state });
       }
    })
 )(DocForm);

@@ -33,7 +33,7 @@ class App extends Component {
    if(this.props.data.showUpdateForm){
       var docForm = <UpdateForm />
    }
-   if(this.props.data.showValidationForm){
+   if(this.props.data.showAddValidationForm){
       var addValidation = <AddValidation />
    }
   //  console.log(this.props.data);
