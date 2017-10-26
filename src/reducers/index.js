@@ -7,6 +7,7 @@ import updateDocument from './updateDocument'
 import showUpdateForm from './showUpdateForm'
 import addValidation from './addValidation'
 import showAddValidationForm from './showAddValidationForm'
+import showTrashModalWindow from './showTrashModalWindow'
 
 export default combineReducers({
    showAddForm,
@@ -15,6 +16,7 @@ export default combineReducers({
    quickSearch,
    allDocuments,
    updateDocument,
-   addValidation
+   addValidation,
+   showTrashModalWindow
 
 })

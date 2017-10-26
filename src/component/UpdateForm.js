@@ -10,6 +10,7 @@ class DocForm extends Component{
       super(props);
 
       this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
+      this.newStateTrashModalWindow = this.newStateTrashModalWindow.bind(this);
 
       this.termOfTraining = this.termOfTraining.bind(this);
       this.trainingInTheUTC = this.trainingInTheUTC.bind(this);
@@ -44,9 +45,14 @@ class DocForm extends Component{
      }
    }
 
-   //Открывание и закрывание формы
+   //Открывание и закрывание формы UpdateForm
     newStateUpdateForm(){
       this.props.newStateUpdateForm(false);
+    }
+   //Открытие и закрывания формы TrashModalWindow
+    newStateTrashModalWindow(){
+      this.props.newStateUpdateForm(false);
+      this.props.newStateTrashModalWindow(true);
     }
 
   //Дата срока подготовки обучения
@@ -175,13 +181,13 @@ class DocForm extends Component{
             <div className="row">
               <div className="btn-group btn-group-justified">
                 <div className="btn-group">
-                  <button type="button" className="btn btn-danger btn-lg">Закрыть</button>
+                  <button type="button" className="btn btn-danger btn-lg" onClick={this.newStateUpdateForm}>Закрыть</button>
                 </div>
                 <div className="btn-group">
                   <button type="button" className="btn btn-success btn-lg">Сохранить</button>
                 </div>
                 <div className="btn-group">
-                  <button type="button" className="btn btn-default btn-lg">В корзину</button>
+                  <button type="button" className="btn btn-default btn-lg" onClick={this.newStateTrashModalWindow}>В корзину</button>
                 </div>
               </div>
             </div>
@@ -197,6 +203,9 @@ export default connect(
    dispatch => ({
       newStateUpdateForm: (state) => {
          dispatch({ type: 'SHOW_UPDATEFORM', payload: state });
+      },
+      newStateTrashModalWindow: (state) => {
+        dispatch({ type: 'SHOW_TRASHMODALWINDOW', payload: state });
       },
       newDocument: (state) => {
          dispatch({ type: 'NEW_DOCUMENT', payload: state });

@@ -7,6 +7,7 @@ import DocForm from './DocForm.js';
 import Table from './Table.js';
 import UpdateForm from './UpdateForm.js';
 import AddValidation from './AddValidation.js';
+import TrashModalWindow from './TrashModalWindow.js'
 
 class App extends Component {
 
@@ -36,6 +37,10 @@ class App extends Component {
    if(this.props.data.showAddValidationForm){
       var addValidation = <AddValidation />
    }
+   if(this.props.data.showTrashModalWindow){
+     var trashModalWindow = <TrashModalWindow />
+   }
+
    console.log(this.props.data);
 
    return(
@@ -44,7 +49,9 @@ class App extends Component {
             <Table />
             {docForm}
             {addValidation}
+            {trashModalWindow}
             <div style={{display: this.props.data.showAddForm ? 'block' : 'none' }}><DocForm /></div>
+
 
          </div>
       )
