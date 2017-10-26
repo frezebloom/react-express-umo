@@ -86,76 +86,102 @@ class DocForm extends Component{
    render(){
      var data = this.props.data.updateDocument[0];
       return(
-         <div className="DocForm">
+         <div className="updateForm">
             <div className="headerWindow">
-               Добавить новый документ
+               Изменить текущий документ
             </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="programmNumber" placeholder="№ программы" defaultValue={data.programmNumber} />
+            <div className="row">
+              <div className="col-xs-6 col-sm-3">
+                 <label>№ программы</label>
+                 <input className="form-control" type="text" name="programmNumber" defaultValue={data.programmNumber} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Ф.И.О.</label>
+                 <input className="form-control" type="text" name="fullName" defaultValue={data.fullName} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                <label>Предприятие</label>
+                 <select id="company" className="form-control" name="company" >
+                     <option value="ЛАЭС-1">ЛАЭС-1</option>
+                     <option value="ЛАЭС-2">ЛАЭС-2</option>
+                 </select>
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Категория персонала</label>
+                 <select id="personnelCategory" className="form-control" name="personnelCategory" >
+                     <option value="Оперативный">Оперативный</option>
+                     <option value="Ремонтный">Ремонтный</option>
+                     <option value="Административный">Административный</option>
+                     <option value="Руководители">Руководители</option>
+                     <option value="Специалисты">Специалисты</option>
+                     <option value="Рабочие">Рабочие</option>
+                 </select>
+              </div>
             </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="fullName" placeholder="Ф.И.О." defaultValue={data.fullName} />
+            <div className="row">
+              <div className="col-xs-6 col-sm-3">
+                 <label>Подразделение</label>
+                 <input className="form-control" type="text" id="subdivision" name="subdivision" defaultValue={data.subdivision} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Должность</label>
+                 <input className="form-control" type="text" id="position" name="position" defaultValue={data.position} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Теоретическая подготовка</label>
+                 <input className="form-control" type="text" name="theoreticalTraining" defaultValue={data.theoreticalTraining} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Практическая подготовка</label>
+                 <input className="form-control" type="text" name="practicalTraining" defaultValue={data.practicalTraining} />
+              </div>
             </div>
-            <div className="col-xs-6">
-               <select id="company" className="form-control" name="company" >
-                   <option value="ЛАЭС-1">ЛАЭС-1</option>
-                   <option value="ЛАЭС-2">ЛАЭС-2</option>
-               </select>
+            <div className="row">
+              <div className="col-xs-6 col-sm-3">
+                 <label>Стажировка</label>
+                 <input className="form-control" type="text" name="internship" defaultValue={data.internship} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                <label>Срок подготовки обучения</label>
+                <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" defaultValue={data.termOfTraining} onChange={this.termOfTraining} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Обучение в УТЦ</label>
+                 <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" defaultValue={data.trainingInTheUTC} onChange={this.trainingInTheUTC} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Обучение в подразделении</label>
+                 <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" defaultValue={data.trainingInTheUnit} onChange={this.trainingInTheUnit} />
+              </div>
             </div>
-            <div>
+            <div className="row">
+              <div className="col-xs-6 col-sm-3">
+                 <label>Дата регистрации программы</label>
+                 <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" defaultValue={data.registrationDateOfTheProgram} onChange={this.registrationDateOfTheProgram} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Дата сдачи программы</label>
+                 <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" defaultValue={data.dateOfDelivery} onChange={this.dateOfDelivery} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Ф.И.О. (Сдающий программу)</label>
+                 <input className="form-control" type="text" name="fullNameProgram" defaultValue={data.fullNameProgram} />
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Ссылка</label>
+                 <input className="form-control" type="text" name="link" defaultValue={data.link} />
+              </div>
             </div>
-            <div className="col-xs-6">
-               <select id="personnelCategory" className="form-control" name="personnelCategory" >
-                  <option defaultValue="" hidden>Категория персонала</option>
-                   <option value="Оперативный">Оперативный</option>
-                   <option value="Ремонтный">Ремонтный</option>
-                   <option value="Административный">Административный</option>
-                   <option value="Руководители">Руководители</option>
-                   <option value="Специалисты">Специалисты</option>
-                   <option value="Рабочие">Рабочие</option>
-               </select>
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" id="subdivision" name="subdivision" placeholder="Подразделение" defaultValue={data.subdivision} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" id="position" name="position" placeholder="Должность" defaultValue={data.position} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="theoreticalTraining" placeholder="Теоретическая подготовка" defaultValue={data.theoreticalTraining} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="practicalTraining" placeholder="Практическая подготовка" defaultValue={data.practicalTraining} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="internship" placeholder="Стажировка" defaultValue={data.internship} />
-            </div>
-            <div className="col-xs-6">
-              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" defaultValue={data.termOfTraining} onChange={this.termOfTraining} />
-            </div>
-            <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" defaultValue={data.trainingInTheUTC} onChange={this.trainingInTheUTC} />
-            </div>
-            <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" defaultValue={data.trainingInTheUnit} onChange={this.trainingInTheUnit} />
-            </div>
-            <div className="col-xs-6">
-               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" defaultValue={data.registrationDateOfTheProgram} onChange={this.registrationDateOfTheProgram} />
-            </div>
-            <div className="col-xs-6">
-               <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" defaultValue={data.dateOfDelivery} onChange={this.dateOfDelivery} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="fullNameProgram" placeholder="Ф.И.О. (Сдающий программу)" defaultValue={data.fullNameProgram} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="link" placeholder="Ссылка" defaultValue={data.link} />
-            </div>
-            <div className="col-xs-6">
-               <button type="button" className="btn btn-danger btn-lg btn-block" onClick={this.newStateUpdateForm}>Закрыть</button>
-            </div>
-            <div className="col-xs-6">
-               <button type="button" className="btn btn-success btn-lg btn-block" onClick={this.handleSend}>Отправить</button>
+            <div className="row">
+              <div className="col-xs-6">
+                 <button type="button" className="btn btn-danger btn-lg btn-block" onClick={this.newStateUpdateForm}>Закрыть</button>
+              </div>
+              <div className="col-xs-6">
+                 <button type="button" className="btn btn-success btn-lg btn-block" onClick={this.handleSend}>Отправить</button>
+              </div>
+              <div className="col-xs-6">
+                 <button type="button" className="btn btn-success btn-lg btn-block" onClick={this.handleSend}>Удалить</button>
+              </div>
             </div>
          </div>
       );

@@ -331,92 +331,108 @@ handleUserInput(event){
             <div className="headerWindow">
                Добавить новый документ
             </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="programmNumber" placeholder="№ программы" onChange={this.handleUserInput} />
+            <div className="row">
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" name="programmNumber" placeholder="№ программы" onChange={this.handleUserInput} />
+              </div>
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" name="fullName" placeholder="Ф.И.О." onChange={this.handleUserInput} />
+              </div>
             </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="fullName" placeholder="Ф.И.О." onChange={this.handleUserInput} />
+            <div className="row">
+              <div className="col-xs-6">
+                 <select defaultValue="" className="form-control" name="company" onChange={this.handleUserInput}>
+                     <option defaultValue="" hidden>Предприятие</option>
+                     <option value="ЛАЭС-1">ЛАЭС-1</option>
+                     <option value="ЛАЭС-2">ЛАЭС-2</option>
+                 </select>
+              </div>
+              <div className="col-xs-6">
+                 <select className="form-control" name="personnelCategory" onChange={this.handleUserInput}>
+                    <option defaultValue="" hidden>Категория персонала</option>
+                     <option value="Оперативный">Оперативный</option>
+                     <option value="Ремонтный">Ремонтный</option>
+                     <option value="Административный">Административный</option>
+                     <option value="Руководители">Руководители</option>
+                     <option value="Специалисты">Специалисты</option>
+                     <option value="Рабочие">Рабочие</option>
+                 </select>
+              </div>
             </div>
-            <div className="col-xs-6">
-               <select defaultValue="" className="form-control" name="company" onChange={this.handleUserInput}>
-                   <option defaultValue="" hidden>Предприятие</option>
-                   <option value="ЛАЭС-1">ЛАЭС-1</option>
-                   <option value="ЛАЭС-2">ЛАЭС-2</option>
-               </select>
+            <div className="row">
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" id="subdivision" name="subdivision" placeholder="Подразделение" onChange={this.handleUserInput} />
+                 <div className="hint" style={{display: this.state.showHintSubdivision ? 'block' : 'none' }}>
+                   <div className="over">
+                     <ul onClick={this.handleClickHintSubdivision}>
+                        {this.state.hintSubdivision.map((tips, index) =>
+                           <li className="tips" key={index}>{tips}</li>)
+                        }
+                     </ul>
+                   </div>
+                  </div>
+              </div>
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" id="position" name="position" placeholder="Должность" onChange={this.handleUserInput} />
+                 <div className="hint" style={{display: this.state.showHintPosition ? 'block' : 'none' }}>
+                   <div className="over">
+                     <ul onClick={this.handleClickHintPosition}>
+                        {this.state.hintPosition.map((tips, index) =>
+                           <li className="tips" key={index}>{tips}</li>)
+                        }
+                     </ul>
+                   </div>
+                  </div>
+              </div>
             </div>
-            <div>
+            <div className="row">
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" name="theoreticalTraining" placeholder="Теоретическая подготовка" onChange={this.handleUserInput} />
+              </div>
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" name="practicalTraining" placeholder="Практическая подготовка" onChange={this.handleUserInput} />
+              </div>
             </div>
-            <div className="col-xs-6">
-               <select className="form-control" name="personnelCategory" onChange={this.handleUserInput}>
-                  <option defaultValue="" hidden>Категория персонала</option>
-                   <option value="Оперативный">Оперативный</option>
-                   <option value="Ремонтный">Ремонтный</option>
-                   <option value="Административный">Административный</option>
-                   <option value="Руководители">Руководители</option>
-                   <option value="Специалисты">Специалисты</option>
-                   <option value="Рабочие">Рабочие</option>
-               </select>
+            <div className="row">
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" name="internship" placeholder="Стажировка" onChange={this.handleUserInput} />
+              </div>
+              <div className="col-xs-6">
+                <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" onChange={this.termOfTraining} />
+              </div>
             </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" id="subdivision" name="subdivision" placeholder="Подразделение" onChange={this.handleUserInput} />
-               <div className="hint" style={{display: this.state.showHintSubdivision ? 'block' : 'none' }}>
-                 <div className="over">
-                   <ul onClick={this.handleClickHintSubdivision}>
-                      {this.state.hintSubdivision.map((tips, index) =>
-                         <li className="tips" key={index}>{tips}</li>)
-                      }
-                   </ul>
-                 </div>
-                </div>
+            <div className="row">
+              <div className="col-xs-6">
+                 <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" onChange={this.trainingInTheUTC} />
+              </div>
+              <div className="col-xs-6">
+                 <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" onChange={this.trainingInTheUnit} />
+              </div>
             </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" id="position" name="position" placeholder="Должность" onChange={this.handleUserInput} />
-               <div className="hint" style={{display: this.state.showHintPosition ? 'block' : 'none' }}>
-                 <div className="over">
-                   <ul onClick={this.handleClickHintPosition}>
-                      {this.state.hintPosition.map((tips, index) =>
-                         <li className="tips" key={index}>{tips}</li>)
-                      }
-                   </ul>
-                 </div>
-                </div>
+            <div className="row">
+              <div className="col-xs-6">
+                 <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" onChange={this.registrationDateOfTheProgram} />
+              </div>
+              <div className="col-xs-6">
+                 <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" onChange={this.dateOfDelivery} />
+              </div>
             </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="theoreticalTraining" placeholder="Теоретическая подготовка" onChange={this.handleUserInput} />
+            <div className="row">
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" name="fullNameProgram" placeholder="Ф.И.О. (Сдающий программу)" onChange={this.handleUserInput} />
+              </div>
+              <div className="col-xs-6">
+                 <input className="form-control" type="text" name="link" placeholder="Ссылка" onChange={this.handleUserInput} />
+              </div>
             </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="practicalTraining" placeholder="Практическая подготовка" onChange={this.handleUserInput} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="internship" placeholder="Стажировка" onChange={this.handleUserInput} />
-            </div>
-            <div className="col-xs-6">
-              <DatePickerInput name="termOfTraining" className="my-custom-datepicker-component" placeholder="Срок подготовки обучения" onChange={this.termOfTraining} />
-            </div>
-            <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUTC" className="my-custom-datepicker-component" placeholder="Обучение в УТЦ" onChange={this.trainingInTheUTC} />
-            </div>
-            <div className="col-xs-6">
-               <DatePickerInput name="trainingInTheUnit" className="my-custom-datepicker-component" placeholder="Обучение в подразделении" onChange={this.trainingInTheUnit} />
-            </div>
-            <div className="col-xs-6">
-               <DatePickerInput name="registrationDateOfTheProgram" className="my-custom-datepicker-component" placeholder="Дата регистрации программы" onChange={this.registrationDateOfTheProgram} />
-            </div>
-            <div className="col-xs-6">
-               <DatePickerInput name="dateOfDelivery" className="my-custom-datepicker-component" placeholder="Дата сдачи программы" onChange={this.dateOfDelivery} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="fullNameProgram" placeholder="Ф.И.О. (Сдающий программу)" onChange={this.handleUserInput} />
-            </div>
-            <div className="col-xs-6">
-               <input className="form-control" type="text" name="link" placeholder="Ссылка" onChange={this.handleUserInput} />
-            </div>
-            <div className="col-xs-6">
-               <button type="button" className="btn btn-danger btn-lg btn-block" onClick={this.newStateAddForm}>Закрыть</button>
-            </div>
-            <div className="col-xs-6">
-               <button type="button" className="btn btn-success btn-lg btn-block" onClick={this.handleSend}>Отправить</button>
-            </div>
+            <div className="row">
+              <div className="col-xs-6">
+                 <button type="button" className="btn btn-danger btn-lg btn-block" onClick={this.newStateAddForm}>Закрыть</button>
+              </div>
+              <div className="col-xs-6">
+                 <button type="button" className="btn btn-success btn-lg btn-block" onClick={this.handleSend}>Отправить</button>
+              </div>
+              </div>
          </div>
       );
    }
