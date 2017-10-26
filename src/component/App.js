@@ -36,7 +36,7 @@ class App extends Component {
    if(this.props.data.showAddValidationForm){
       var addValidation = <AddValidation />
    }
-  //  console.log(this.props.data);
+   console.log(this.props.data);
 
    return(
          <div>

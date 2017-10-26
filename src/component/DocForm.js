@@ -325,7 +325,6 @@ handleUserInput(event){
        }
 
    render(){
-     console.log(this.props.data);
       return(
          <div className="DocForm">
             <div className="headerWindow">

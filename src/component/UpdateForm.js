@@ -173,14 +173,16 @@ class DocForm extends Component{
               </div>
             </div>
             <div className="row">
-              <div className="col-xs-6">
-                 <button type="button" className="btn btn-danger btn-lg btn-block" onClick={this.newStateUpdateForm}>Закрыть</button>
-              </div>
-              <div className="col-xs-6">
-                 <button type="button" className="btn btn-success btn-lg btn-block" onClick={this.handleSend}>Отправить</button>
-              </div>
-              <div className="col-xs-6">
-                 <button type="button" className="btn btn-success btn-lg btn-block" onClick={this.handleSend}>Удалить</button>
+              <div className="btn-group btn-group-justified">
+                <div className="btn-group">
+                  <button type="button" className="btn btn-danger btn-lg">Закрыть</button>
+                </div>
+                <div className="btn-group">
+                  <button type="button" className="btn btn-success btn-lg">Сохранить</button>
+                </div>
+                <div className="btn-group">
+                  <button type="button" className="btn btn-default btn-lg">В корзину</button>
+                </div>
               </div>
             </div>
          </div>
