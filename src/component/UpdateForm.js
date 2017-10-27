@@ -11,6 +11,7 @@ class DocForm extends Component{
 
       this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
       this.newStateTrashModalWindow = this.newStateTrashModalWindow.bind(this);
+      this.handleUserInput = this.handleUserInput.bind(this);
 
       this.termOfTraining = this.termOfTraining.bind(this);
       this.trainingInTheUTC = this.trainingInTheUTC.bind(this);
@@ -23,13 +24,35 @@ class DocForm extends Component{
          hintPosition: [],
          showHintSubdivision: false,
          showHintPosition: false,
-         dataDocument: {}
+         id: ''
       };
 
    }
 
    componentDidMount(){
       let data = this.props.data.updateDocument[this.props.data.updateDocument.length - 1];
+
+      this.setState({
+        id:                           1,
+        programmNumber:               data.programmNumber,
+        fullName:                     data.fullName,
+        company:                      data.company,
+        personnelCategory:            data.personnelCategory,
+        subdivision:                  data.subdivision,
+        position:                     data.position,
+        theoreticalTraining:          data.theoreticalTraining,
+        practicalTraining:            data.practicalTraining,
+        internship:                   data.internship,
+        termOfTraining:               data.termOfTraining,
+        trainingInTheUTC:             data.trainingInTheUTC,
+        trainingInTheUnit:            data.trainingInTheUnit,
+        registrationDateOfTheProgram: data.registrationDateOfTheProgram,
+        dateOfDelivery:               data.dateOfDelivery,
+        fullNameProgram:              data.fullNameProgram,
+        link:                         data.link,
+        status:                       1
+      })
+
      //Выбор selected COMPANY по умолчанию
      let companyData = document.getElementById("company");
      for(let i = 0; companyData.length > i; i++){
@@ -345,8 +368,7 @@ class DocForm extends Component{
    render(){
 
      var data = this.props.data.updateDocument[this.props.data.updateDocument.length - 1];
-     console.log(this.props.data.updateDocument);
-
+     console.log(this.state);
       return(
          <div className="updateForm">
             <div className="headerWindow">
