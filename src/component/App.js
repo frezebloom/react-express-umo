@@ -41,7 +41,7 @@ class App extends Component {
      var trashModalWindow = <TrashModalWindow />
    }
 
-   console.log(this.props.data);
+  //  console.log(this.props.data);
 
    return(
          <div>

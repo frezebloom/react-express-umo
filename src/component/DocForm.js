@@ -27,7 +27,6 @@ class DocForm extends Component{
          hintPosition: [],
          showHintSubdivision: false,
          showHintPosition: false,
-         dataDocument: {}
       };
    }
 
@@ -325,6 +324,7 @@ handleUserInput(event){
        }
 
    render(){
+    //  console.log(this.state)
       return(
          <div className="DocForm">
             <div className="headerWindow">
