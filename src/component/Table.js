@@ -19,11 +19,11 @@ class Table extends Component {
       return data.id === e;
     }
 
-    var a = this.props.data.filter(arrayFilter)
-    var updateDoc = a.forEach((item) => {
-     return item;
+    var a = this.props.data.filter(arrayFilter);
+    var updateDoc = 0;
+    a.forEach((item) => {
+      updateDoc = item;
     })
-
     this.props.UpdateForm(updateDoc);
   }
 

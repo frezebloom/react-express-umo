@@ -29,7 +29,7 @@ class DocForm extends Component{
    }
 
    componentDidMount(){
-      let data = this.props.data.updateDocument[0];
+      let data = this.props.data.updateDocument[this.props.data.updateDocument.length - 1];
      //Выбор selected COMPANY по умолчанию
      let companyData = document.getElementById("company");
      for(let i = 0; companyData.length > i; i++){
@@ -344,8 +344,8 @@ class DocForm extends Component{
 
    render(){
 
-     var data = this.props.data.updateDocument[this.props.data.updateDocument.length - 1][0];
-    //  console.log(this.props.data.updateDocument);
+     var data = this.props.data.updateDocument[this.props.data.updateDocument.length - 1];
+     console.log(this.props.data.updateDocument);
 
       return(
          <div className="updateForm">
