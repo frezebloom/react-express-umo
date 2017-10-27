@@ -12,7 +12,8 @@ class DocForm extends Component{
       this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
       this.newStateTrashModalWindow = this.newStateTrashModalWindow.bind(this);
       this.handleUserInput = this.handleUserInput.bind(this);
-
+      this.handleClickHintSubdivision = this.handleClickHintSubdivision.bind(this);
+      this.handleClickHintPosition = this.handleClickHintPosition.bind(this);
       this.termOfTraining = this.termOfTraining.bind(this);
       this.trainingInTheUTC = this.trainingInTheUTC.bind(this);
       this.trainingInTheUnit = this.trainingInTheUnit.bind(this);
@@ -319,6 +320,25 @@ class DocForm extends Component{
          })
        }
 
+   //Выбор элемента из списка подсказок подразделений
+      handleClickHintSubdivision(event){
+       document.getElementById('subdivision').value = event.target.innerHTML;
+       this.setState({
+         subdivision: event.target.innerHTML,
+         hintSubdivision: [],
+         showHintSubdivision: false,
+       })
+      }
+   //Выбор элемента из списка подсказок должностей
+       handleClickHintPosition(event){
+         document.getElementById('position').value = event.target.innerHTML;
+         this.setState({
+           position: event.target.innerHTML,
+           hintSubdivision: [],
+           showHintPosition: false,
+         })
+       }
+
 
 
    //Открывание и закрывание формы UpdateForm
@@ -405,11 +425,29 @@ class DocForm extends Component{
             <div className="row">
               <div className="col-xs-6 col-sm-3">
                  <label>Подразделение</label>
-                 <input className="form-control" type="text" id="subdivision" name="subdivision" defaultValue={data.subdivision} />
+                 <input className="form-control" type="text" id="subdivision" name="subdivision" defaultValue={data.subdivision} onChange={this.handleUserInput} />
+                 <div className="hint" style={{display: this.state.showHintSubdivision ? 'block' : 'none' }}>
+                   <div className="over">
+                     <ul onClick={this.handleClickHintSubdivision}>
+                        {this.state.hintSubdivision.map((tips, index) =>
+                           <li className="tips" key={index}>{tips}</li>)
+                        }
+                     </ul>
+                 </div>
+                </div>
               </div>
               <div className="col-xs-6 col-sm-3">
                  <label>Должность</label>
-                 <input className="form-control" type="text" id="position" name="position" defaultValue={data.position} />
+                 <input className="form-control" type="text" id="position" name="position" defaultValue={data.position} onChange={this.handleUserInput} />
+                 <div className="hint" style={{display: this.state.showHintPosition ? 'block' : 'none' }}>
+                   <div className="over">
+                     <ul onClick={this.handleClickHintPosition}>
+                        {this.state.hintPosition.map((tips, index) =>
+                           <li className="tips" key={index}>{tips}</li>)
+                        }
+                     </ul>
+                  </div>
+                </div>
               </div>
               <div className="col-xs-6 col-sm-3">
                  <label>Теоретическая подготовка</label>
