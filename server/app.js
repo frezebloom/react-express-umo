@@ -57,9 +57,14 @@ app.post('/newdoc', (req, res) => {
      req.body.status
     ],
   ];
-
   connection.query(sql, [values], function(err, result) {
-    console.log('Добавлен новый документ');
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log(result);
+      console.log('Добавлен новый документ');
+    }
   });
 
 });
@@ -67,7 +72,6 @@ app.post('/newdoc', (req, res) => {
 //изменения документа
 app.post('/update', (req, res) => {
   var sql = "UPDATE umodoc SET programmNumber = ?, fullName = ?, company = ?, personnelCategory = ?, subdivision = ?, position = ?, theoreticalTraining = ?, practicalTraining = ?, internship = ?, termOfTraining = ?, trainingInTheUTC = ?, trainingInTheUnit = ?, registrationDateOfTheProgram = ?, dateOfDelivery = ?, fullNameProgram = ?, link = ?, status = ? WHERE id = ?";
-
   var values = [
      req.body.programmNumber,
      req.body.fullName,
@@ -88,14 +92,16 @@ app.post('/update', (req, res) => {
      req.body.status,
      req.body.id
     ]
-connection.query(sql, values, function(err, result) {
-    if(err){console.log(err)}
+    connection.query(sql, values, function(err, result) {
+    if(err){
+      console.log(err)
+    }
     else{
      console.log(result);
+         console.log('Документ изменен');
     }
-    console.log('Документ изменен');
-});
 
+  });
 });
 
 
