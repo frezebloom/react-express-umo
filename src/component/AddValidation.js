@@ -8,7 +8,7 @@ class AddValidation extends Component{
      super(props);
 
      this.state = {
-       massage: 'Все данные успешно сохранены',
+       message: 'Все данные успешно сохранены',
        danger: false
      }
 
@@ -39,7 +39,7 @@ class AddValidation extends Component{
        }
        else{
          this.setState({
-           massage: 'Введите корректную дату (ДД.ММ.ГГГГ)',
+           message: 'Введите корректную дату (ДД.ММ.ГГГГ)',
            danger: true
          })
        }
@@ -54,7 +54,7 @@ class AddValidation extends Component{
       })
       if(count !== 16){
         this.setState({
-          massage: 'Заполните все необходимые поля',
+          message: 'Заполните все необходимые поля',
           danger: true
         })
       }
@@ -100,10 +100,10 @@ class AddValidation extends Component{
       return(
          <div className="validation">
             <div className="validationHeader">
-               Добавить новый документ
+               Добавление
             </div>
             <div className="messageAction">
-              {this.state.massage}
+              {this.state.message}
             </div>
             <div className="buttonSuccess">
               <button type="button" className={this.state.danger ? "btn btn-danger btn-lg btn-block" : "btn btn-success btn-lg btn-block" } onClick={this.clickOkay}>Окей!</button>
