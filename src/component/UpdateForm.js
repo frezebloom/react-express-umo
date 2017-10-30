@@ -351,6 +351,7 @@ class DocForm extends Component{
     newStateTrashModalWindow(){
       this.props.newStateUpdateForm(false);
       this.props.newStateTrashModalWindow(true);
+      this.props.updateDocument(this.state);
     }
 
   //Дата срока подготовки обучения
@@ -388,9 +389,7 @@ class DocForm extends Component{
       }
 
    render(){
-
      var data = this.props.data.updateDocument[this.props.data.updateDocument.length - 1];
-     console.log(this.state);
       return(
          <div className="updateForm">
             <div className="headerWindow">
@@ -525,8 +524,8 @@ export default connect(
       newStateTrashModalWindow: (state) => {
         dispatch({ type: 'SHOW_TRASHMODALWINDOW', payload: state });
       },
-      newDocument: (state) => {
-         dispatch({ type: 'NEW_DOCUMENT', payload: state });
+      updateDocument: (state) => {
+         dispatch({ type: 'UPDATE_DOCUMENT', payload: state });
       }
    })
 )(DocForm);

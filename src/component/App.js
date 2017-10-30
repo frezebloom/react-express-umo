@@ -7,7 +7,8 @@ import DocForm from './DocForm.js';
 import Table from './Table.js';
 import UpdateForm from './UpdateForm.js';
 import AddValidation from './AddValidation.js';
-import TrashModalWindow from './TrashModalWindow.js'
+import TrashModalWindow from './TrashModalWindow.js';
+import TrashMessage from './TrashMessage.js';
 
 class App extends Component {
 
@@ -32,7 +33,7 @@ class App extends Component {
 
    render(){
    if(this.props.data.showUpdateForm){
-      var docForm = <UpdateForm />
+      var updateForm = <UpdateForm />
    }
    if(this.props.data.showAddValidationForm){
       var addValidation = <AddValidation />
@@ -40,16 +41,20 @@ class App extends Component {
    if(this.props.data.showTrashModalWindow){
      var trashModalWindow = <TrashModalWindow />
    }
+   if(this.props.data.showTrashMessage){
+     var trashMessage = <TrashMessage />
+   }
 
-  //  console.log(this.props.data);
+   console.log(this.props.data);
 
    return(
          <div>
             <Header />
             <Table />
-            {docForm}
+            {updateForm}
             {addValidation}
             {trashModalWindow}
+            {trashMessage}
             <div style={{display: this.props.data.showAddForm ? 'block' : 'none' }}><DocForm /></div>
 
 
