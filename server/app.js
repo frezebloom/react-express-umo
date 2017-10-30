@@ -67,8 +67,9 @@ app.post('/newdoc', (req, res) => {
 //изменения документа
 app.post('/update', (req, res) => {
   var sql = "UPDATE umodoc SET programmNumber = ?, fullName = ?, company = ?, personnelCategory = ?, subdivision = ?, position = ?, theoreticalTraining = ?, practicalTraining = ?, internship = ?, termOfTraining = ?, trainingInTheUTC = ?, trainingInTheUnit = ?, registrationDateOfTheProgram = ?, dateOfDelivery = ?, fullNameProgram = ?, link = ?, status = ? WHERE id = ?";
+
   var values = [
-    [req.body.programmNumber,
+     req.body.programmNumber,
      req.body.fullName,
      req.body.company,
      req.body.personnelCategory,
@@ -86,12 +87,15 @@ app.post('/update', (req, res) => {
      req.body.link,
      req.body.status,
      req.body.id
-    ],
-  ];
-
-  connection.query(sql, [values], function(err, result) {
+    ]
+connection.query(sql, values, function(err, result) {
+    if(err){console.log(err)}
+    else{
+     console.log(result);
+    }
     console.log('Документ изменен');
-  });
+});
+
 });
 
 

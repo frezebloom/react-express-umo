@@ -90,6 +90,8 @@ class DocForm extends Component{
         return data.includes(value);
       }
 
+
+
       if(name === 'subdivision'){
 
          var subdivision =
@@ -425,8 +427,8 @@ class DocForm extends Component{
             <div className="row">
               <div className="col-xs-6 col-sm-3">
                  <label>Подразделение</label>
-                 <input className="form-control" type="text" id="subdivision" name="subdivision" defaultValue={data.subdivision} onChange={this.handleUserInput} />
-                 <div className="hint" style={{display: this.state.showHintSubdivision ? 'block' : 'none' }}>
+                  <input className="form-control" type="text" id="subdivision" name="subdivision" defaultValue={data.subdivision} onChange={this.handleUserInput} />
+                 <div className="hintUpdate" style={{display: this.state.showHintSubdivision ? 'block' : 'none' }}>
                    <div className="over">
                      <ul onClick={this.handleClickHintSubdivision}>
                         {this.state.hintSubdivision.map((tips, index) =>
@@ -439,7 +441,7 @@ class DocForm extends Component{
               <div className="col-xs-6 col-sm-3">
                  <label>Должность</label>
                  <input className="form-control" type="text" id="position" name="position" defaultValue={data.position} onChange={this.handleUserInput} />
-                 <div className="hint" style={{display: this.state.showHintPosition ? 'block' : 'none' }}>
+                 <div className="hintUpdate" style={{display: this.state.showHintPosition ? 'block' : 'none' }}>
                    <div className="over">
                      <ul onClick={this.handleClickHintPosition}>
                         {this.state.hintPosition.map((tips, index) =>

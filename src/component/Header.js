@@ -10,6 +10,7 @@ class Header extends Component{
 
    newStateAddForm(){
       this.props.newStateAddForm(true);
+      this.props.newStateUpdateForm(false);
    }
 
    //Быстрый поиск
@@ -48,6 +49,9 @@ export default connect(
       },
       quickSearch: (data) => {
          dispatch({ type: 'QUICK_SEARCH', payload: data });
-      }
+      },
+      newStateUpdateForm: (state) => {
+        dispatch({ type: 'SHOW_UPDATEFORM', payload: state });
+      },
    })
 )(Header);

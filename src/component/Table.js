@@ -12,6 +12,7 @@ class Table extends Component {
 
   newStateUpdateForm(event){
 
+    this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(true);
 
     var arrayFilter = function(data) {
@@ -98,5 +99,8 @@ export default connect(
      newStateUpdateForm: (state) => {
        dispatch({ type: 'SHOW_UPDATEFORM', payload: state });
      },
+     newStateAddForm: (state) => {
+        dispatch({ type: 'SHOW_ADDFORM', payload: state });
+     }
    }),
 )(Table);
