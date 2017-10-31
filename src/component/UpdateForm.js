@@ -553,7 +553,7 @@ class DocForm extends Component {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props.data);
     var data = this.props.data.updateDocument[
       this.props.data.updateDocument.length - 1
     ];
@@ -583,7 +583,7 @@ class DocForm extends Component {
           </div>
           <div className="col-xs-6 col-sm-3">
             <label>Предприятие</label>
-            <select id="company" className="form-control" name="company">
+            <select id="company" className="form-control" name="company" onChange={this.handleUserInput} >
               <option value="ЛАЭС-1">ЛАЭС-1</option>
               <option value="ЛАЭС-2">ЛАЭС-2</option>
             </select>
@@ -594,6 +594,7 @@ class DocForm extends Component {
               id="personnelCategory"
               className="form-control"
               name="personnelCategory"
+              onChange={this.handleUserInput}
             >
               <option value="Оперативный">Оперативный</option>
               <option value="Ремонтный">Ремонтный</option>
@@ -666,6 +667,7 @@ class DocForm extends Component {
               type="text"
               name="theoreticalTraining"
               defaultValue={data.theoreticalTraining}
+              onChange={this.handleUserInput}
             />
           </div>
           <div className="col-xs-6 col-sm-3">
@@ -675,6 +677,7 @@ class DocForm extends Component {
               type="text"
               name="practicalTraining"
               defaultValue={data.practicalTraining}
+              onChange={this.handleUserInput}
             />
           </div>
         </div>
@@ -686,6 +689,7 @@ class DocForm extends Component {
               type="text"
               name="internship"
               defaultValue={data.internship}
+              onChange={this.handleUserInput}
             />
           </div>
           <div className="col-xs-6 col-sm-3">
@@ -742,6 +746,7 @@ class DocForm extends Component {
               type="text"
               name="fullNameProgram"
               defaultValue={data.fullNameProgram}
+              onChange={this.handleUserInput}
             />
           </div>
           <div className="col-xs-6 col-sm-3">
@@ -751,6 +756,7 @@ class DocForm extends Component {
               type="text"
               name="link"
               defaultValue={data.link}
+              onChange={this.handleUserInput}
             />
           </div>
         </div>

@@ -51,7 +51,8 @@ class UpdateValidation extends Component {
     //Проверка формата даты
 
     collectionDate.forEach((item, index) => {
-      if (item instanceof Date) {
+      var conversionDateFormat = new Date(item);
+      if (conversionDateFormat instanceof Date) {
         return true;
       } else {
         this.setState({
@@ -63,7 +64,7 @@ class UpdateValidation extends Component {
 
     //Проверка количества приходящих данных (должно быть не меньше 16);
     collectionData.forEach(item => {
-      if (item === undefined || item === "") {
+      if (item === undefined || item === "" || item === "Invalid date") {
         return false;
       }
       count++;
@@ -116,7 +117,6 @@ class UpdateValidation extends Component {
   }
 
   render() {
-    console.log(this.props.data.updateDocument);
     return (
       <div className="validation">
         <div className="validationHeader">Изменение</div>
