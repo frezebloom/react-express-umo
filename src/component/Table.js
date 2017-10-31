@@ -85,18 +85,18 @@ export default connect(
   state => ({
     data: state.allDocuments.filter(
       data =>
-        data.programmNumber.includes(state.quickSearch) ||
-        data.fullName.includes(state.quickSearch) ||
-        data.company.includes(state.quickSearch) ||
-        data.personnelCategory.includes(state.quickSearch) ||
-        data.subdivision.includes(state.quickSearch) ||
-        data.position.includes(state.quickSearch) ||
-        data.termOfTraining.includes(state.quickSearch) ||
-        data.trainingInTheUTC.includes(state.quickSearch) ||
-        data.trainingInTheUnit.includes(state.quickSearch) ||
-        data.registrationDateOfTheProgram.includes(state.quickSearch) ||
-        data.dateOfDelivery.includes(state.quickSearch) ||
-        data.fullNameProgram.includes(state.quickSearch)
+        data.programmNumber.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.fullName.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.company.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.personnelCategory.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.subdivision.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.position.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.termOfTraining.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.trainingInTheUTC.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.trainingInTheUnit.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.registrationDateOfTheProgram.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.dateOfDelivery.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.fullNameProgram.toLowerCase().includes(state.quickSearch.toLowerCase())
     )
   }),
   dispatch => ({
