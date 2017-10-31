@@ -90,7 +90,7 @@ class DocForm extends Component {
   //Обработка данных юзера,
 
   handleUserInput(event) {
-    var value = event.target.value.toLowerCase();
+    var value = event.target.value;
     var name = event.target.name;
 
     var hint = data => {
@@ -98,6 +98,7 @@ class DocForm extends Component {
     };
 
     if (name === "subdivision") {
+      value.toLowerCase();
       var subdivision = [
         "административно-техническое управление",
         "административно-хозяйственный отдел",
@@ -169,6 +170,8 @@ class DocForm extends Component {
         "юридический отдел"
       ];
 
+      value.toLowerCase();
+
       if (value.length > 0) {
         var a = subdivision.filter(hint);
         this.setState({
@@ -188,6 +191,7 @@ class DocForm extends Component {
     }
 
     if (name === "position") {
+      value.toLowerCase();
       var position = [
         "аппаратчик по приготовлению и химреагентов",
         "аппаратчик химводоочистки электростанции",
@@ -206,7 +210,7 @@ class DocForm extends Component {
         "ведущий инженер по управлению турбиной",
         "ведущий инженер по эксплуатации оборудования",
         "ведущий инженер(по эксплуатации)(сменный)",
-        "ведущий инженер(по реконструкции)",
+        "ведущий инженер(по р      value.toLowerCase();еконструкции)",
         "ведущий инженер-конструктор",
         "ведущий инженер-программист",
         "ведущий инженер-технолог",
@@ -258,7 +262,7 @@ class DocForm extends Component {
         "заместитель главного инженера по эксплуатации 1-й очереди",
         "заместитель главного инженера по эксплуатации 2-й очереди",
         "заместитель главного инспектора",
-        "заместитель директора  по управлению персоналом",
+        "заместитель директ      value.toLowerCase();ора  по управлению персоналом",
         "заместитель директора по капитальному  строительству-начальник УКС",
         "заместитель директора по общим вопросам",
         "заместитель директора по режиму и физической защите",

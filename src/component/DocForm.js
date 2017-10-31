@@ -74,7 +74,7 @@ class DocForm extends Component {
   //Обработка данных юзера,
 
   handleUserInput(event) {
-    var value = event.target.value.toLowerCase();
+    var value = event.target.value;
     var name = event.target.name;
 
     var hint = data => {
@@ -82,6 +82,7 @@ class DocForm extends Component {
     };
 
     if (name === "subdivision") {
+      value.toLowerCase();
       var subdivision = [
         "административно-техническое управление",
         "административно-хозяйственный отдел",
@@ -172,6 +173,7 @@ class DocForm extends Component {
     }
 
     if (name === "position") {
+      value.toLowerCase();
       var position = [
         "аппаратчик по приготовлению и химреагентов",
         "аппаратчик химводоочистки электростанции",
