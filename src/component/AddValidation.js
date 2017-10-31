@@ -11,15 +11,8 @@ class AddValidation extends Component {
       danger: false
     };
 
-<<<<<<< HEAD
     this.clickOkay = this.clickOkay.bind(this);
   }
-=======
-     this.state = {
-       message: 'Все данные успешно сохранены',
-       danger: false
-     }
->>>>>>> bf8b45855b2f573fb807351f2ccb5221d1cbaf51
 
   componentDidMount() {
     let count = 0;
@@ -55,39 +48,12 @@ class AddValidation extends Component {
 
     //Проверка формата даты
 
-<<<<<<< HEAD
     collectionDate.forEach((item, index) => {
       if (item instanceof Date) {
         return true;
       } else {
         this.setState({
           message: "Введите корректную дату (ДД.ММ.ГГГГ)",
-=======
-     //Проверка формата даты
-
-     collectionDate.forEach((item, index) => {
-       if(item instanceof Date){
-         return true;
-       }
-       else{
-         this.setState({
-           message: 'Введите корректную дату (ДД.ММ.ГГГГ)',
-           danger: true
-         })
-       }
-     })
-
-     //Проверка количества приходящих данных (должно быть не меньше 16);
-      collectionData.forEach((item) => {
-        if(item === undefined){
-          return false;
-        }
-        count++;
-      })
-      if(count !== 16){
-        this.setState({
-          message: 'Заполните все необходимые поля',
->>>>>>> bf8b45855b2f573fb807351f2ccb5221d1cbaf51
           danger: true
         });
       }
@@ -144,7 +110,6 @@ class AddValidation extends Component {
     }
   }
 
-<<<<<<< HEAD
   render() {
     return (
       <div className="validation">
@@ -166,23 +131,6 @@ class AddValidation extends Component {
       </div>
     );
   }
-=======
-   render(){
-      return(
-         <div className="validation">
-            <div className="validationHeader">
-               Добавление
-            </div>
-            <div className="messageAction">
-              {this.state.message}
-            </div>
-            <div className="buttonSuccess">
-              <button type="button" className={this.state.danger ? "btn btn-danger btn-lg btn-block" : "btn btn-success btn-lg btn-block" } onClick={this.clickOkay}>Окей!</button>
-            </div>
-         </div>
-      );
-   }
->>>>>>> bf8b45855b2f573fb807351f2ccb5221d1cbaf51
 }
 
 export default connect(
