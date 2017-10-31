@@ -9,6 +9,7 @@ import addValidation from './addValidation'
 import showAddValidationForm from './showAddValidationForm'
 import showTrashModalWindow from './showTrashModalWindow'
 import showTrashMessage from './showTrashMessage'
+import showUpdateValidation from './showUpdateValidation'
 
 export default combineReducers({
    showAddForm,
@@ -19,6 +20,7 @@ export default combineReducers({
    updateDocument,
    addValidation,
    showTrashModalWindow,
-   showTrashMessage
+   showTrashMessage,
+   showUpdateValidation
 
 })

@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 
-class AddValidation extends Component {
+class UpdateValidation extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      message: "Все данные успешно сохранены",
+      message: "Все данные успешно обновлены",
       danger: false
     };
 
@@ -17,7 +17,9 @@ class AddValidation extends Component {
   componentDidMount() {
     let count = 0;
 
-    let value = this.props.data.addValidation;
+    let value = this.props.data.updateDocument[
+      this.props.data.updateDocument.length - 1
+    ];
 
     let collectionData = [
       value.programmNumber,
@@ -76,13 +78,16 @@ class AddValidation extends Component {
 
   clickOkay(event) {
     if (this.state.danger === true) {
-      this.props.addValidation(false);
-      this.props.newStateAddForm(true);
+      this.props.updateValidation(false);
+      this.props.updateDocument(true);
     } else {
-      let value = this.props.data.addValidation;
-      this.props.addValidation(false);
+      let value = this.props.data.updateDocument[
+        this.props.data.updateDocument.length - 1
+      ];
+      this.props.updateValidation(false);
       axios
-        .post("/newdoc", {
+        .post("/update", {
+          id: value.id,
           programmNumber: value.programmNumber,
           fullName: value.fullName,
           company: value.company,
@@ -111,9 +116,10 @@ class AddValidation extends Component {
   }
 
   render() {
+    console.log(this.props.data.updateDocument);
     return (
       <div className="validation">
-        <div className="validationHeader">Добавление</div>
+        <div className="validationHeader">Изменение</div>
         <div className="messageAction">{this.state.message}</div>
         <div className="buttonSuccess">
           <button
@@ -138,11 +144,11 @@ export default connect(
     data: state
   }),
   dispatch => ({
-    newStateAddForm: state => {
-      dispatch({ type: "SHOW_ADDFORM", payload: state });
+    updateDocument: state => {
+      dispatch({ type: "SHOW_UPDATEFORM", payload: state });
     },
-    addValidation: state => {
-      dispatch({ type: "SHOW_ADDVALIDATION", payload: state });
+    updateValidation: state => {
+      dispatch({ type: "SHOW_UPDATEVALIDATION", payload: state });
     }
   })
-)(AddValidation);
+)(UpdateValidation);

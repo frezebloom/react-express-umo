@@ -1,92 +1,100 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import axios from 'axios';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import axios from "axios";
 
+class TrashModalWindow extends Component {
+  constructor(props) {
+    super(props);
 
-class TrashModalWindow extends Component{
+    this.clickYes = this.clickYes.bind(this);
+    this.clickNo = this.clickNo.bind(this);
+  }
 
-   constructor(props){
-     super(props);
+  clickNo() {
+    this.props.newStateUpdateForm(true);
+    this.props.newStateTrashModalWindow(false);
+  }
 
-     this.clickYes = this.clickYes.bind(this);
-     this.clickNo = this.clickNo.bind(this);
+  clickYes() {
+    var value = this.props.data.updateDocument[
+      this.props.data.updateDocument.length - 1
+    ];
 
-   }
+    this.props.newStateUpdateForm(false);
 
-   clickNo(){
-     this.props.newStateUpdateForm(true);
-     this.props.newStateTrashModalWindow(false);
-   }
+    axios
+      .post("/update", {
+        id: value.id,
+        programmNumber: value.programmNumber,
+        fullName: value.fullName,
+        company: value.company,
+        personnelCategory: value.personnelCategory,
+        subdivision: value.subdivision,
+        position: value.position,
+        theoreticalTraining: value.theoreticalTraining,
+        practicalTraining: value.practicalTraining,
+        internship: value.internship,
+        termOfTraining: value.termOfTraining,
+        trainingInTheUTC: value.trainingInTheUTC,
+        trainingInTheUnit: value.trainingInTheUnit,
+        registrationDateOfTheProgram: value.registrationDateOfTheProgram,
+        dateOfDelivery: value.dateOfDelivery,
+        fullNameProgram: value.fullNameProgram,
+        link: value.link,
+        status: false
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
 
-   clickYes(){
-     var value = this.props.data.updateDocument[this.props.data.updateDocument.length - 1]
+    this.props.newStateTrashModalWindow(false);
+    this.props.showTrashMessage(true);
+  }
 
-     this.props.newStateUpdateForm(false);
-
-     axios.post('/update', {
-       programmNumber:               value.programmNumber,
-       fullName:                     value.fullName,
-       company:                      value.company,
-       personnelCategory:            value.personnelCategory,
-       subdivision:                  value.subdivision,
-       position:                     value.position,
-       theoreticalTraining:          value.theoreticalTraining,
-       practicalTraining:            value.practicalTraining,
-       internship:                   value.internship,
-       termOfTraining:               value.termOfTraining,
-       trainingInTheUTC:             value.trainingInTheUTC,
-       trainingInTheUnit:            value.trainingInTheUnit,
-       registrationDateOfTheProgram: value.registrationDateOfTheProgram,
-       dateOfDelivery:               value.dateOfDelivery,
-       fullNameProgram:              value.fullNameProgram,
-       link:                         value.link,
-       status:                       false
-     })
-     .then(function (response) {
-       console.log(response);
-     })
-     .catch(function (error) {
-       console.log(error);
-     });
-
-     this.props.newStateTrashModalWindow(false);
-     this.props.showTrashMessage(true);
-
-
-
-   }
-
-   render(){
-      return(
-         <div className="validation">
-            <div className="validationHeader">
-               Перенос
-            </div>
-            <div className="messageAction">
-              Вы действительно хотите переместить документ в корзину?
-            </div>
-            <div className="buttonSuccess">
-              <button type="button" className="btn btn-success btn-lg btn-block" onClick={this.clickYes}>Да</button>
-              <button type="button" className="btn btn-danger btn-lg btn-block" onClick={this.clickNo}>Нет</button>
-            </div>
-         </div>
-      );
-   }
+  render() {
+    return (
+      <div className="validation">
+        <div className="validationHeader">Перенос</div>
+        <div className="messageAction">
+          Вы действительно хотите переместить документ в корзину?
+        </div>
+        <div className="buttonSuccess">
+          <button
+            type="button"
+            className="btn btn-success btn-lg btn-block"
+            onClick={this.clickYes}
+          >
+            Да
+          </button>
+          <button
+            type="button"
+            className="btn btn-danger btn-lg btn-block"
+            onClick={this.clickNo}
+          >
+            Нет
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default connect(
-   state => ({
-      data: state
-   }),
-   dispatch => ({
-     newStateUpdateForm: (state) => {
-        dispatch({ type: 'SHOW_UPDATEFORM', payload: state });
-     },
-     newStateTrashModalWindow: (state) => {
-       dispatch({ type: 'SHOW_TRASHMODALWINDOW', payload: state });
-     },
-     showTrashMessage: (state) => {
-       dispatch({ type: 'SHOW_TRASHMESSAGE', payload: state });
-     },
-   })
+  state => ({
+    data: state
+  }),
+  dispatch => ({
+    newStateUpdateForm: state => {
+      dispatch({ type: "SHOW_UPDATEFORM", payload: state });
+    },
+    newStateTrashModalWindow: state => {
+      dispatch({ type: "SHOW_TRASHMODALWINDOW", payload: state });
+    },
+    showTrashMessage: state => {
+      dispatch({ type: "SHOW_TRASHMESSAGE", payload: state });
+    }
+  })
 )(TrashModalWindow);

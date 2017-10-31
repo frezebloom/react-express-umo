@@ -1,110 +1,107 @@
-const express = require('express');
+const express = require("express");
 
-const path = require('path');
+const path = require("path");
 
-const mysql = require('mysql');
+const mysql = require("mysql");
 
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser");
 
 const app = express();
 
 const PORT = 3000;
 
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'umo'
-})
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "umo"
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + "/views"));
 
-app.get('/',function(req,res){
-  res.sendFile('index.html');
+app.get("/", function(req, res) {
+  res.sendFile("index.html");
 });
 
 //получение всех документов
-app.post('/',function(req,res){
-  var sql = "SELECT * FROM umodoc"
-  connection.query(sql, function(err, result){
+app.post("/", function(req, res) {
+  var sql = "SELECT * FROM umodoc";
+  connection.query(sql, function(err, result) {
     res.send(result);
   });
 });
 
 //добавление нового документа
-app.post('/newdoc', (req, res) => {
-
-  var sql = "INSERT INTO umodoc (programmNumber, fullName, company, personnelCategory, subdivision, position, theoreticalTraining, practicalTraining, internship, termOfTraining, trainingInTheUTC, trainingInTheUnit, registrationDateOfTheProgram, dateOfDelivery, fullNameProgram, link, status) VALUES ?";
+app.post("/newdoc", (req, res) => {
+  var sql =
+    "INSERT INTO umodoc (programmNumber, fullName, company, personnelCategory, subdivision, position, theoreticalTraining, practicalTraining, internship, termOfTraining, trainingInTheUTC, trainingInTheUnit, registrationDateOfTheProgram, dateOfDelivery, fullNameProgram, link, status) VALUES ?";
   var values = [
-    [req.body.programmNumber,
-     req.body.fullName,
-     req.body.company,
-     req.body.personnelCategory,
-     req.body.subdivision,
-     req.body.position,
-     req.body.theoreticalTraining,
-     req.body.practicalTraining,
-     req.body.internship,
-     req.body.termOfTraining,
-     req.body.trainingInTheUTC,
-     req.body.trainingInTheUnit,
-     req.body.registrationDateOfTheProgram,
-     req.body.dateOfDelivery,
-     req.body.fullNameProgram,
-     req.body.link,
-     req.body.status
-    ],
+    [
+      req.body.programmNumber,
+      req.body.fullName,
+      req.body.company,
+      req.body.personnelCategory,
+      req.body.subdivision,
+      req.body.position,
+      req.body.theoreticalTraining,
+      req.body.practicalTraining,
+      req.body.internship,
+      req.body.termOfTraining,
+      req.body.trainingInTheUTC,
+      req.body.trainingInTheUnit,
+      req.body.registrationDateOfTheProgram,
+      req.body.dateOfDelivery,
+      req.body.fullNameProgram,
+      req.body.link,
+      req.body.status
+    ]
   ];
   connection.query(sql, [values], function(err, result) {
-    if(err){
+    if (err) {
       console.log(err);
-    }
-    else{
+    } else {
       console.log(result);
-      console.log('Добавлен новый документ');
+      console.log("Добавлен новый документ");
     }
   });
-
 });
 
 //изменения документа
-app.post('/update', (req, res) => {
-  var sql = "UPDATE umodoc SET programmNumber = ?, fullName = ?, company = ?, personnelCategory = ?, subdivision = ?, position = ?, theoreticalTraining = ?, practicalTraining = ?, internship = ?, termOfTraining = ?, trainingInTheUTC = ?, trainingInTheUnit = ?, registrationDateOfTheProgram = ?, dateOfDelivery = ?, fullNameProgram = ?, link = ?, status = ? WHERE id = ?";
+app.post("/update", (req, res) => {
+  var sql =
+    "UPDATE umodoc SET programmNumber = ?, fullName = ?, company = ?, personnelCategory = ?, subdivision = ?, position = ?, theoreticalTraining = ?, practicalTraining = ?, internship = ?, termOfTraining = ?, trainingInTheUTC = ?, trainingInTheUnit = ?, registrationDateOfTheProgram = ?, dateOfDelivery = ?, fullNameProgram = ?, link = ?, status = ? WHERE id = ?";
   var values = [
-     req.body.programmNumber,
-     req.body.fullName,
-     req.body.company,
-     req.body.personnelCategory,
-     req.body.subdivision,
-     req.body.position,
-     req.body.theoreticalTraining,
-     req.body.practicalTraining,
-     req.body.internship,
-     req.body.termOfTraining,
-     req.body.trainingInTheUTC,
-     req.body.trainingInTheUnit,
-     req.body.registrationDateOfTheProgram,
-     req.body.dateOfDelivery,
-     req.body.fullNameProgram,
-     req.body.link,
-     req.body.status,
-     req.body.id
-    ]
-    connection.query(sql, values, function(err, result) {
-    if(err){
-      console.log(err)
+    req.body.programmNumber,
+    req.body.fullName,
+    req.body.company,
+    req.body.personnelCategory,
+    req.body.subdivision,
+    req.body.position,
+    req.body.theoreticalTraining,
+    req.body.practicalTraining,
+    req.body.internship,
+    req.body.termOfTraining,
+    req.body.trainingInTheUTC,
+    req.body.trainingInTheUnit,
+    req.body.registrationDateOfTheProgram,
+    req.body.dateOfDelivery,
+    req.body.fullNameProgram,
+    req.body.link,
+    req.body.status,
+    req.body.id
+  ];
+  connection.query(sql, values, function(err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+      console.log("Документ изменен");
     }
-    else{
-     console.log(result);
-         console.log('Документ изменен');
-    }
-
   });
 });
 
-
 app.listen(PORT, () => {
-  console.log('Server running');
+  console.log("Server running");
 });
