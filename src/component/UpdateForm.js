@@ -186,6 +186,29 @@ class DocForm extends Component {
         });
       }
     }
+<<<<<<< HEAD
+=======
+   //Открытие и закрывания формы TrashModalWindow
+    newStateTrashModalWindow(){
+      this.props.newStateUpdateForm(false);
+      this.props.newStateTrashModalWindow(true);
+      this.props.updateDocument(this.state);
+    }
+
+  //Дата срока подготовки обучения
+    termOfTraining(date){
+      this.setState({
+        termOfTraining: date
+      })
+     }
+
+   //Дата обучения в УТЦ
+     trainingInTheUTC(date){
+       this.setState({
+         trainingInTheUTC: date
+       })
+      }
+>>>>>>> bf8b45855b2f573fb807351f2ccb5221d1cbaf51
 
     if (name === "position") {
       var position = [
@@ -459,6 +482,7 @@ class DocForm extends Component {
       }
     }
 
+<<<<<<< HEAD
     this.setState({
       [name]: value
     });
@@ -629,6 +653,41 @@ class DocForm extends Component {
                     </li>
                   ))}
                 </ul>
+=======
+   render(){
+     var data = this.props.data.updateDocument[this.props.data.updateDocument.length - 1];
+      return(
+         <div className="updateForm">
+            <div className="headerWindow">
+               Изменить текущий документ
+            </div>
+            <div className="row">
+              <div className="col-xs-6 col-sm-3">
+                 <label>№ программы</label>
+                 <input className="form-control" type="text" name="programmNumber" defaultValue={data.programmNumber} onChange={this.handleUserInput}/>
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Ф.И.О.</label>
+                 <input className="form-control" type="text" name="fullName" defaultValue={data.fullName} onChange={this.handleUserInput}/>
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                <label>Предприятие</label>
+                 <select id="company" className="form-control" name="company" >
+                     <option value="ЛАЭС-1">ЛАЭС-1</option>
+                     <option value="ЛАЭС-2">ЛАЭС-2</option>
+                 </select>
+              </div>
+              <div className="col-xs-6 col-sm-3">
+                 <label>Категория персонала</label>
+                 <select id="personnelCategory" className="form-control" name="personnelCategory" >
+                     <option value="Оперативный">Оперативный</option>
+                     <option value="Ремонтный">Ремонтный</option>
+                     <option value="Административный">Административный</option>
+                     <option value="Руководители">Руководители</option>
+                     <option value="Специалисты">Специалисты</option>
+                     <option value="Рабочие">Рабочие</option>
+                 </select>
+>>>>>>> bf8b45855b2f573fb807351f2ccb5221d1cbaf51
               </div>
             </div>
           </div>
@@ -791,6 +850,7 @@ class DocForm extends Component {
 }
 
 export default connect(
+<<<<<<< HEAD
   state => ({
     data: state
   }),
@@ -808,4 +868,20 @@ export default connect(
       dispatch({ type: "SHOW_UPDATEVALIDATION", payload: state });
     }
   })
+=======
+   state => ({
+      data: state
+   }),
+   dispatch => ({
+      newStateUpdateForm: (state) => {
+         dispatch({ type: 'SHOW_UPDATEFORM', payload: state });
+      },
+      newStateTrashModalWindow: (state) => {
+        dispatch({ type: 'SHOW_TRASHMODALWINDOW', payload: state });
+      },
+      updateDocument: (state) => {
+         dispatch({ type: 'UPDATE_DOCUMENT', payload: state });
+      }
+   })
+>>>>>>> bf8b45855b2f573fb807351f2ccb5221d1cbaf51
 )(DocForm);
