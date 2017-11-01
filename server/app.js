@@ -6,6 +6,8 @@ const mysql = require("mysql");
 
 const bodyParser = require("body-parser");
 
+const sortBy = require('sort-by');
+
 const app = express();
 
 const PORT = 3000;
@@ -27,8 +29,9 @@ app.get("/", function(req, res) {
 
 //получение всех документов
 app.post("/", function(req, res) {
-  var sql = "SELECT * FROM umodoc";
+  var sql = "SELECT * FROM `umodoc` WHERE status = 1";
   connection.query(sql, function(err, result) {
+    let reuslt = result.sort(sortBy('-id'));
     res.send(result);
   });
 });
