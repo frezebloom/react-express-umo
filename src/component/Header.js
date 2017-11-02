@@ -7,7 +7,7 @@ class Header extends Component {
     this.newStateAddForm = this.newStateAddForm.bind(this);
     this.eventQuickSearch = this.eventQuickSearch.bind(this);
   }
-
+  //форма нового документа
   newStateAddForm() {
     this.props.newStateAddForm(true);
     this.props.newStateUpdateForm(false);

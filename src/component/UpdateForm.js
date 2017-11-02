@@ -487,25 +487,6 @@ class DocForm extends Component {
     });
   }
 
-  //Выбор элемента из списка подсказок подразделений
-  handleClickHintSubdivision(event) {
-    document.getElementById("subdivision").value = event.target.innerHTML;
-    this.setState({
-      subdivision: event.target.innerHTML,
-      hintSubdivision: [],
-      showHintSubdivision: false
-    });
-  }
-  //Выбор элемента из списка подсказок должностей
-  handleClickHintPosition(event) {
-    document.getElementById("position").value = event.target.innerHTML;
-    this.setState({
-      position: event.target.innerHTML,
-      hintSubdivision: [],
-      showHintPosition: false
-    });
-  }
-
   //Открывание и закрывание формы UpdateForm
   newStateUpdateForm() {
     this.props.newStateUpdateForm(false);

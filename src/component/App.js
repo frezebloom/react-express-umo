@@ -13,60 +13,60 @@ import UpdateValidation from "./UpdateValidation.js";
 
 class App extends Component {
   componentDidMount() {
-     axios.post('/', {})
-      .then(function (response) {
-        this.props.allDocuments(response.data);
-      }.bind(this))
+    //  axios.post('/', {})
+    //   .then(function (response) {
+    //     this.props.allDocuments(response.data);
+    //   }.bind(this))
+    //
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+    // }
 
-      .catch(function (error) {
-        console.log(error);
-      });
-    }
-
-  //   var test = [
-  //     {
-  //       id: 22,
-  //       programmNumber: "18365",
-  //       fullName: "Ярема Михаил Николаевич",
-  //       company: "ЛАЭС-1",
-  //       personnelCategory: "Оперативный",
-  //       subdivision: "реакторный цех",
-  //       position: "3",
-  //       theoreticalTraining: "4",
-  //       practicalTraining: "5",
-  //       internship: "6",
-  //       termOfTraining: "2017-10-18 10:41:01",
-  //       trainingInTheUTC: "2017-10-13 10:41:03",
-  //       trainingInTheUnit: "2017-10-09 10:41:05",
-  //       registrationDateOfTheProgram: "2017-09-30 10:41:07",
-  //       dateOfDelivery: "2017-07-31 10:41:09",
-  //       fullNameProgram: "5",
-  //       link: "4",
-  //       status: 1
-  //     },
-  //     {
-  //       id: 23,
-  //       programmNumber: "18366",
-  //       fullName: "Барисполь Валентин Иванович",
-  //       company: "ЛАЭС-2",
-  //       personnelCategory: "Рабочие",
-  //       subdivision: "3",
-  //       position: "3",
-  //       theoreticalTraining: "4",
-  //       practicalTraining: "5",
-  //       internship: "2",
-  //       termOfTraining: "2016-08-31 10:41:09",
-  //       trainingInTheUTC: "2018-07-19 10:41:09",
-  //       trainingInTheUnit: "2015-02-28 10:41:09",
-  //       registrationDateOfTheProgram: "2012-04-15 10:41:09",
-  //       dateOfDelivery: "2017-05-20 10:41:09",
-  //       fullNameProgram: "2",
-  //       link: "2",
-  //       status: 0
-  //     }
-  //   ];
-  //   this.props.allDocuments(test);
-  // }
+    var test = [
+      {
+        id: 22,
+        programmNumber: "18365",
+        fullName: "Ярема Михаил Николаевич",
+        company: "ЛАЭС-1",
+        personnelCategory: "Оперативный",
+        subdivision: "реакторный цех",
+        position: "3",
+        theoreticalTraining: "4",
+        practicalTraining: "5",
+        internship: "6",
+        termOfTraining: "2017-10-18 10:41:01",
+        trainingInTheUTC: "2017-10-13 10:41:03",
+        trainingInTheUnit: "2017-10-09 10:41:05",
+        registrationDateOfTheProgram: "2017-09-30 10:41:07",
+        dateOfDelivery: "2017-07-31 10:41:09",
+        fullNameProgram: "5",
+        link: "4",
+        status: 1
+      },
+      {
+        id: 23,
+        programmNumber: "18366",
+        fullName: "Барисполь Валентин Иванович",
+        company: "ЛАЭС-2",
+        personnelCategory: "Рабочие",
+        subdivision: "3",
+        position: "3",
+        theoreticalTraining: "4",
+        practicalTraining: "5",
+        internship: "2",
+        termOfTraining: "2016-08-31 10:41:09",
+        trainingInTheUTC: "2018-07-19 10:41:09",
+        trainingInTheUnit: "2015-02-28 10:41:09",
+        registrationDateOfTheProgram: "2012-04-15 10:41:09",
+        dateOfDelivery: "2017-05-20 10:41:09",
+        fullNameProgram: "2",
+        link: "2",
+        status: 0
+      }
+    ];
+    this.props.allDocuments(test);
+  }
 
   render() {
     if (this.props.data.showUpdateForm) {
@@ -84,11 +84,14 @@ class App extends Component {
     if (this.props.data.showUpdateValidation) {
       var updateValidation = <UpdateValidation />;
     }
+    if (this.props.data.showTable) {
+      var table = <Table />;
+    }
 
     return (
       <div>
         <Header />
-        <Table />
+        {table}
         {updateForm}
         {addValidation}
         {trashModalWindow}
