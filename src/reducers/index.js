@@ -12,6 +12,7 @@ import showTrashMessage from './showTrashMessage'
 import showUpdateValidation from './showUpdateValidation'
 import showTable from './showTable'
 
+
 export default combineReducers({
    showAddForm,
    showUpdateForm,
@@ -23,6 +24,5 @@ export default combineReducers({
    showTrashModalWindow,
    showTrashMessage,
    showUpdateValidation,
-   showTable
-
+   showTable,
 })

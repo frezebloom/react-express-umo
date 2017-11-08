@@ -11,7 +11,7 @@ class TrashMessage extends Component {
       <div className="validation">
         <div className="validationHeader">Сообщение</div>
         <div className="messageAction">
-          Документ успешно перенесен в корзину
+          Документ успешно удален
         </div>
         <div className="buttonSuccess">
           <button

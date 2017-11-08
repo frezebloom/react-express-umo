@@ -23,7 +23,7 @@ class App extends Component {
     //   });
     // }
 
-    var test = [
+    var allDocuments = [
       {
         id: 22,
         programmNumber: "18365",
@@ -65,7 +65,7 @@ class App extends Component {
         status: 0
       }
     ];
-    this.props.allDocuments(test);
+    this.props.allDocuments(allDocuments);
   }
 
   render() {
@@ -90,6 +90,8 @@ class App extends Component {
     if (this.props.data.showAddForm) {
       var docForm = <DocForm />
     }
+
+    console.log(this.props.data);
 
     return (
       <div>

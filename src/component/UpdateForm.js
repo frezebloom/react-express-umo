@@ -762,7 +762,7 @@ class DocForm extends Component {
                 className="btn btn-default btn-lg"
                 onClick={this.newStateTrashModalWindow}
               >
-                В корзину
+                Удалить
               </button>
             </div>
             <div className="btn-group">

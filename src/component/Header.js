@@ -12,7 +12,6 @@ class Header extends Component {
   //форма нового документа
   newStateAddForm() {
     this.props.newStateAddForm(true);
-    this.props.newStateUpdateForm(false);
   }
   //Таблица корзины
   newStateTableTrash() {
@@ -42,9 +41,6 @@ class Header extends Component {
             <button type="button" className="btn btn-default">
               Поиск документов
             </button>
-            <button type="button" className="btn btn-default" onClick={this.newStateTableTrash}>
-              Корзина
-            </button>
           </div>
           <div className="col-xs-3">
             <input
@@ -73,9 +69,6 @@ export default connect(
     },
     newStateUpdateForm: state => {
       dispatch({ type: "SHOW_UPDATEFORM", payload: state });
-    },
-    newStateTableTrash: state => {
-      dispatch({ type: "SHOW_TABLE", payload: state });
     }
   })
 )(Header);

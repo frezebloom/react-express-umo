@@ -57,9 +57,9 @@ class TrashModalWindow extends Component {
   render() {
     return (
       <div className="validation">
-        <div className="validationHeader">Перенос</div>
+        <div className="validationHeader">Удаление</div>
         <div className="messageAction">
-          Вы действительно хотите переместить документ в корзину?
+          Вы действительно хотите удалить документ?
         </div>
         <div className="buttonSuccess">
           <button
