@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+
 class Header extends Component {
   constructor(props) {
     super(props);
     this.newStateAddForm = this.newStateAddForm.bind(this);
     this.eventQuickSearch = this.eventQuickSearch.bind(this);
+    this.newStateTableTrash = this.newStateTableTrash.bind(this);
   }
   //форма нового документа
   newStateAddForm() {
     this.props.newStateAddForm(true);
     this.props.newStateUpdateForm(false);
+  }
+  //Таблица корзины
+  newStateTableTrash() {
+    this.props.newStateTableTrash(false)
   }
 
   //Быстрый поиск
@@ -36,7 +42,7 @@ class Header extends Component {
             <button type="button" className="btn btn-default">
               Поиск документов
             </button>
-            <button type="button" className="btn btn-default">
+            <button type="button" className="btn btn-default" onClick={this.newStateTableTrash}>
               Корзина
             </button>
           </div>
@@ -67,6 +73,9 @@ export default connect(
     },
     newStateUpdateForm: state => {
       dispatch({ type: "SHOW_UPDATEFORM", payload: state });
+    },
+    newStateTableTrash: state => {
+      dispatch({ type: "SHOW_TABLE", payload: state });
     }
   })
 )(Header);

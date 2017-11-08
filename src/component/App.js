@@ -87,6 +87,9 @@ class App extends Component {
     if (this.props.data.showTable) {
       var table = <Table />;
     }
+    if (this.props.data.showAddForm) {
+      var docForm = <DocForm />
+    }
 
     return (
       <div>
@@ -97,11 +100,8 @@ class App extends Component {
         {trashModalWindow}
         {trashMessage}
         {updateValidation}
-        <div
-          style={{ display: this.props.data.showAddForm ? "block" : "none" }}
-        >
-          <DocForm />
-        </div>
+        {docForm}
+
       </div>
     );
   }
