@@ -36,15 +36,6 @@ app.post("/", function(req, res) {
   });
 });
 
-//получение удаленных документов
-app.post("/remote", function(req, res) {
-  var sql = "SELECT * FROM `umodoc` WHERE status = 0";
-  connection.query(sql, function(err, result) {
-    let reuslt = result.sort(sortBy('-id'));
-    res.send(result);
-  });
-});
-
 //добавление нового документа
 app.post("/newdoc", (req, res) => {
   var sql =

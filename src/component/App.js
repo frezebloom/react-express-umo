@@ -10,6 +10,7 @@ import AddValidation from "./AddValidation.js";
 import TrashModalWindow from "./TrashModalWindow.js";
 import TrashMessage from "./TrashMessage.js";
 import UpdateValidation from "./UpdateValidation.js";
+import SearchForm from './SearchForm.js'
 
 class App extends Component {
   componentDidMount() {
@@ -69,33 +70,27 @@ class App extends Component {
   }
 
   render() {
-    if (this.props.data.showUpdateForm) {
-      var updateForm = <UpdateForm />;
-    }
-    if (this.props.data.showAddValidationForm) {
-      var addValidation = <AddValidation />;
-    }
-    if (this.props.data.showTrashModalWindow) {
-      var trashModalWindow = <TrashModalWindow />;
-    }
-    if (this.props.data.showTrashMessage) {
-      var trashMessage = <TrashMessage />;
-    }
-    if (this.props.data.showUpdateValidation) {
-      var updateValidation = <UpdateValidation />;
-    }
-    if (this.props.data.showTable) {
-      var table = <Table />;
-    }
-    if (this.props.data.showAddForm) {
-      var docForm = <DocForm />
-    }
+    var updateForm;
+    var addValidation;
+    var trashModalWindow;
+    var trashMessage;
+    var updateValidation;
+    var table;
+    var docForm;
+    (this.props.data.showUpdateForm) ? updateForm = <UpdateForm /> : false;
+    (this.props.data.showAddValidationForm) ? addValidation = <AddValidation /> : false;
+    (this.props.data.showTrashModalWindow) ? trashModalWindow = <TrashModalWindow /> : false;
+    (this.props.data.showTrashMessage) ? trashMessage = <TrashMessage /> : false;
+    (this.props.data.showUpdateValidation) ? updateValidation = <UpdateValidation /> : false;
+    (this.props.data.showTable) ? table = <Table /> : false;
+    (this.props.data.showAddForm) ? docForm = <DocForm /> : false;
 
     console.log(this.props.data);
 
     return (
       <div>
         <Header />
+        <SearchForm />
         {table}
         {updateForm}
         {addValidation}

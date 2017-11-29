@@ -28,9 +28,6 @@ class Header extends Component {
       <div className="header">
         <div className="row">
           <div className="col-md-8">
-            <button type="button" className="btn btn-default">
-              Главная
-            </button>
             <button
               type="button"
               className="btn btn-default"
