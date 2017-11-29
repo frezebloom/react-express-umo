@@ -89,17 +89,20 @@ class App extends Component {
 
     return (
       <div>
-        <Header />
-        <SearchForm />
-        {table}
-        {updateForm}
-        {addValidation}
-        {trashModalWindow}
-        {trashMessage}
-        {updateValidation}
-        {docForm}
 
-      </div>
+          <Header />
+          <div className="back"></div>
+          <SearchForm />
+          {table}
+          {updateForm}
+          {addValidation}
+          {trashModalWindow}
+          {trashMessage}
+          {updateValidation}
+          {docForm}
+
+        </div>
+
     );
   }
 }
