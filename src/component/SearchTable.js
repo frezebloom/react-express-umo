@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import edit from "../img/edit.png";
 
-class Table extends Component {
+class SearchTable extends Component {
   constructor(props) {
     super(props);
 
@@ -96,4 +96,4 @@ export default connect(
       dispatch({ type: "SHOW_ADDFORM", payload: state });
     }
   })
-)(Table);
+)(SearchTable);

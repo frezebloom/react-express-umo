@@ -10,7 +10,8 @@ import AddValidation from "./AddValidation.js";
 import TrashModalWindow from "./TrashModalWindow.js";
 import TrashMessage from "./TrashMessage.js";
 import UpdateValidation from "./UpdateValidation.js";
-import SearchForm from './SearchForm.js'
+import SearchForm from './SearchForm.js';
+import SearchTable from './SearchTable.js';
 
 class App extends Component {
   componentDidMount() {
@@ -70,14 +71,9 @@ class App extends Component {
   }
 
   render() {
-    var updateForm;
-    var addValidation;
-    var trashModalWindow;
-    var trashMessage;
-    var updateValidation;
-    var table;
-    var docForm;
-    var searchForm;
+    console.log(this.props.data.showSearchTable)
+    var updateForm, addValidation, trashModalWindow, trashMessage, updateValidation, table, docForm, searchForm, searchTable
+
     (this.props.data.showUpdateForm) ? updateForm = <UpdateForm /> : false;
     (this.props.data.showAddValidationForm) ? addValidation = <AddValidation /> : false;
     (this.props.data.showTrashModalWindow) ? trashModalWindow = <TrashModalWindow /> : false;
@@ -86,6 +82,7 @@ class App extends Component {
     (this.props.data.showTable) ? table = <Table /> : false;
     (this.props.data.showAddForm) ? docForm = <DocForm /> : false;
     (this.props.data.showSearchForm) ? searchForm = <SearchForm /> : false;
+    (this.props.data.showSearchTable) ? searchTable = <SearchTable /> : false;
 
 
     console.log(this.props.data);
@@ -103,6 +100,7 @@ class App extends Component {
           {updateValidation}
           {searchForm}
           {docForm}
+          {searchTable}
 
         </div>
 

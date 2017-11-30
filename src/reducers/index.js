@@ -14,6 +14,7 @@ import showTable from './showTable'
 import showSearchForm from './showSearchForm'
 import searchDocuments from './searchDocuments'
 import showQuickSearch from './showQuickSearch'
+import showSearchTable from './showSearchTable'
 
 
 export default combineReducers({
@@ -30,5 +31,6 @@ export default combineReducers({
    showTable,
    showSearchForm,
    searchDocuments,
-   showQuickSearch
+   showQuickSearch,
+   showSearchTable
 })

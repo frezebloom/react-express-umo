@@ -484,6 +484,7 @@ class SearchForm extends Component {
     this.props.showQuickSearch(false)
     this.props.showTable(false)
     this.props.showSearhForm(false)
+    this.props.showSearchTable(true)
   }
 
   render() {
@@ -794,6 +795,9 @@ export default connect(
     },
     showTable: state => {
       dispatch({ type: "SHOW_TABLE", payload: state });
+    },
+    showSearchTable: state => {
+      dispatch({ type: "SHOW_SEARCHTABLE", payload: state });
     },
   })
 )(SearchForm);
