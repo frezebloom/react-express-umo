@@ -32,7 +32,7 @@ class Table extends Component {
       <table>
         <tbody>
           <tr>
-            <td className="cap">Изменить</td>
+            <td className="cap">Иsзменить</td>
             <td className="cap">№ программы</td>
             <td className="cap">Ф.И.О.</td>
             <td className="cap">Предприятие</td>

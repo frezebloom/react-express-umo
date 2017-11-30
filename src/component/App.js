@@ -70,7 +70,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.data.showQuickSearch);
     var updateForm;
     var addValidation;
     var trashModalWindow;

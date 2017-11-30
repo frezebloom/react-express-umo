@@ -482,6 +482,8 @@ class SearchForm extends Component {
 
   handleSend = () => {
     this.props.showQuickSearch(false)
+    this.props.showTable(false)
+    this.props.showSearhForm(false)
   }
 
   render() {
@@ -789,6 +791,9 @@ export default connect(
     },
     showQuickSearch: state => {
       dispatch({ type: "SHOW_QUICKSEARCH", payload: state });
+    },
+    showTable: state => {
+      dispatch({ type: "SHOW_TABLE", payload: state });
     },
   })
 )(SearchForm);
