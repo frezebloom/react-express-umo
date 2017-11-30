@@ -15,7 +15,7 @@ class SearchForm extends Component {
   }
 
   //Обработка данных юзера,
-  handleUserInput(event) {
+  handleUserInput = (event) => {
     var value = event.target.value;
     var name = event.target.name;
 
@@ -393,7 +393,7 @@ class SearchForm extends Component {
   }
 
   //Выбор элемента из списка подсказок подразделений
-  handleClickHintSubdivision(event) {
+  handleClickHintSubdivision = (event) => {
     document.getElementById("subdivision").value = event.target.innerHTML;
     this.setState({
       subdivision: event.target.innerHTML,
@@ -402,7 +402,7 @@ class SearchForm extends Component {
     });
   }
   //Выбор элемента из списка подсказок должностей
-  handleClickHintPosition(event) {
+  handleClickHintPosition = (event) => {
     document.getElementById("position").value = event.target.innerHTML;
     this.setState({
       position: event.target.innerHTML,
