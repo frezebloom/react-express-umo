@@ -77,6 +77,7 @@ class App extends Component {
     var updateValidation;
     var table;
     var docForm;
+    var searchForm;
     (this.props.data.showUpdateForm) ? updateForm = <UpdateForm /> : false;
     (this.props.data.showAddValidationForm) ? addValidation = <AddValidation /> : false;
     (this.props.data.showTrashModalWindow) ? trashModalWindow = <TrashModalWindow /> : false;
@@ -84,6 +85,8 @@ class App extends Component {
     (this.props.data.showUpdateValidation) ? updateValidation = <UpdateValidation /> : false;
     (this.props.data.showTable) ? table = <Table /> : false;
     (this.props.data.showAddForm) ? docForm = <DocForm /> : false;
+    (this.props.data.showSearchForm) ? searchForm = <SearchForm /> : false;
+  
 
     console.log(this.props.data);
 
@@ -92,13 +95,13 @@ class App extends Component {
 
           <Header />
           <div className="back"></div>
-          <SearchForm />
           {table}
           {updateForm}
           {addValidation}
           {trashModalWindow}
           {trashMessage}
           {updateValidation}
+          {searchForm}
           {docForm}
 
         </div>
