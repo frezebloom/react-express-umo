@@ -26,32 +26,51 @@ class SearchForm extends Component {
     });
   }
 
-
-
   //Дата обучения в УТЦ
-  trainingInTheUTC(date) {
+  startTrainingInTheUTC = (date) => {
     this.setState({
-      trainingInTheUTC: date
+      startTrainingInTheUTC: date
+    });
+  }
+  finishTrainingInTheUTC = (date) => {
+    this.setState({
+      finishTrainingInTheUTC: date
     });
   }
 
   //Дата обучения в подразделении
-  trainingInTheUnit(date) {
+  startTrainingInTheUnit = (date) => {
     this.setState({
-      trainingInTheUnit: date
+      startTrainingInTheUnit: date
+    });
+  }
+  finishTrainingInTheUnit = (date) => {
+    this.setState({
+      finishTrainingInTheUnit: date
     });
   }
 
   //Дата регистрации программы
-  registrationDateOfTheProgram(date) {
+  startRegistrationDateOfTheProgram = (date) => {
     this.setState({
-      registrationDateOfTheProgram: date
+      startRegistrationDateOfTheProgram: date
     });
   }
-  //Дата сдачи программы
-  dateOfDelivery(date) {
+  finishRegistrationDateOfTheProgram = (date) => {
     this.setState({
-      dateOfDelivery: date
+      finishRegistrationDateOfTheProgram: date
+    });
+  }
+
+  //Дата сдачи программы
+  startDateOfDelivery = (date) => {
+    this.setState({
+      startDateOfDelivery: date
+    });
+  }
+  finishDateOfDelivery = (date) => {
+    this.setState({
+      finishDateOfDelivery: date
     });
   }
 
