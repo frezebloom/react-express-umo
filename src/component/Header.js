@@ -29,6 +29,7 @@ class Header extends Component {
   }
 
   render() {
+    
     return (
       <div className="header">
         <div className="row">
@@ -60,6 +61,7 @@ class Header extends Component {
               className="form-control"
               placeholder="Поиск"
               onChange={this.eventQuickSearch}
+              style={{display: this.props.data.showQuickSearch ? 'block' : 'none' }}
             />
           </div>
         </div>

@@ -451,7 +451,7 @@ class SearchForm extends Component {
       [name]: value
     });
   }
-
+  //Action Показать
   handleSend = () => {
     this.props.searchDocuments(this.state)
   }
@@ -480,6 +480,9 @@ class SearchForm extends Component {
     this.props.showSearhForm(false)
   }
 
+  handleSend = () => {
+    this.props.showQuickSearch(false)
+  }
 
   render() {
 
@@ -783,6 +786,9 @@ export default connect(
     },
     searchDocuments: state => {
       dispatch({ type: "SEARCH_DOCUMENTS", payload: state });
-    }
+    },
+    showQuickSearch: state => {
+      dispatch({ type: "SHOW_QUICKSEARCH", payload: state });
+    },
   })
 )(SearchForm);

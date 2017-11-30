@@ -70,6 +70,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.data.showQuickSearch);
     var updateForm;
     var addValidation;
     var trashModalWindow;
@@ -86,7 +87,7 @@ class App extends Component {
     (this.props.data.showTable) ? table = <Table /> : false;
     (this.props.data.showAddForm) ? docForm = <DocForm /> : false;
     (this.props.data.showSearchForm) ? searchForm = <SearchForm /> : false;
-  
+
 
     console.log(this.props.data);
 

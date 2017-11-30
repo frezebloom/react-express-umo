@@ -13,6 +13,7 @@ import showUpdateValidation from './showUpdateValidation'
 import showTable from './showTable'
 import showSearchForm from './showSearchForm'
 import searchDocuments from './searchDocuments'
+import showQuickSearch from './showQuickSearch'
 
 
 export default combineReducers({
@@ -28,5 +29,6 @@ export default combineReducers({
    showUpdateValidation,
    showTable,
    showSearchForm,
-   searchDocuments
+   searchDocuments,
+   showQuickSearch
 })

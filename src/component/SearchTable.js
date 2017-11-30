@@ -83,21 +83,7 @@ class Table extends Component {
 
 export default connect(
   state => ({
-    data: state.allDocuments.filter(
-      data =>
-        data.programmNumber.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.fullName.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.company.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.personnelCategory.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.subdivision.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.position.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.termOfTraining.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.trainingInTheUTC.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.trainingInTheUnit.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.registrationDateOfTheProgram.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.dateOfDelivery.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.fullNameProgram.toLowerCase().includes(state.quickSearch.toLowerCase())
-    )
+    data: state
   }),
   dispatch => ({
     UpdateForm: state => {
