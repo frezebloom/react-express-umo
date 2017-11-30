@@ -14,6 +14,47 @@ class SearchForm extends Component {
     showHintPosition: false
   }
 
+  //Дата срока подготовки обучения
+  startTermOfTraining = (date) => {
+    this.setState({
+      startTermOfTraining: date
+    });
+  }
+  finishTermOfTraining = (date) => {
+    this.setState({
+      finishTermOfTraining: date
+    });
+  }
+
+
+
+  //Дата обучения в УТЦ
+  trainingInTheUTC(date) {
+    this.setState({
+      trainingInTheUTC: date
+    });
+  }
+
+  //Дата обучения в подразделении
+  trainingInTheUnit(date) {
+    this.setState({
+      trainingInTheUnit: date
+    });
+  }
+
+  //Дата регистрации программы
+  registrationDateOfTheProgram(date) {
+    this.setState({
+      registrationDateOfTheProgram: date
+    });
+  }
+  //Дата сдачи программы
+  dateOfDelivery(date) {
+    this.setState({
+      dateOfDelivery: date
+    });
+  }
+
   //Обработка данных юзера,
   handleUserInput = (event) => {
     var value = event.target.value;
@@ -422,7 +463,7 @@ class SearchForm extends Component {
 
 
   render() {
-    
+
     return (
       <div className="SearchForm">
         <div className="headerWindow">Поиск документов</div>
@@ -586,6 +627,7 @@ class SearchForm extends Component {
               name="StartTermOfTraining"
               className="my-custom-datepicker-component"
               placeholder="С указанной даты"
+              onChange={this.startTermOfTraining}
             />
           </div>
           <div className="col-xs-6 col-sm-3">
@@ -593,6 +635,7 @@ class SearchForm extends Component {
               name="FinishTermOfTraining"
               className="my-custom-datepicker-component"
               placeholder="До указанной даты"
+              onChange={this.finishTermOfTraining}
             />
           </div>
         </div>
@@ -606,6 +649,7 @@ class SearchForm extends Component {
               name="StartTrainingInTheUTC"
               className="my-custom-datepicker-component"
               placeholder="С указанной даты"
+              onChange={this.startTrainingInTheUTC}
             />
           </div>
           <div className="col-xs-6 col-sm-3">
@@ -613,6 +657,7 @@ class SearchForm extends Component {
               name="FinishTrainingInTheUTC"
               className="my-custom-datepicker-component"
               placeholder="До указанной даты"
+              onChange={this.finishTrainingInTheUTC}
             />
           </div>
         </div>
@@ -626,6 +671,7 @@ class SearchForm extends Component {
               name="StartTrainingInTheUnit"
               className="my-custom-datepicker-component"
               placeholder="С указанной даты"
+              onChange={this.startTrainingInTheUnit}
             />
           </div>
           <div className="col-xs-6 col-sm-3">
@@ -633,6 +679,7 @@ class SearchForm extends Component {
               name="FinishTrainingInTheUnit"
               className="my-custom-datepicker-component"
               placeholder="До указанной даты"
+              onChange={this.finishTrainingInTheUnit}
             />
           </div>
         </div>
@@ -646,6 +693,7 @@ class SearchForm extends Component {
               name="StartRegistrationDateOfTheProgram"
               className="my-custom-datepicker-component"
               placeholder="С указанной даты"
+              onChange={this.startRegistrationDateOfTheProgram}
             />
           </div>
           <div className="col-xs-6 col-sm-3">
@@ -653,6 +701,7 @@ class SearchForm extends Component {
               name="FinishRegistrationDateOfTheProgram"
               className="my-custom-datepicker-component"
               placeholder="До указанной даты"
+              onChange={this.finishRegistrationDateOfTheProgram}
             />
           </div>
         </div>
@@ -666,6 +715,7 @@ class SearchForm extends Component {
               name="StartDateOfDelivery"
               className="my-custom-datepicker-component"
               placeholder="С указанной даты"
+              onChange={this.startDateOfDelivery}
             />
           </div>
           <div className="col-xs-6 col-sm-3">
@@ -673,6 +723,7 @@ class SearchForm extends Component {
               name="FinishDateOfDelivery"
               className="my-custom-datepicker-component"
               placeholder="До указанной даты"
+              onChange={this.finishDateOfDelivery}
             />
           </div>
         </div>
