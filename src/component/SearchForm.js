@@ -418,40 +418,49 @@ class SearchForm extends Component {
         <div className="headerWindow">Поиск документов</div>
 
         <div className="row">
-          <div className="col-xs-6 col-sm-3">
-            <label>№ программы</label>
+          <div className="col-xs-6">
             <input
               className="form-control"
               type="text"
               name="programmNumber"
+              placeholder="№ программы"
+              onChange={this.handleUserInput}
             />
           </div>
-          <div className="col-xs-6 col-sm-3">
-            <label>Ф.И.О.</label>
+          <div className="col-xs-6">
             <input
               className="form-control"
               type="text"
               name="fullName"
+              placeholder="Ф.И.О."
+              onChange={this.handleUserInput}
             />
           </div>
-          <div className="col-xs-6 col-sm-3">
-            <label>Предприятие</label>
-            <select id="company" className="form-control" name="company">
+        </div>
+        <div className="row">
+          <div className="col-xs-6">
+            <select
+              defaultValue=""
+              className="form-control"
+              name="company"
+              onChange={this.handleUserInput}
+            >
+              <option defaultValue="" hidden>
+                Предприятие
+              </option>
               <option value="ЛАЭС-1">ЛАЭС-1</option>
               <option value="ЛАЭС-2">ЛАЭС-2</option>
             </select>
           </div>
-
-        </div>
-
-        <div className="row">
-          <div className="col-xs-6 col-sm-3">
-            <label>Категория персонала</label>
+          <div className="col-xs-6">
             <select
-              id="personnelCategory"
               className="form-control"
               name="personnelCategory"
+              onChange={this.handleUserInput}
             >
+              <option defaultValue="" hidden>
+                Категория персонала
+              </option>
               <option value="Оперативный">Оперативный</option>
               <option value="Ремонтный">Ремонтный</option>
               <option value="Административный">Административный</option>
@@ -460,70 +469,102 @@ class SearchForm extends Component {
               <option value="Рабочие">Рабочие</option>
             </select>
           </div>
-          <div className="col-xs-6 col-sm-3">
-            <label>Подразделение</label>
+        </div>
+        <div className="row">
+          <div className="col-xs-6">
             <input
               className="form-control"
               type="text"
               id="subdivision"
               name="subdivision"
+              placeholder="Подразделение"
+              onChange={this.handleUserInput}
             />
+            <div
+              className="hint"
+              style={{
+                display: this.state.showHintSubdivision ? "block" : "none"
+              }}
+            >
+              <div className="over">
+                <ul onClick={this.handleClickHintSubdivision}>
+                  {this.state.hintSubdivision.map((tips, index) => (
+                    <li className="tips" key={index}>
+                      {tips}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
-          <div className="col-xs-6 col-sm-3">
-            <label>Должность</label>
+          <div className="col-xs-6">
             <input
               className="form-control"
               type="text"
               id="position"
               name="position"
+              placeholder="Должность"
+              onChange={this.handleUserInput}
             />
+            <div
+              className="hint"
+              style={{
+                display: this.state.showHintPosition ? "block" : "none"
+              }}
+            >
+              <div className="over">
+                <ul onClick={this.handleClickHintPosition}>
+                  {this.state.hintPosition.map((tips, index) => (
+                    <li className="tips" key={index}>
+                      {tips}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-
         <div className="row">
-          <div className="col-xs-6 col-sm-3">
-            <label>Практическая подготовка</label>
-            <input
-              className="form-control"
-              type="text"
-              name="practicalTraining"
-            />
-          </div>
-          <div className="col-xs-6 col-sm-3">
-            <label>Теоретическая подготовка</label>
+          <div className="col-xs-6">
             <input
               className="form-control"
               type="text"
               name="theoreticalTraining"
+              placeholder="Теоретическая подготовка"
+              onChange={this.handleUserInput}
             />
           </div>
-          <div className="col-xs-6 col-sm-3">
-            <label>Стажировка</label>
+          <div className="col-xs-6">
             <input
               className="form-control"
               type="text"
-              name="internship"
+              name="practicalTraining"
+              placeholder="Практическая подготовка"
+              onChange={this.handleUserInput}
             />
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-6 col-sm-3">
-            <label>Распределение обучения</label>
+          <div className="col-xs-6">
             <input
               className="form-control"
               type="text"
-              name="link"
+              name="internship"
+              placeholder="Стажировка"
+              onChange={this.handleUserInput}
             />
           </div>
-          <div className="col-xs-6 col-sm-3">
-            <label>Ф.И.О. (Сдающий программу)</label>
+          <div className="col-xs-6">
             <input
               className="form-control"
               type="text"
               name="fullNameProgram"
+              placeholder="Ф.И.О. (Сдающий программу)"
+              onChange={this.handleUserInput}
             />
           </div>
         </div>
+
 
 
         <div className="row">

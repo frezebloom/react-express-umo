@@ -369,9 +369,9 @@ table tr:hover td {
 .SearchForm {
   position: fixed;
   left: 50%;
-  margin-left: -381px;
-  width: 762px;
-  height: 770px;
+  margin-left: -382px;
+  width: 764px;
+  height: 733px;
   z-index: 999;
   top: 2%;
   background: #ffffff;
