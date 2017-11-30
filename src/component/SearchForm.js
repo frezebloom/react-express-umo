@@ -392,6 +392,10 @@ class SearchForm extends Component {
     });
   }
 
+  handleSend = () => {
+    this.props.searchDocuments(this.state)
+  }
+
   //Выбор элемента из списка подсказок подразделений
   handleClickHintSubdivision = (event) => {
     document.getElementById("subdivision").value = event.target.innerHTML;
@@ -418,6 +422,7 @@ class SearchForm extends Component {
 
 
   render() {
+    
     return (
       <div className="SearchForm">
         <div className="headerWindow">Поиск документов</div>
@@ -686,6 +691,7 @@ class SearchForm extends Component {
               <button
                 type="button"
                 className="btn btn-success btn-lg btn-block"
+                onClick={this.handleSend}
               >
                 Показать
               </button>
@@ -704,6 +710,9 @@ export default connect(
   dispatch => ({
     showSearhForm: state => {
       dispatch({ type: "SHOW_SEARHFORM", payload: state });
+    },
+    searchDocuments: state => {
+      dispatch({ type: "SEARCH_DOCUMENTS", payload: state });
     }
   })
 )(SearchForm);

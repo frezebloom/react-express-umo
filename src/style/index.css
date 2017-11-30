@@ -7,7 +7,7 @@ body {
 }
 .back{
   display: none;
-  background-image: url(../img/back.jpg);
+  background-image: url(../img/1back.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
