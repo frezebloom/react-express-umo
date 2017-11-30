@@ -411,6 +411,11 @@ class SearchForm extends Component {
     });
   }
 
+  //Закрыть форму поиска
+  newStateSearchForm = () => {
+    this.props.showSearhForm(false)
+  }
+
 
   render() {
     return (
@@ -672,6 +677,7 @@ class SearchForm extends Component {
               <button
                 type="button"
                 className="btn btn-danger btn-lg btn-block"
+                onClick={this.newStateSearchForm}
               >
                 Закрыть
               </button>
@@ -696,6 +702,8 @@ export default connect(
     data: state
   }),
   dispatch => ({
-
+    showSearhForm: state => {
+      dispatch({ type: "SHOW_SEARHFORM", payload: state });
+    }
   })
 )(SearchForm);

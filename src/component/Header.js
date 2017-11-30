@@ -23,6 +23,11 @@ class Header extends Component {
     this.props.quickSearch(event.target.value);
   }
 
+  //Форма поиска
+  newStateSearchForm = () => {
+    this.props.showSearhForm(true)
+  }
+
   render() {
     return (
       <div className="header">
@@ -41,7 +46,11 @@ class Header extends Component {
             >
               Новый документ
             </button>
-            <button type="button" className="btn btn-default">
+            <button
+              type="button"
+              className="btn btn-default"
+              onClick={this.newStateSearchForm}
+            >
               Поиск документов
             </button>
           </div>
@@ -72,6 +81,9 @@ export default connect(
     },
     newStateUpdateForm: state => {
       dispatch({ type: "SHOW_UPDATEFORM", payload: state });
+    },
+    showSearhForm: state => {
+      dispatch({ type: "SHOW_SEARHFORM", payload: state });
     }
   })
 )(Header);
