@@ -18,7 +18,7 @@ class SearchTable extends Component {
       return data.id === e;
     };
 
-    var a = this.props.data.filter(arrayFilter);
+    var a = this.props.data.allDocuments.filter(arrayFilter);
     var updateDoc = 0;
     a.forEach(item => {
       updateDoc = item;
@@ -48,7 +48,7 @@ class SearchTable extends Component {
             <td className="cap">Ф.И.О.</td>
             <td className="cap">Ссылка</td>
           </tr>
-          {this.props.data.map((doc, index) => (
+          {this.props.data.allDocuments.map((doc, index) => (
             <tr key={index + 1 * keys}>
               <td>
                 <img
