@@ -4,6 +4,10 @@ import edit from "../img/edit.png";
 
 class SearchTable extends Component {
 
+  state = {
+    searchDate: []
+  }
+
   componentDidMount() {
     this.searchDocuments()
   }
@@ -13,7 +17,7 @@ class SearchTable extends Component {
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(true);
 
-    var arrayFilter = function(data) {
+    var arrayFilter = (data) => {
       var e = Number(event.target.id);
       return data.id === e;
     };
@@ -28,8 +32,12 @@ class SearchTable extends Component {
 
   //Поиск документов
   searchDocuments = () => {
-    let searchDocuments = this.props.data.searchDocuments
+    let searchDocuments = this.props.data.searchDocuments[this.props.data.searchDocuments.length - 1]
     let allDocuments = this.props.data.allDocuments
+
+    let searchData = allDocuments.filter(data =>
+      data.programmNumber.toLowerCase().includes(searchDocuments.programmNumber.toLowerCase())
+    )
   }
 
   render() {
