@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import edit from "../img/edit.png";
 
 class SearchTable extends Component {
-  constructor(props) {
-    super(props);
 
-    this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
+  componentDidMount() {
+    this.searchDocuments()
   }
 
-  newStateUpdateForm(event) {
+  //Update ducument
+  newStateUpdateForm = (event) => {
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(true);
 
@@ -26,13 +26,19 @@ class SearchTable extends Component {
     this.props.UpdateForm(updateDoc);
   }
 
+  //Поиск документов
+  searchDocuments = () => {
+    let searchDocuments = this.props.data.searchDocuments
+    let allDocuments = this.props.data.allDocuments
+  }
+
   render() {
     var keys = new Date().getTime();
     return (
       <table>
         <tbody>
           <tr>
-            <td className="cap">Иsзменить</td>
+            <td className="cap">Иsssssзменить</td>
             <td className="cap">№ программы</td>
             <td className="cap">Ф.И.О.</td>
             <td className="cap">Предприятие</td>

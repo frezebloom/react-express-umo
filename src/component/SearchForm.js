@@ -451,10 +451,6 @@ class SearchForm extends Component {
       [name]: value
     });
   }
-  //Action Показать
-  handleSend = () => {
-    this.props.searchDocuments(this.state)
-  }
 
   //Выбор элемента из списка подсказок подразделений
   handleClickHintSubdivision = (event) => {
@@ -480,7 +476,9 @@ class SearchForm extends Component {
     this.props.showSearhForm(false)
   }
 
+ //Action Показать
   handleSend = () => {
+    this.props.searchDocuments(this.state)
     this.props.showQuickSearch(false)
     this.props.showTable(false)
     this.props.showSearhForm(false)
