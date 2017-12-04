@@ -11,7 +11,17 @@ class SearchForm extends Component {
     hintSubdivision: [],
     hintPosition: [],
     showHintSubdivision: false,
-    showHintPosition: false
+    showHintPosition: false,
+    programmNumber: '',
+    fullName: '',
+    company: '',
+    personnelCategory: '',
+    subdivision: '',
+    position: '',
+    theoreticalTraining: '',
+    practicalTraining: '',
+    internship: '',
+    fullNameProgram: ''
   }
 
   //Дата срока подготовки обучения
