@@ -32,11 +32,14 @@ class SearchTable extends Component {
 
   //Поиск документов
   searchDocuments = () => {
-    let searchDocuments = this.props.data.searchDocuments[this.props.data.searchDocuments.length - 1]
-    let allDocuments = this.props.data.allDocuments
+    let searchDocuments = this.props.data.searchDocuments[this.props.data.searchDocuments.length - 1];
+    let allDocuments = this.props.data.allDocuments;
 
+    let startTermOfTraining = new Date(searchDocuments.startTermOfTraining)
+    let finishTermOfTraining = new Date(searchDocuments.finishTermOfTraining)
 
     let searchData = allDocuments.filter(data =>
+
       data.programmNumber.toLowerCase().includes(searchDocuments.programmNumber.toLowerCase()) &&
       data.fullName.toLowerCase().includes(searchDocuments.fullName.toLowerCase()) &&
       data.company.toLowerCase().includes(searchDocuments.company.toLowerCase()) &&
@@ -46,7 +49,8 @@ class SearchTable extends Component {
       data.theoreticalTraining.toLowerCase().includes(searchDocuments.theoreticalTraining.toLowerCase()) &&
       data.practicalTraining.toLowerCase().includes(searchDocuments.practicalTraining.toLowerCase()) &&
       data.internship.toLowerCase().includes(searchDocuments.internship.toLowerCase()) &&
-      data.fullNameProgram.toLowerCase().includes(searchDocuments.fullNameProgram.toLowerCase())
+      data.fullNameProgram.toLowerCase().includes(searchDocuments.fullNameProgram.toLowerCase()) &&
+      startTermOfTraining < new Date(data.termOfTraining) && finishTermOfTraining > new Date(data.termOfTraining)
     )
     console.log(searchData)
   }

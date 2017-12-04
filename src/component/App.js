@@ -37,7 +37,7 @@ class App extends Component {
         theoreticalTraining: "4",
         practicalTraining: "5",
         internship: "6",
-        termOfTraining: "2017-10-18 10:41:01",
+        termOfTraining: "2017-12-18 10:41:01",
         trainingInTheUTC: "2017-10-13 10:41:03",
         trainingInTheUnit: "2017-10-09 10:41:05",
         registrationDateOfTheProgram: "2017-09-30 10:41:07",
