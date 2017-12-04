@@ -35,9 +35,6 @@ class SearchTable extends Component {
     let searchDocuments = this.props.data.searchDocuments[this.props.data.searchDocuments.length - 1];
     let allDocuments = this.props.data.allDocuments;
 
-    let startTermOfTraining = new Date(searchDocuments.startTermOfTraining)
-    let finishTermOfTraining = new Date(searchDocuments.finishTermOfTraining)
-
     let searchData = allDocuments.filter(data =>
 
       data.programmNumber.toLowerCase().includes(searchDocuments.programmNumber.toLowerCase()) &&
@@ -50,7 +47,11 @@ class SearchTable extends Component {
       data.practicalTraining.toLowerCase().includes(searchDocuments.practicalTraining.toLowerCase()) &&
       data.internship.toLowerCase().includes(searchDocuments.internship.toLowerCase()) &&
       data.fullNameProgram.toLowerCase().includes(searchDocuments.fullNameProgram.toLowerCase()) &&
-      startTermOfTraining < new Date(data.termOfTraining) && finishTermOfTraining > new Date(data.termOfTraining)
+      new Date(searchDocuments.startTermOfTraining) <= new Date(data.termOfTraining) && new Date(searchDocuments.finishTermOfTraining) >= new Date(data.termOfTraining) &&
+      new Date(searchDocuments.startTrainingInTheUTC) <= new Date(data.trainingInTheUTC) && new Date(searchDocuments.finishTrainingInTheUTC) >= new Date(data.trainingInTheUTC) &&
+      new Date(searchDocuments.startTrainingInTheUnit) <= new Date(data.trainingInTheUnit) && new Date(searchDocuments.finishTrainingInTheUnit) >= new Date(data.trainingInTheUnit) &&
+      new Date(searchDocuments.startRegistrationDateOfTheProgram) <= new Date(data.registrationDateOfTheProgram) && new Date(searchDocuments.finishRegistrationDateOfTheProgram) >= new Date(data.registrationDateOfTheProgram) &&
+      new Date(searchDocuments.startDateOfDelivery) <= new Date(data.dateOfDelivery) && new Date(searchDocuments.finishDateOfDelivery) >= new Date(data.dateOfDelivery)
     )
     console.log(searchData)
   }

@@ -21,7 +21,17 @@ class SearchForm extends Component {
     theoreticalTraining: '',
     practicalTraining: '',
     internship: '',
-    fullNameProgram: ''
+    fullNameProgram: '',
+    startTermOfTraining: '1970-01-01 10:41:01',
+    finishTermOfTraining: '2100-01-01 10:41:01',
+    startTrainingInTheUTC: '1970-01-01 10:41:01',
+    finishTrainingInTheUTC: '2100-01-01 10:41:01',
+    startTrainingInTheUnit: '1970-01-01 10:41:01',
+    finishTrainingInTheUnit: '2100-01-01 10:41:01',
+    startRegistrationDateOfTheProgram: '1970-01-01 10:41:01',
+    finishRegistrationDateOfTheProgram: '2100-01-01 10:41:01',
+    startDateOfDelivery: '1970-01-01 10:41:01',
+    finishDateOfDelivery: '2100-01-01 10:41:01'
   }
 
   //Дата срока подготовки обучения
