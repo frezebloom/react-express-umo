@@ -36,8 +36,20 @@ class SearchTable extends Component {
     let allDocuments = this.props.data.allDocuments
 
     let searchData = allDocuments.filter(data =>
-      data.programmNumber.toLowerCase().includes(searchDocuments.programmNumber.toLowerCase())
+
+      data.programmNumber.toLowerCase().includes(searchDocuments.programmNumber.toLowerCase()) &&
+      data.fullName.toLowerCase().includes(searchDocuments.fullName.toLowerCase()) &&
+      data.company.toLowerCase().includes(searchDocuments.company.toLowerCase()) &&
+      data.personnelCategory.toLowerCase().includes(searchDocuments.personnelCategory.toLowerCase()) &&
+      data.subdivision.toLowerCase().includes(searchDocuments.subdivision.toLowerCase()) &&
+      data.position.toLowerCase().includes(searchDocuments.position.toLowerCase()) &&
+      data.theoreticalTraining.toLowerCase().includes(searchDocuments.theoreticalTraining.toLowerCase()) &&
+      data.practicalTraining.toLowerCase().includes(searchDocuments.practicalTraining.toLowerCase()) &&
+      data.internship.toLowerCase().includes(searchDocuments.internship.toLowerCase()) &&
+      data.fullNameProgram.toLowerCase().includes(searchDocuments.fullNameProgram.toLowerCase())
+
     )
+    console.log(searchData)
   }
 
   render() {
