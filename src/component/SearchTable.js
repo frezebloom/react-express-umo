@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import edit from "../img/edit.png";
+import links from "../img/link.png";
 
 class SearchTable extends Component {
 
@@ -12,6 +13,9 @@ class SearchTable extends Component {
   newStateUpdateForm = (event) => {
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(true);
+    this.props.showQuickSearch(true)
+    this.props.showSearchTable(false)
+    this.props.showTable(true)
 
     var arrayFilter = (data) => {
       var e = Number(event.target.id);
@@ -74,7 +78,14 @@ class SearchTable extends Component {
               <td>{doc.registrationDateOfTheProgram}</td>
               <td>{doc.dateOfDelivery}</td>
               <td>{doc.fullNameProgram}</td>
-              <td>{doc.link}</td>
+              <td>
+                <a href={doc.link} target="_blank"><img
+                  src={links}
+                  className="iconEdit"
+                  alt="Ссылка"
+                  />
+                </a>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -94,8 +105,17 @@ export default connect(
     newStateUpdateForm: state => {
       dispatch({ type: "SHOW_UPDATEFORM", payload: state });
     },
+    showQuickSearch: state => {
+      dispatch({ type: "SHOW_QUICKSEARCH", payload: state });
+    },
     newStateAddForm: state => {
       dispatch({ type: "SHOW_ADDFORM", payload: state });
+    },
+    showTable: state => {
+      dispatch({ type: "SHOW_TABLE", payload: state });
+    },
+    showSearchTable: state => {
+      dispatch({ type: "SHOW_SEARCHTABLE", payload: state });
     }
   })
 )(SearchTable);

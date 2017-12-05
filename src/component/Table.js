@@ -14,6 +14,7 @@ class Table extends Component {
     this.props.showSearhForm(false);
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(true);
+    this.props.showQuickSearch(true)
 
     var arrayFilter = function(data) {
       var e = Number(event.target.id);
@@ -114,6 +115,9 @@ export default connect(
     },
     newStateUpdateForm: state => {
       dispatch({ type: "SHOW_UPDATEFORM", payload: state });
+    },
+    showQuickSearch: state => {
+      dispatch({ type: "SHOW_QUICKSEARCH", payload: state });
     },
     newStateAddForm: state => {
       dispatch({ type: "SHOW_ADDFORM", payload: state });

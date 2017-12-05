@@ -493,7 +493,8 @@ class SearchForm extends Component {
 
   //Закрыть форму поиска
   newStateSearchForm = () => {
-    this.props.showSearhForm(false)
+    this.props.showSearhForm(false);
+    this.props.showQuickSearch(true);
   }
 
  //Action Показать

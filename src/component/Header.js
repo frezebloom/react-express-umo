@@ -13,6 +13,9 @@ class Header extends Component {
     this.props.newStateAddForm(true);
     this.props.newStateUpdateForm(false);
     this.props.showSearhForm(false);
+    this.props.showQuickSearch(true);
+    this.props.showSearchTable(false);
+    this.props.showTable(true);
   }
 
   //Быстрый поиск
@@ -25,6 +28,7 @@ class Header extends Component {
     this.props.showSearhForm(true);
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(false);
+    this.props.showQuickSearch(false);
   }
 
   render() {
@@ -80,11 +84,20 @@ export default connect(
     quickSearch: data => {
       dispatch({ type: "QUICK_SEARCH", payload: data });
     },
+    showQuickSearch: state => {
+      dispatch({ type: "SHOW_QUICKSEARCH", payload: state });
+    },
     newStateUpdateForm: state => {
       dispatch({ type: "SHOW_UPDATEFORM", payload: state });
     },
     showSearhForm: state => {
       dispatch({ type: "SHOW_SEARHFORM", payload: state });
+    },
+    showTable: state => {
+      dispatch({ type: "SHOW_TABLE", payload: state });
+    },
+    showSearchTable: state => {
+      dispatch({ type: "SHOW_SEARCHTABLE", payload: state });
     }
   })
 )(Header);
