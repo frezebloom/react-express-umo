@@ -10,6 +10,7 @@ class Table extends Component {
   }
 
   newStateUpdateForm(event) {
+    this.props.showSearhForm(false);
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(true);
 
@@ -108,6 +109,9 @@ export default connect(
     },
     newStateAddForm: state => {
       dispatch({ type: "SHOW_ADDFORM", payload: state });
+    },
+    showSearhForm: state => {
+      dispatch({ type: "SHOW_SEARHFORM", payload: state });
     }
   })
 )(Table);

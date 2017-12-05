@@ -7,15 +7,12 @@ class Header extends Component {
     super(props);
     this.newStateAddForm = this.newStateAddForm.bind(this);
     this.eventQuickSearch = this.eventQuickSearch.bind(this);
-    this.newStateTableTrash = this.newStateTableTrash.bind(this);
   }
   //форма нового документа
   newStateAddForm() {
     this.props.newStateAddForm(true);
-  }
-  //Таблица корзины
-  newStateTableTrash() {
-    this.props.newStateTableTrash(false)
+    this.props.newStateUpdateForm(false);
+    this.props.showSearhForm(false);
   }
 
   //Быстрый поиск
@@ -25,11 +22,13 @@ class Header extends Component {
 
   //Форма поиска
   newStateSearchForm = () => {
-    this.props.showSearhForm(true)
+    this.props.showSearhForm(true);
+    this.props.newStateAddForm(false);
+    this.props.newStateUpdateForm(false);
   }
 
   render() {
-    
+
     return (
       <div className="header">
         <div className="row">
