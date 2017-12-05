@@ -8,10 +8,6 @@ class SearchTable extends Component {
     searchDate: []
   }
 
-  componentDidMount() {
-    this.searchDocuments()
-  }
-
   //Update ducument
   newStateUpdateForm = (event) => {
     this.props.newStateAddForm(false);
@@ -30,39 +26,15 @@ class SearchTable extends Component {
     this.props.UpdateForm(updateDoc);
   }
 
-  //Поиск документов
-  searchDocuments = () => {
-    let searchDocuments = this.props.data.searchDocuments[this.props.data.searchDocuments.length - 1];
-    let allDocuments = this.props.data.allDocuments;
-
-    let searchData = allDocuments.filter(data =>
-
-      data.programmNumber.toLowerCase().includes(searchDocuments.programmNumber.toLowerCase()) &&
-      data.fullName.toLowerCase().includes(searchDocuments.fullName.toLowerCase()) &&
-      data.company.toLowerCase().includes(searchDocuments.company.toLowerCase()) &&
-      data.personnelCategory.toLowerCase().includes(searchDocuments.personnelCategory.toLowerCase()) &&
-      data.subdivision.toLowerCase().includes(searchDocuments.subdivision.toLowerCase()) &&
-      data.position.toLowerCase().includes(searchDocuments.position.toLowerCase()) &&
-      data.theoreticalTraining.toLowerCase().includes(searchDocuments.theoreticalTraining.toLowerCase()) &&
-      data.practicalTraining.toLowerCase().includes(searchDocuments.practicalTraining.toLowerCase()) &&
-      data.internship.toLowerCase().includes(searchDocuments.internship.toLowerCase()) &&
-      data.fullNameProgram.toLowerCase().includes(searchDocuments.fullNameProgram.toLowerCase()) &&
-      new Date(searchDocuments.startTermOfTraining) <= new Date(data.termOfTraining) && new Date(searchDocuments.finishTermOfTraining) >= new Date(data.termOfTraining) &&
-      new Date(searchDocuments.startTrainingInTheUTC) <= new Date(data.trainingInTheUTC) && new Date(searchDocuments.finishTrainingInTheUTC) >= new Date(data.trainingInTheUTC) &&
-      new Date(searchDocuments.startTrainingInTheUnit) <= new Date(data.trainingInTheUnit) && new Date(searchDocuments.finishTrainingInTheUnit) >= new Date(data.trainingInTheUnit) &&
-      new Date(searchDocuments.startRegistrationDateOfTheProgram) <= new Date(data.registrationDateOfTheProgram) && new Date(searchDocuments.finishRegistrationDateOfTheProgram) >= new Date(data.registrationDateOfTheProgram) &&
-      new Date(searchDocuments.startDateOfDelivery) <= new Date(data.dateOfDelivery) && new Date(searchDocuments.finishDateOfDelivery) >= new Date(data.dateOfDelivery)
-    )
-    console.log(searchData)
-  }
-
   render() {
+    var searchData = this.props.data.searchDocuments[this.props.data.searchDocuments.length - 1]
+    console.log(searchData)
     var keys = new Date().getTime();
     return (
       <table>
         <tbody>
           <tr>
-            <td className="cap">Иsssssзменить</td>
+            <td className="cap">Изменить</td>
             <td className="cap">№ программы</td>
             <td className="cap">Ф.И.О.</td>
             <td className="cap">Предприятие</td>
@@ -78,7 +50,7 @@ class SearchTable extends Component {
             <td className="cap">Ф.И.О.</td>
             <td className="cap">Ссылка</td>
           </tr>
-          {this.props.data.allDocuments.map((doc, index) => (
+          {searchData.map((doc, index) => (
             <tr key={index + 1 * keys}>
               <td>
                 <img

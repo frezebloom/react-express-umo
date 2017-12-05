@@ -84,9 +84,6 @@ class App extends Component {
     (this.props.data.showSearchForm) ? searchForm = <SearchForm /> : false;
     (this.props.data.showSearchTable) ? searchTable = <SearchTable /> : false;
 
-
-    // console.log(this.props.data);
-
     return (
       <div>
 

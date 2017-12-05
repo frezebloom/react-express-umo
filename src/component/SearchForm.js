@@ -498,15 +498,34 @@ class SearchForm extends Component {
 
  //Action Показать
   handleSend = () => {
-    this.props.searchDocuments(this.state)
+
+    let allDocuments = this.props.data.allDocuments;
+
+    let searchData = allDocuments.filter(data =>
+      data.programmNumber.toLowerCase().includes(this.state.programmNumber.toLowerCase()) &&
+      data.fullName.toLowerCase().includes(this.state.fullName.toLowerCase()) &&
+      data.company.toLowerCase().includes(this.state.company.toLowerCase()) &&
+      data.personnelCategory.toLowerCase().includes(this.state.personnelCategory.toLowerCase()) &&
+      data.subdivision.toLowerCase().includes(this.state.subdivision.toLowerCase()) &&
+      data.position.toLowerCase().includes(this.state.position.toLowerCase()) &&
+      data.theoreticalTraining.toLowerCase().includes(this.state.theoreticalTraining.toLowerCase()) &&
+      data.practicalTraining.toLowerCase().includes(this.state.practicalTraining.toLowerCase()) &&
+      data.internship.toLowerCase().includes(this.state.internship.toLowerCase()) &&
+      data.fullNameProgram.toLowerCase().includes(this.state.fullNameProgram.toLowerCase()) &&
+      new Date(this.state.startTermOfTraining) <= new Date(data.termOfTraining) && new Date(this.state.finishTermOfTraining) >= new Date(data.termOfTraining) &&
+      new Date(this.state.startTrainingInTheUTC) <= new Date(data.trainingInTheUTC) && new Date(this.state.finishTrainingInTheUTC) >= new Date(data.trainingInTheUTC) &&
+      new Date(this.state.startTrainingInTheUnit) <= new Date(data.trainingInTheUnit) && new Date(this.state.finishTrainingInTheUnit) >= new Date(data.trainingInTheUnit) &&
+      new Date(this.state.startRegistrationDateOfTheProgram) <= new Date(data.registrationDateOfTheProgram) && new Date(this.state.finishRegistrationDateOfTheProgram) >= new Date(data.registrationDateOfTheProgram) &&
+      new Date(this.state.startDateOfDelivery) <= new Date(data.dateOfDelivery) && new Date(this.state.finishDateOfDelivery) >= new Date(data.dateOfDelivery)
+    )
+
+    this.props.searchDocuments(searchData)
     this.props.showQuickSearch(false)
     this.props.showTable(false)
     this.props.showSearhForm(false)
     this.props.showSearchTable(true)
   }
-
   render() {
-
     return (
       <div className="SearchForm">
         <div className="headerWindow">Поиск документов</div>
