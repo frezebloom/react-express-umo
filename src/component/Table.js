@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import edit from "../img/edit.png";
+import links from "../img/link.png";
 
 class Table extends Component {
   constructor(props) {
@@ -73,7 +74,14 @@ class Table extends Component {
               <td>{doc.registrationDateOfTheProgram}</td>
               <td>{doc.dateOfDelivery}</td>
               <td>{doc.fullNameProgram}</td>
-              <td>{doc.link}</td>
+              <td>
+                <a href={doc.link} target="_blank"><img
+                  src={links}
+                  className="iconEdit"
+                  alt="Ссылка"
+                  />
+                </a>
+              </td>
             </tr>
           ))}
         </tbody>
