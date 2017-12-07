@@ -35,6 +35,9 @@ class Table extends Component {
 
   info = event => {
     let infoDoc = this.props.data[event.target.id]
+    console.log(infoDoc.theoreticalTraining)
+    console.log(infoDoc.practicalTraining)
+    console.log(infoDoc.internship)
   }
 
   render() {
@@ -88,7 +91,7 @@ class Table extends Component {
                 <td>{doc.personnelCategory}</td>
                 <td>{doc.subdivision}</td>
                 <td>{doc.position}</td>
-                <td className="distributionOfTraining" id={index} onMouseOut={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
+                <td className="distributionOfTraining" id={index} onMouseOver={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
                 <td>{doc.termOfTraining}</td>
                 <td>{doc.trainingInTheUTC}</td>
                 <td>{doc.trainingInTheUnit}</td>
