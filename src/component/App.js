@@ -72,7 +72,7 @@ class App extends Component {
 
   render() {
 
-    console.log(this.props.data);
+    // console.log(this.props.data);
 
     var updateForm, addValidation, trashModalWindow, trashMessage, updateValidation, table, docForm, searchForm, searchTable
 

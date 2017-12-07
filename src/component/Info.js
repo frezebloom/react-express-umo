@@ -5,10 +5,15 @@ import axios from "axios";
 class Info extends Component {
 
   render() {
+    var distributionOfTraining = this.props.data.distributionOfTraining[this.props.data.distributionOfTraining.length - 1]
+
     return (
       <div className="info">
-        INFO
-
+        <ul>
+          {Object.keys(distributionOfTraining).map(key => (
+            <li key={key}>{distributionOfTraining[key]}</li>
+            ))}
+          </ul>
       </div>
     );
   }

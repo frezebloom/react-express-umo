@@ -33,6 +33,7 @@ class Table extends Component {
     this.props.UpdateForm(updateDoc);
   }
 
+  //Отправка distributionOfTraining store
   info = event => {
     let infoDoc = this.props.data[event.target.id]
     let distributionOfTraining = {
@@ -40,14 +41,15 @@ class Table extends Component {
       practicalTraining:   infoDoc.practicalTraining,
       internship:          infoDoc.internship
     }
-    console.log(distributionOfTraining)
+    this.props.distributionOfTraining(distributionOfTraining)
   }
 
   render() {
+    console.log(this.props.showInfo)
     var keys = new Date().getTime();
     return (
       <div>
-        <Info />
+        {this.props.data.showInfo ? <Info /> : false}
         <table>
           <tbody>
             <tr>
@@ -166,6 +168,9 @@ export default connect(
     },
     showSearhForm: state => {
       dispatch({ type: "SHOW_SEARHFORM", payload: state });
+    },
+    distributionOfTraining: state => {
+      dispatch({ type: "INFO_DT", payload: state });
     }
   })
 )(Table);
