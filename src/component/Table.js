@@ -35,9 +35,12 @@ class Table extends Component {
 
   info = event => {
     let infoDoc = this.props.data[event.target.id]
-    console.log(infoDoc.theoreticalTraining)
-    console.log(infoDoc.practicalTraining)
-    console.log(infoDoc.internship)
+    let distributionOfTraining = {
+      theoreticalTraining: infoDoc.theoreticalTraining,
+      practicalTraining:   infoDoc.practicalTraining,
+      internship:          infoDoc.internship
+    }
+    console.log(distributionOfTraining)
   }
 
   render() {
