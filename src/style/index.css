@@ -402,3 +402,7 @@ table tr:hover td {
 .SearchForm li:first-letter {
   text-transform: uppercase;
 }
+.distributionOfTraining:hover{
+  background: #F5FFFA;
+  transition: 2s ease-out;
+}

@@ -80,7 +80,7 @@ class Table extends Component {
               <td>{doc.personnelCategory}</td>
               <td>{doc.subdivision}</td>
               <td>{doc.position}</td>
-              <td>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
+              <td className="distributionOfTraining">{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
               <td>{doc.termOfTraining}</td>
               <td>{doc.trainingInTheUTC}</td>
               <td>{doc.trainingInTheUnit}</td>
