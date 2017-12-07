@@ -72,6 +72,8 @@ class App extends Component {
 
   render() {
 
+    console.log(this.props.data);
+
     var updateForm, addValidation, trashModalWindow, trashMessage, updateValidation, table, docForm, searchForm, searchTable
 
     (this.props.data.showUpdateForm) ? updateForm = <UpdateForm /> : false;

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import edit from "../img/edit.png";
 import links from "../img/link.png";
+import eye from "../img/eye.png";
 
 class Table extends Component {
   constructor(props) {
@@ -10,11 +11,12 @@ class Table extends Component {
     this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
   }
 
+
   newStateUpdateForm(event) {
     this.props.showSearhForm(false);
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(true);
-    this.props.showQuickSearch(true)
+    this.props.showQuickSearch(true);
 
     var arrayFilter = function(data) {
       var e = Number(event.target.id);
@@ -42,7 +44,17 @@ class Table extends Component {
             <td className="cap">Категория персонала</td>
             <td className="cap">Подразделение</td>
             <td className="cap">Должность</td>
-            <td className="cap">Распределение обучения</td>
+            <td className="cap">
+              Распределение обучения<div className="eye">
+                <img
+                  src={eye}
+                  height="16px"
+                  width="16px"
+                  alt="Наведите курсор"
+                  title="Наведите курсор на ячейку для просмотра данных (Теоретическая подготовка, Практическая подготовка, Стажировка)"
+                />
+              </div>
+            </td>
             <td className="cap">Срок подготовки обучения</td>
             <td className="cap">Обучение в УТЦ</td>
             <td className="cap">Обучение в подразделении</td>
@@ -68,7 +80,7 @@ class Table extends Component {
               <td>{doc.personnelCategory}</td>
               <td>{doc.subdivision}</td>
               <td>{doc.position}</td>
-              <td>{doc.distributionOfTraining}</td>
+              <td>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
               <td>{doc.termOfTraining}</td>
               <td>{doc.trainingInTheUTC}</td>
               <td>{doc.trainingInTheUnit}</td>
@@ -76,11 +88,8 @@ class Table extends Component {
               <td>{doc.dateOfDelivery}</td>
               <td>{doc.fullNameProgram}</td>
               <td>
-                <a href={doc.link} target="_blank"><img
-                  src={links}
-                  className="iconEdit"
-                  alt="Ссылка"
-                  />
+                <a href={doc.link} target="_blank">
+                  <img src={links} className="iconEdit" alt="Ссылка" />
                 </a>
               </td>
             </tr>
@@ -95,18 +104,36 @@ export default connect(
   state => ({
     data: state.allDocuments.filter(
       data =>
-        data.programmNumber.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.programmNumber
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase()) ||
         data.fullName.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
         data.company.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.personnelCategory.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.subdivision.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
+        data.personnelCategory
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase()) ||
+        data.subdivision
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase()) ||
         data.position.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.termOfTraining.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.trainingInTheUTC.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.trainingInTheUnit.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.registrationDateOfTheProgram.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.dateOfDelivery.toLowerCase().includes(state.quickSearch.toLowerCase()) ||
-        data.fullNameProgram.toLowerCase().includes(state.quickSearch.toLowerCase())
+        data.termOfTraining
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase()) ||
+        data.trainingInTheUTC
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase()) ||
+        data.trainingInTheUnit
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase()) ||
+        data.registrationDateOfTheProgram
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase()) ||
+        data.dateOfDelivery
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase()) ||
+        data.fullNameProgram
+          .toLowerCase()
+          .includes(state.quickSearch.toLowerCase())
     )
   }),
   dispatch => ({
