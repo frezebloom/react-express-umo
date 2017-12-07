@@ -35,6 +35,7 @@ class Table extends Component {
 
   //Отправка distributionOfTraining store
   info = event => {
+    this.props.showInfo(true)
     let infoDoc = this.props.data[event.target.id]
     let distributionOfTraining = {
       theoreticalTraining: infoDoc.theoreticalTraining,
@@ -43,13 +44,17 @@ class Table extends Component {
     }
     this.props.distributionOfTraining(distributionOfTraining)
   }
+  //Закрытие инфо
+  closeInfo = () => {
+    this.props.showInfo(false)
+  }
 
   render() {
-    console.log(this.props.showInfo)
+    console.log(this.props.info.showInfo)
     var keys = new Date().getTime();
     return (
       <div>
-        {this.props.data.showInfo ? <Info /> : false}
+        {this.props.info.showInfo ? <Info /> : false}
         <table>
           <tbody>
             <tr>
@@ -96,7 +101,7 @@ class Table extends Component {
                 <td>{doc.personnelCategory}</td>
                 <td>{doc.subdivision}</td>
                 <td>{doc.position}</td>
-                <td className="distributionOfTraining" id={index} onMouseOver={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
+                <td className="distributionOfTraining" id={index} onMouseLeave={this.closeInfo} onMouseEnter={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
                 <td>{doc.termOfTraining}</td>
                 <td>{doc.trainingInTheUTC}</td>
                 <td>{doc.trainingInTheUnit}</td>
@@ -119,6 +124,7 @@ class Table extends Component {
 
 export default connect(
   state => ({
+    info: state,
     data: state.allDocuments.filter(
       data =>
         data.programmNumber
@@ -171,6 +177,9 @@ export default connect(
     },
     distributionOfTraining: state => {
       dispatch({ type: "INFO_DT", payload: state });
+    },
+    showInfo: state => {
+      dispatch({ type: "SHOW_INFO", payload: state });
     }
   })
 )(Table);
