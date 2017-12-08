@@ -538,7 +538,6 @@ class DocForm extends Component {
   }
 
   render() {
-    console.log(this.props.data);
     var data = this.props.data.updateDocument[
       this.props.data.updateDocument.length - 1
     ];

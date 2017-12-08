@@ -30,6 +30,20 @@ class Header extends Component {
     this.props.newStateUpdateForm(false);
     this.props.showQuickSearch(false);
   }
+  //button Main
+  mainState = () => {
+    this.props.newStateAddForm(false);
+    this.props.newStateUpdateForm(false);
+    this.props.showSearhForm(false);
+    this.props.showSearchTable(false);
+    this.props.showAddValidation(false);
+    this.props.showInfo(false);
+    this.props.showTrashMessage(false);
+    this.props.newStateTrashModalWindow(false);
+    this.props.showUpdateValidation(false);
+    this.props.showTable(true);
+    this.props.showQuickSearch(true);
+  }
 
   render() {
 
@@ -40,6 +54,7 @@ class Header extends Component {
           <button
             type="button"
             className="btn btn-default"
+            onClick={this.mainState}
           >
             Главная
           </button>
@@ -98,6 +113,21 @@ export default connect(
     },
     showSearchTable: state => {
       dispatch({ type: "SHOW_SEARCHTABLE", payload: state });
+    },
+    showAddValidation: state => {
+      dispatch({ type: "SHOW_ADDVALIDATION", payload: state });
+    },
+    showInfo: state => {
+      dispatch({ type: "SHOW_INFO", payload: state });
+    },
+    showTrashMessage: state => {
+      dispatch({ type: "SHOW_TRASHMESSAGE", payload: state });
+    },
+    newStateTrashModalWindow: state => {
+      dispatch({ type: "SHOW_TRASHMODALWINDOW", payload: state });
+    },
+    showUpdateValidation: state => {
+      dispatch({ type: "SHOW_UPDATEVALIDATION", payload: state });
     }
   })
 )(Header);
