@@ -59,6 +59,14 @@ class Table extends Component {
     this.props.showInfo(false)
   }
 
+  formatDate = (date) => {
+    let day = date.substring(8, 10);
+    let month = date.substring(5, 7);
+    let year = date.substring(4, 0)
+    let formatDate = `${day}.${month}.${year}`
+    return formatDate;
+  }
+
   render() {
     var keys = new Date().getTime();
     return (
@@ -111,11 +119,11 @@ class Table extends Component {
                 <td>{doc.subdivision}</td>
                 <td>{doc.position}</td>
                 <td className="distributionOfTraining" id={index} onMouseOut={this.closeInfo} onMouseEnter={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
-                <td>{doc.termOfTraining}</td>
-                <td>{doc.trainingInTheUTC}</td>
-                <td>{doc.trainingInTheUnit}</td>
-                <td>{doc.registrationDateOfTheProgram}</td>
-                <td>{doc.dateOfDelivery}</td>
+                <td>{this.formatDate(doc.termOfTraining)}</td>
+                <td>{this.formatDate(doc.trainingInTheUTC)}</td>
+                <td>{this.formatDate(doc.trainingInTheUnit)}</td>
+                <td>{this.formatDate(doc.registrationDateOfTheProgram)}</td>
+                <td>{this.formatDate(doc.dateOfDelivery)}</td>
                 <td>{doc.fullNameProgram}</td>
                 <td>
                   <a href={doc.link} target="_blank">
