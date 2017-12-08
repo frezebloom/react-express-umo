@@ -16,19 +16,24 @@ class Header extends Component {
     this.props.showQuickSearch(true);
     this.props.showSearchTable(false);
     this.props.showTable(true);
+    this.props.showBack(true);
+    this.props.showInfo(false);
   }
 
   //Быстрый поиск
   eventQuickSearch(event) {
     this.props.quickSearch(event.target.value);
+    this.props.showInfo(false);
   }
 
   //Форма поиска
   newStateSearchForm = () => {
     this.props.showSearhForm(true);
+    this.props.showBack(true);
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(false);
     this.props.showQuickSearch(false);
+    this.props.showInfo(false);
   }
   //button Main
   mainState = () => {
@@ -128,6 +133,9 @@ export default connect(
     },
     showUpdateValidation: state => {
       dispatch({ type: "SHOW_UPDATEVALIDATION", payload: state });
+    },
+    showBack: state => {
+      dispatch({ type: "SHOW_BACK", payload: state });
     }
   })
 )(Header);

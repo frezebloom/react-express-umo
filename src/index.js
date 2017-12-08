@@ -6,6 +6,7 @@ import reducer from "./reducers";
 
 import "./style/bootstrap/css/bootstrap.min.css";
 import "./style/index.css";
+import "./style/animate.css"
 
 import App from "./component/App.js";
 
