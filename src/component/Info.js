@@ -4,15 +4,23 @@ import axios from "axios";
 
 class Info extends Component {
 
-  render() {
-    var distributionOfTraining = this.props.data.distributionOfTraining[this.props.data.distributionOfTraining.length - 1]
+  componentDidMount(){
+    let coordinates = this.props.data.coordinates[this.props.data.coordinates.length - 1]
+    document.getElementById("doft").style.top = coordinates.positionY + "px";
+    document.getElementById("doft").style.left = coordinates.positionX + "px";
+  }
 
+  render() {
+
+    var distributionOfTraining = this.props.data.distributionOfTraining[this.props.data.distributionOfTraining.length - 1]
     return (
-      <div className="info">
+      <div className="info" id="doft">
         <ul>
           {Object.keys(distributionOfTraining).map(key => (
+
             <li key={key}>{distributionOfTraining[key]}</li>
-            ))}
+            ))
+          }
           </ul>
       </div>
     );

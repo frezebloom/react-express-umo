@@ -404,20 +404,23 @@ table tr:hover td {
 }
 .distributionOfTraining:hover{
   background: #F5FFFA;
-  transition: 2s ease-out;
+  transition: 1s ease-out;
 }
 .info{
   position: absolute;
   z-index: 555;
   background: white;
-  width: 30%;
-  font-size: 18px;
-  text-align: center;
+  font-size: 14px;
   color: #008080;
-  webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
-                     0 1px 5px 0 rgba(0,0,0,0.12),
-                     0 3px 1px -2px rgba(0,0,0,0.2);
   box-shadow:        0 2px 2px 0 rgba(0,0,0,0.14),
                      0 1px 5px 0 rgba(0,0,0,0.12),
                      0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.info li{
+  list-style-type: none;
+}
+.info ul{
+  margin-left: 0;
+  padding-left: 0;
+  margin: 20px;
 }

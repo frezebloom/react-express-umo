@@ -13,7 +13,6 @@ class Table extends Component {
     this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
   }
 
-
   newStateUpdateForm(event) {
     this.props.showSearhForm(false);
     this.props.newStateAddForm(false);
@@ -37,20 +36,30 @@ class Table extends Component {
   info = event => {
     this.props.showInfo(true)
     let infoDoc = this.props.data[event.target.id]
+
     let distributionOfTraining = {
-      theoreticalTraining: infoDoc.theoreticalTraining,
-      practicalTraining:   infoDoc.practicalTraining,
-      internship:          infoDoc.internship
+      theoreticalTraining: `Теоретическая подготовка: ${infoDoc.theoreticalTraining}`,
+      practicalTraining:   `Практическая подготовка: ${infoDoc.practicalTraining}`,
+      internship:          `Стажировка: ${infoDoc.internship}`,
     }
+
     this.props.distributionOfTraining(distributionOfTraining)
+
+    //Coordinates
+    let position = {
+      positionX: event.clientX,
+      positionY: event.clientY
+    }
+    this.props.coordinates(position)
+
   }
+
   //Закрытие инфо
   closeInfo = () => {
     this.props.showInfo(false)
   }
 
   render() {
-    console.log(this.props.info.showInfo)
     var keys = new Date().getTime();
     return (
       <div>
@@ -101,7 +110,7 @@ class Table extends Component {
                 <td>{doc.personnelCategory}</td>
                 <td>{doc.subdivision}</td>
                 <td>{doc.position}</td>
-                <td className="distributionOfTraining" id={index} onMouseLeave={this.closeInfo} onMouseEnter={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
+                <td className="distributionOfTraining" id={index} onMouseOut={this.closeInfo} onMouseEnter={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
                 <td>{doc.termOfTraining}</td>
                 <td>{doc.trainingInTheUTC}</td>
                 <td>{doc.trainingInTheUnit}</td>
@@ -180,6 +189,9 @@ export default connect(
     },
     showInfo: state => {
       dispatch({ type: "SHOW_INFO", payload: state });
-    }
+    },
+    coordinates: state => {
+      dispatch({ type: "COORDINATES_MOUSE", payload: state });
+    },
   })
 )(Table);
