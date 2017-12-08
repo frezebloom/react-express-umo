@@ -4,6 +4,8 @@ import edit from "../img/edit.png";
 import links from "../img/link.png";
 import eye from "../img/eye.png";
 
+import Info from './Info.js'
+
 class SearchTable extends Component {
 
   state = {
@@ -31,76 +33,106 @@ class SearchTable extends Component {
     this.props.UpdateForm(updateDoc);
   }
 
+  //Отправка distributionOfTraining store
+  info = event => {
+    this.props.showInfo(true)
+    let data = this.props.data.searchDocuments[this.props.data.searchDocuments.length - 1]
+    let infoDoc = data[event.target.id]
+    let distributionOfTraining = {
+      theoreticalTraining: `Теоретическая подготовка: ${infoDoc.theoreticalTraining}`,
+      practicalTraining:   `Практическая подготовка: ${infoDoc.practicalTraining}`,
+      internship:          `Стажировка: ${infoDoc.internship}`,
+    }
+
+    this.props.distributionOfTraining(distributionOfTraining)
+
+    //Coordinates
+    let position = {
+      positionX: event.clientX,
+      positionY: event.clientY
+    }
+    this.props.coordinates(position)
+
+  }
+
+  //Закрытие инфо
+  closeInfo = () => {
+    this.props.showInfo(false)
+  }
+
   render() {
     var searchData = this.props.data.searchDocuments[this.props.data.searchDocuments.length - 1]
     console.log(searchData)
     var keys = new Date().getTime();
     return (
-      <table>
-        <tbody>
-          <tr>
-            <td className="cap">Изменить</td>
-            <td className="cap">№ программы</td>
-            <td className="cap">Ф.И.О.</td>
-            <td className="cap">Предприятие</td>
-            <td className="cap">Категория персонала</td>
-            <td className="cap">Подразделение</td>
-            <td className="cap">Должность</td>
-            <td className="cap">
-              Распределение обучения<div className="eye">
-                <img
-                  src={eye}
-                  height="16px"
-                  width="16px"
-                  alt="Наведите курсор"
-                  title="Наведите курсор на ячейку для просмотра данных (Теоретическая подготовка, Практическая подготовка, Стажировка)"
-                />
-              </div>
-            </td>
-            <td className="cap">Срок подготовки обучения</td>
-            <td className="cap">Обучение в УТЦ</td>
-            <td className="cap">Обучение в подразделении</td>
-            <td className="cap">Дата регистрации программы</td>
-            <td className="cap">Дата сдачи программы</td>
-            <td className="cap">Ф.И.О.</td>
-            <td className="cap">Ссылка</td>
-          </tr>
-          {searchData.map((doc, index) => (
-            <tr key={index + 1 * keys}>
-              <td>
-                <img
-                  src={edit}
-                  id={doc.id}
-                  className="iconEdit"
-                  alt="Изменить"
-                  onClick={this.newStateUpdateForm}
-                />
-              </td>
-              <td>{doc.programmNumber}</td>
-              <td>{doc.fullName}</td>
-              <td>{doc.company}</td>
-              <td>{doc.personnelCategory}</td>
-              <td>{doc.subdivision}</td>
-              <td>{doc.position}</td>
-              <td className="distributionOfTraining" id={index} onMouseOut={this.closeInfo} onMouseEnter={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
-              <td>{doc.termOfTraining}</td>
-              <td>{doc.trainingInTheUTC}</td>
-              <td>{doc.trainingInTheUnit}</td>
-              <td>{doc.registrationDateOfTheProgram}</td>
-              <td>{doc.dateOfDelivery}</td>
-              <td>{doc.fullNameProgram}</td>
-              <td>
-                <a href={doc.link} target="_blank"><img
-                  src={links}
-                  className="iconEdit"
-                  alt="Ссылка"
+      <div>
+        {this.props.data.showInfo ? <Info /> : false}
+        <table>
+          <tbody>
+            <tr>
+              <td className="cap">Изменить</td>
+              <td className="cap">№ программы</td>
+              <td className="cap">Ф.И.О.</td>
+              <td className="cap">Предприятие</td>
+              <td className="cap">Категория персонала</td>
+              <td className="cap">Подразделение</td>
+              <td className="cap">Должность</td>
+              <td className="cap">
+                Распределение обучения<div className="eye">
+                  <img
+                    src={eye}
+                    height="16px"
+                    width="16px"
+                    alt="Наведите курсор"
+                    title="Наведите курсор на ячейку для просмотра данных (Теоретическая подготовка, Практическая подготовка, Стажировка)"
                   />
-                </a>
+                </div>
               </td>
+              <td className="cap">Срок подготовки обучения</td>
+              <td className="cap">Обучение в УТЦ</td>
+              <td className="cap">Обучение в подразделении</td>
+              <td className="cap">Дата регистрации программы</td>
+              <td className="cap">Дата сдачи программы</td>
+              <td className="cap">Ф.И.О.</td>
+              <td className="cap">Ссылка</td>
             </tr>
-          ))}
-        </tbody>
-      </table>
+            {searchData.map((doc, index) => (
+              <tr key={index + 1 * keys}>
+                <td>
+                  <img
+                    src={edit}
+                    id={doc.id}
+                    className="iconEdit"
+                    alt="Изменить"
+                    onClick={this.newStateUpdateForm}
+                  />
+                </td>
+                <td>{doc.programmNumber}</td>
+                <td>{doc.fullName}</td>
+                <td>{doc.company}</td>
+                <td>{doc.personnelCategory}</td>
+                <td>{doc.subdivision}</td>
+                <td>{doc.position}</td>
+                <td className="distributionOfTraining" id={index} onMouseOut={this.closeInfo} onMouseEnter={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
+                <td>{doc.termOfTraining}</td>
+                <td>{doc.trainingInTheUTC}</td>
+                <td>{doc.trainingInTheUnit}</td>
+                <td>{doc.registrationDateOfTheProgram}</td>
+                <td>{doc.dateOfDelivery}</td>
+                <td>{doc.fullNameProgram}</td>
+                <td>
+                  <a href={doc.link} target="_blank"><img
+                    src={links}
+                    className="iconEdit"
+                    alt="Ссылка"
+                    />
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
@@ -127,6 +159,15 @@ export default connect(
     },
     showSearchTable: state => {
       dispatch({ type: "SHOW_SEARCHTABLE", payload: state });
-    }
+    },
+    distributionOfTraining: state => {
+      dispatch({ type: "INFO_DT", payload: state });
+    },
+    showInfo: state => {
+      dispatch({ type: "SHOW_INFO", payload: state });
+    },
+    coordinates: state => {
+      dispatch({ type: "COORDINATES_MOUSE", payload: state });
+    },
   })
 )(SearchTable);
