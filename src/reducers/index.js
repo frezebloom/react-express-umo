@@ -18,6 +18,7 @@ import showSearchTable from './showSearchTable'
 import distributionOfTraining from './distributionOfTraining'
 import showInfo from './showInfo'
 import coordinates from './coordinates'
+import showBack from './showBack'
 
 
 export default combineReducers({
@@ -38,5 +39,6 @@ export default combineReducers({
    showSearchTable,
    distributionOfTraining,
    showInfo,
-   coordinates
+   coordinates,
+   showBack
 })

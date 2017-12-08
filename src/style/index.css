@@ -6,7 +6,7 @@ body {
   font-family: sans-serif;
 }
 .back {
-  display: none;
+  display: block;
   background-image: url(../img/1back.jpg);
   background-position: center center;
   background-repeat: no-repeat;
