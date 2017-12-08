@@ -6,35 +6,13 @@ import "moment/locale/ru.js";
 import "rc-datepicker/lib/style.css";
 
 class DocForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.newStateShowUpdateValidation = this.newStateShowUpdateValidation.bind(
-      this
-    );
-    this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
-    this.newStateTrashModalWindow = this.newStateTrashModalWindow.bind(this);
-    this.handleUserInput = this.handleUserInput.bind(this);
-    this.handleClickHintSubdivision = this.handleClickHintSubdivision.bind(
-      this
-    );
-    this.handleClickHintPosition = this.handleClickHintPosition.bind(this);
-    this.termOfTraining = this.termOfTraining.bind(this);
-    this.trainingInTheUTC = this.trainingInTheUTC.bind(this);
-    this.trainingInTheUnit = this.trainingInTheUnit.bind(this);
-    this.registrationDateOfTheProgram = this.registrationDateOfTheProgram.bind(
-      this
-    );
-    this.dateOfDelivery = this.dateOfDelivery.bind(this);
-
-    this.state = {
-      hintSubdivision: [],
-      hintPosition: [],
-      showHintSubdivision: false,
-      showHintPosition: false,
-      id: ""
-    };
-  }
+  state = {
+    hintSubdivision: [],
+    hintPosition: [],
+    showHintSubdivision: false,
+    showHintPosition: false,
+    id: ""
+  };
 
   componentDidMount() {
     let data = this.props.data.updateDocument[
@@ -89,7 +67,7 @@ class DocForm extends Component {
 
   //Обработка данных юзера,
 
-  handleUserInput(event) {
+  handleUserInput = event => {
     var value = event.target.value;
     var name = event.target.name;
 
@@ -466,76 +444,76 @@ class DocForm extends Component {
     this.setState({
       [name]: value
     });
-  }
+  };
 
   //Выбор элемента из списка подсказок подразделений
-  handleClickHintSubdivision(event) {
+  handleClickHintSubdivision = event => {
     document.getElementById("subdivision").value = event.target.innerHTML;
     this.setState({
       subdivision: event.target.innerHTML,
       hintSubdivision: [],
       showHintSubdivision: false
     });
-  }
+  };
   //Выбор элемента из списка подсказок должностей
-  handleClickHintPosition(event) {
+  handleClickHintPosition = event => {
     document.getElementById("position").value = event.target.innerHTML;
     this.setState({
       position: event.target.innerHTML,
       hintSubdivision: [],
       showHintPosition: false
     });
-  }
+  };
 
   //Открывание и закрывание формы UpdateForm
-  newStateUpdateForm() {
+  newStateUpdateForm = () => {
     this.props.newStateUpdateForm(false);
-  }
+  };
   //Открытие и закрывания формы TrashModalWindow
-  newStateTrashModalWindow() {
+  newStateTrashModalWindow = () => {
     this.props.newStateUpdateForm(false);
     this.props.newStateTrashModalWindow(true);
-  }
+  };
   //Обработчик button save
-  newStateShowUpdateValidation() {
+  newStateShowUpdateValidation = () => {
     this.props.showUpdateValidation(true);
     this.props.newStateUpdateForm(false);
     this.props.updateDocument(this.state);
-  }
+  };
 
   //Дата срока подготовки обучения
-  termOfTraining(date) {
+  termOfTraining = date => {
     this.setState({
       termOfTraining: date
     });
-  }
+  };
 
   //Дата обучения в УТЦ
-  trainingInTheUTC(date) {
+  trainingInTheUTC = date => {
     this.setState({
       trainingInTheUTC: date
     });
-  }
+  };
 
   //Дата обучения в подразделении
-  trainingInTheUnit(date) {
+  trainingInTheUnit = date => {
     this.setState({
       trainingInTheUnit: date
     });
-  }
+  };
 
   //Дата регистрации программы
-  registrationDateOfTheProgram(date) {
+  registrationDateOfTheProgram = date => {
     this.setState({
       registrationDateOfTheProgram: date
     });
-  }
+  };
   //Дата сдачи программы
-  dateOfDelivery(date) {
+  dateOfDelivery = date => {
     this.setState({
       dateOfDelivery: date
     });
-  }
+  };
 
   render() {
     var data = this.props.data.updateDocument[
@@ -567,7 +545,12 @@ class DocForm extends Component {
           </div>
           <div className="col-xs-6 col-sm-3">
             <label>Предприятие</label>
-            <select id="company" className="form-control" name="company" onChange={this.handleUserInput} >
+            <select
+              id="company"
+              className="form-control"
+              name="company"
+              onChange={this.handleUserInput}
+            >
               <option value="ЛАЭС-1">ЛАЭС-1</option>
               <option value="ЛАЭС-2">ЛАЭС-2</option>
             </select>

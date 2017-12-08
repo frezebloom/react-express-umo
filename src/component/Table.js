@@ -4,16 +4,10 @@ import edit from "../img/edit.png";
 import links from "../img/link.png";
 import eye from "../img/eye.png";
 
-import Info from './Info.js'
+import Info from "./Info.js";
 
 class Table extends Component {
-  constructor(props) {
-    super(props);
-
-    this.newStateUpdateForm = this.newStateUpdateForm.bind(this);
-  }
-
-  newStateUpdateForm(event) {
+  newStateUpdateForm = event => {
     this.props.showSearhForm(false);
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(true);
@@ -30,43 +24,42 @@ class Table extends Component {
       updateDoc = item;
     });
     this.props.UpdateForm(updateDoc);
-  }
+  };
 
   //Отправка distributionOfTraining store
   info = event => {
-    this.props.showInfo(true)
-    let infoDoc = this.props.data[event.target.id]
+    this.props.showInfo(true);
+    let infoDoc = this.props.data[event.target.id];
 
     let distributionOfTraining = {
       theoreticalTraining: `Теоретическая подготовка: ${infoDoc.theoreticalTraining}`,
-      practicalTraining:   `Практическая подготовка: ${infoDoc.practicalTraining}`,
-      internship:          `Стажировка: ${infoDoc.internship}`,
-    }
+      practicalTraining: `Практическая подготовка: ${infoDoc.practicalTraining}`,
+      internship: `Стажировка: ${infoDoc.internship}`
+    };
 
-    this.props.distributionOfTraining(distributionOfTraining)
+    this.props.distributionOfTraining(distributionOfTraining);
 
     //Coordinates
     let position = {
       positionX: event.clientX,
       positionY: event.clientY
-    }
-    this.props.coordinates(position)
-
-  }
+    };
+    this.props.coordinates(position);
+  };
 
   //Закрытие инфо
   closeInfo = () => {
-    this.props.showInfo(false)
-  }
+    this.props.showInfo(false);
+  };
 
   //Форматирование даты
-  formatDate = (date) => {
+  formatDate = date => {
     let day = date.substring(8, 10);
     let month = date.substring(5, 7);
-    let year = date.substring(4, 0)
-    let formatDate = `${day}.${month}.${year}`
+    let year = date.substring(4, 0);
+    let formatDate = `${day}.${month}.${year}`;
     return formatDate;
-  }
+  };
 
   render() {
     var keys = new Date().getTime();
@@ -119,7 +112,16 @@ class Table extends Component {
                 <td>{doc.personnelCategory}</td>
                 <td>{doc.subdivision}</td>
                 <td>{doc.position}</td>
-                <td className="distributionOfTraining" id={index} onMouseOut={this.closeInfo} onMouseEnter={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
+                <td
+                  className="distributionOfTraining"
+                  id={index}
+                  onMouseOut={this.closeInfo}
+                  onMouseEnter={this.info}
+                >
+                  {Number(doc.theoreticalTraining) +
+                    Number(doc.practicalTraining) +
+                    Number(doc.internship)}
+                </td>
                 <td>{this.formatDate(doc.termOfTraining)}</td>
                 <td>{this.formatDate(doc.trainingInTheUTC)}</td>
                 <td>{this.formatDate(doc.trainingInTheUnit)}</td>
@@ -201,6 +203,6 @@ export default connect(
     },
     coordinates: state => {
       dispatch({ type: "COORDINATES_MOUSE", payload: state });
-    },
+    }
   })
 )(Table);

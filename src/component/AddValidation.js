@@ -3,16 +3,10 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 class AddValidation extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      message: "Все данные успешно сохранены",
-      danger: false
-    };
-
-    this.clickOkay = this.clickOkay.bind(this);
-  }
+  state = {
+    message: "Все данные успешно сохранены",
+    danger: false
+  };
 
   componentDidMount() {
     let count = 0;
@@ -74,7 +68,7 @@ class AddValidation extends Component {
     }
   }
 
-  clickOkay(event) {
+  clickOkay = event => {
     if (this.state.danger === true) {
       this.props.addValidation(false);
       this.props.newStateAddForm(true);
@@ -108,7 +102,7 @@ class AddValidation extends Component {
           console.log(error);
         });
     }
-  }
+  };
 
   render() {
     return (

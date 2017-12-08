@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-
 class Header extends Component {
-  constructor(props) {
-    super(props);
-    this.newStateAddForm = this.newStateAddForm.bind(this);
-    this.eventQuickSearch = this.eventQuickSearch.bind(this);
-  }
   //форма нового документа
-  newStateAddForm() {
+  newStateAddForm = () => {
     this.props.newStateAddForm(true);
     this.props.newStateUpdateForm(false);
     this.props.showSearhForm(false);
@@ -18,13 +12,13 @@ class Header extends Component {
     this.props.showTable(true);
     this.props.showBack(true);
     this.props.showInfo(false);
-  }
+  };
 
   //Быстрый поиск
-  eventQuickSearch(event) {
+  eventQuickSearch = event => {
     this.props.quickSearch(event.target.value);
     this.props.showInfo(false);
-  }
+  };
 
   //Форма поиска
   newStateSearchForm = () => {
@@ -34,7 +28,7 @@ class Header extends Component {
     this.props.newStateUpdateForm(false);
     this.props.showQuickSearch(false);
     this.props.showInfo(false);
-  }
+  };
   //button Main
   mainState = () => {
     this.props.newStateAddForm(false);
@@ -48,21 +42,20 @@ class Header extends Component {
     this.props.showUpdateValidation(false);
     this.props.showTable(true);
     this.props.showQuickSearch(true);
-  }
+  };
 
   render() {
-
     return (
       <div className="header">
         <div className="row">
           <div className="col-md-8">
-          <button
-            type="button"
-            className="btn btn-default"
-            onClick={this.mainState}
-          >
-            Главная
-          </button>
+            <button
+              type="button"
+              className="btn btn-default"
+              onClick={this.mainState}
+            >
+              Главная
+            </button>
             <button
               type="button"
               className="btn btn-default"
@@ -84,7 +77,9 @@ class Header extends Component {
               className="form-control"
               placeholder="Поиск"
               onChange={this.eventQuickSearch}
-              style={{display: this.props.data.showQuickSearch ? 'block' : 'none' }}
+              style={{
+                display: this.props.data.showQuickSearch ? "block" : "none"
+              }}
             />
           </div>
         </div>

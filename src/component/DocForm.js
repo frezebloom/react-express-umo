@@ -6,75 +6,56 @@ import "moment/locale/ru.js";
 import "rc-datepicker/lib/style.css";
 
 class DocForm extends Component {
-  constructor(props) {
-    super(props);
-
-    this.newStateAddForm = this.newStateAddForm.bind(this);
-    this.handleSend = this.handleSend.bind(this);
-    this.handleUserInput = this.handleUserInput.bind(this);
-    this.handleClickHintSubdivision = this.handleClickHintSubdivision.bind(
-      this
-    );
-    this.handleClickHintPosition = this.handleClickHintPosition.bind(this);
-    this.termOfTraining = this.termOfTraining.bind(this);
-    this.trainingInTheUTC = this.trainingInTheUTC.bind(this);
-    this.trainingInTheUnit = this.trainingInTheUnit.bind(this);
-    this.registrationDateOfTheProgram = this.registrationDateOfTheProgram.bind(
-      this
-    );
-    this.dateOfDelivery = this.dateOfDelivery.bind(this);
-
-    this.state = {
-      hintSubdivision: [],
-      hintPosition: [],
-      showHintSubdivision: false,
-      showHintPosition: false
-    };
-  }
+  state = {
+    hintSubdivision: [],
+    hintPosition: [],
+    showHintSubdivision: false,
+    showHintPosition: false
+  };
 
   //Открывание и закрывание формы
-  newStateAddForm() {
+  newStateAddForm = () => {
     this.props.newStateAddForm(false);
     this.props.showBack(false);
-  }
+  };
 
   //Дата срока подготовки обучения
-  termOfTraining(date) {
+  termOfTraining = date => {
     this.setState({
       termOfTraining: date
     });
-  }
+  };
 
   //Дата обучения в УТЦ
-  trainingInTheUTC(date) {
+  trainingInTheUTC = date => {
     this.setState({
       trainingInTheUTC: date
     });
-  }
+  };
 
   //Дата обучения в подразделении
-  trainingInTheUnit(date) {
+  trainingInTheUnit = date => {
     this.setState({
       trainingInTheUnit: date
     });
-  }
+  };
 
   //Дата регистрации программы
-  registrationDateOfTheProgram(date) {
+  registrationDateOfTheProgram = date => {
     this.setState({
       registrationDateOfTheProgram: date
     });
-  }
+  };
   //Дата сдачи программы
-  dateOfDelivery(date) {
+  dateOfDelivery = date => {
     this.setState({
       dateOfDelivery: date
     });
-  }
+  };
 
   //Обработка данных юзера,
 
-  handleUserInput(event) {
+  handleUserInput = event => {
     var value = event.target.value;
     var name = event.target.name;
 
@@ -449,29 +430,29 @@ class DocForm extends Component {
     this.setState({
       [name]: value
     });
-  }
+  };
 
   //Выбор элемента из списка подсказок подразделений
-  handleClickHintSubdivision(event) {
+  handleClickHintSubdivision = event => {
     document.getElementById("subdivision").value = event.target.innerHTML;
     this.setState({
       subdivision: event.target.innerHTML,
       hintSubdivision: [],
       showHintSubdivision: false
     });
-  }
+  };
   //Выбор элемента из списка подсказок должностей
-  handleClickHintPosition(event) {
+  handleClickHintPosition = event => {
     document.getElementById("position").value = event.target.innerHTML;
     this.setState({
       position: event.target.innerHTML,
       hintSubdivision: [],
       showHintPosition: false
     });
-  }
+  };
 
   //Метод отправки редюсера документа в store;
-  handleSend() {
+  handleSend = () => {
     //диспатчим наш документ в state;
     this.props.newDocument(this.state);
 
@@ -480,7 +461,7 @@ class DocForm extends Component {
 
     //закрываем форму документа
     this.props.newStateAddForm(false);
-  }
+  };
 
   render() {
     //  console.log(this.state)

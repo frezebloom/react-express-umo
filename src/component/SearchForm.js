@@ -6,96 +6,95 @@ import "moment/locale/ru.js";
 import "rc-datepicker/lib/style.css";
 
 class SearchForm extends Component {
-
   state = {
     hintSubdivision: [],
     hintPosition: [],
     showHintSubdivision: false,
     showHintPosition: false,
-    programmNumber: '',
-    fullName: '',
-    company: '',
-    personnelCategory: '',
-    subdivision: '',
-    position: '',
-    theoreticalTraining: '',
-    practicalTraining: '',
-    internship: '',
-    fullNameProgram: '',
-    startTermOfTraining: '1970-01-01 10:41:01',
-    finishTermOfTraining: '2100-01-01 10:41:01',
-    startTrainingInTheUTC: '1970-01-01 10:41:01',
-    finishTrainingInTheUTC: '2100-01-01 10:41:01',
-    startTrainingInTheUnit: '1970-01-01 10:41:01',
-    finishTrainingInTheUnit: '2100-01-01 10:41:01',
-    startRegistrationDateOfTheProgram: '1970-01-01 10:41:01',
-    finishRegistrationDateOfTheProgram: '2100-01-01 10:41:01',
-    startDateOfDelivery: '1970-01-01 10:41:01',
-    finishDateOfDelivery: '2100-01-01 10:41:01'
-  }
+    programmNumber: "",
+    fullName: "",
+    company: "",
+    personnelCategory: "",
+    subdivision: "",
+    position: "",
+    theoreticalTraining: "",
+    practicalTraining: "",
+    internship: "",
+    fullNameProgram: "",
+    startTermOfTraining: "1970-01-01 10:41:01",
+    finishTermOfTraining: "2100-01-01 10:41:01",
+    startTrainingInTheUTC: "1970-01-01 10:41:01",
+    finishTrainingInTheUTC: "2100-01-01 10:41:01",
+    startTrainingInTheUnit: "1970-01-01 10:41:01",
+    finishTrainingInTheUnit: "2100-01-01 10:41:01",
+    startRegistrationDateOfTheProgram: "1970-01-01 10:41:01",
+    finishRegistrationDateOfTheProgram: "2100-01-01 10:41:01",
+    startDateOfDelivery: "1970-01-01 10:41:01",
+    finishDateOfDelivery: "2100-01-01 10:41:01"
+  };
 
   //Дата срока подготовки обучения
-  startTermOfTraining = (date) => {
+  startTermOfTraining = date => {
     this.setState({
       startTermOfTraining: date
     });
-  }
-  finishTermOfTraining = (date) => {
+  };
+  finishTermOfTraining = date => {
     this.setState({
       finishTermOfTraining: date
     });
-  }
+  };
 
   //Дата обучения в УТЦ
-  startTrainingInTheUTC = (date) => {
+  startTrainingInTheUTC = date => {
     this.setState({
       startTrainingInTheUTC: date
     });
-  }
-  finishTrainingInTheUTC = (date) => {
+  };
+  finishTrainingInTheUTC = date => {
     this.setState({
       finishTrainingInTheUTC: date
     });
-  }
+  };
 
   //Дата обучения в подразделении
-  startTrainingInTheUnit = (date) => {
+  startTrainingInTheUnit = date => {
     this.setState({
       startTrainingInTheUnit: date
     });
-  }
-  finishTrainingInTheUnit = (date) => {
+  };
+  finishTrainingInTheUnit = date => {
     this.setState({
       finishTrainingInTheUnit: date
     });
-  }
+  };
 
   //Дата регистрации программы
-  startRegistrationDateOfTheProgram = (date) => {
+  startRegistrationDateOfTheProgram = date => {
     this.setState({
       startRegistrationDateOfTheProgram: date
     });
-  }
-  finishRegistrationDateOfTheProgram = (date) => {
+  };
+  finishRegistrationDateOfTheProgram = date => {
     this.setState({
       finishRegistrationDateOfTheProgram: date
     });
-  }
+  };
 
   //Дата сдачи программы
-  startDateOfDelivery = (date) => {
+  startDateOfDelivery = date => {
     this.setState({
       startDateOfDelivery: date
     });
-  }
-  finishDateOfDelivery = (date) => {
+  };
+  finishDateOfDelivery = date => {
     this.setState({
       finishDateOfDelivery: date
     });
-  }
+  };
 
   //Обработка данных юзера,
-  handleUserInput = (event) => {
+  handleUserInput = event => {
     var value = event.target.value;
     var name = event.target.name;
 
@@ -470,62 +469,95 @@ class SearchForm extends Component {
     this.setState({
       [name]: value
     });
-  }
+  };
 
   //Выбор элемента из списка подсказок подразделений
-  handleClickHintSubdivision = (event) => {
+  handleClickHintSubdivision = event => {
     document.getElementById("subdivision").value = event.target.innerHTML;
     this.setState({
       subdivision: event.target.innerHTML,
       hintSubdivision: [],
       showHintSubdivision: false
     });
-  }
+  };
   //Выбор элемента из списка подсказок должностей
-  handleClickHintPosition = (event) => {
+  handleClickHintPosition = event => {
     document.getElementById("position").value = event.target.innerHTML;
     this.setState({
       position: event.target.innerHTML,
       hintSubdivision: [],
       showHintPosition: false
     });
-  }
+  };
 
   //Закрыть форму поиска
   newStateSearchForm = () => {
     this.props.showSearhForm(false);
     this.props.showQuickSearch(true);
-  }
+  };
 
- //Action Показать
+  //Action Показать
   handleSend = () => {
-
     let allDocuments = this.props.data.allDocuments;
 
-    let searchData = allDocuments.filter(data =>
-      data.programmNumber.toLowerCase().includes(this.state.programmNumber.toLowerCase()) &&
-      data.fullName.toLowerCase().includes(this.state.fullName.toLowerCase()) &&
-      data.company.toLowerCase().includes(this.state.company.toLowerCase()) &&
-      data.personnelCategory.toLowerCase().includes(this.state.personnelCategory.toLowerCase()) &&
-      data.subdivision.toLowerCase().includes(this.state.subdivision.toLowerCase()) &&
-      data.position.toLowerCase().includes(this.state.position.toLowerCase()) &&
-      data.theoreticalTraining.toLowerCase().includes(this.state.theoreticalTraining.toLowerCase()) &&
-      data.practicalTraining.toLowerCase().includes(this.state.practicalTraining.toLowerCase()) &&
-      data.internship.toLowerCase().includes(this.state.internship.toLowerCase()) &&
-      data.fullNameProgram.toLowerCase().includes(this.state.fullNameProgram.toLowerCase()) &&
-      new Date(this.state.startTermOfTraining) <= new Date(data.termOfTraining) && new Date(this.state.finishTermOfTraining) >= new Date(data.termOfTraining) &&
-      new Date(this.state.startTrainingInTheUTC) <= new Date(data.trainingInTheUTC) && new Date(this.state.finishTrainingInTheUTC) >= new Date(data.trainingInTheUTC) &&
-      new Date(this.state.startTrainingInTheUnit) <= new Date(data.trainingInTheUnit) && new Date(this.state.finishTrainingInTheUnit) >= new Date(data.trainingInTheUnit) &&
-      new Date(this.state.startRegistrationDateOfTheProgram) <= new Date(data.registrationDateOfTheProgram) && new Date(this.state.finishRegistrationDateOfTheProgram) >= new Date(data.registrationDateOfTheProgram) &&
-      new Date(this.state.startDateOfDelivery) <= new Date(data.dateOfDelivery) && new Date(this.state.finishDateOfDelivery) >= new Date(data.dateOfDelivery)
-    )
+    let searchData = allDocuments.filter(
+      data =>
+        data.programmNumber
+          .toLowerCase()
+          .includes(this.state.programmNumber.toLowerCase()) &&
+        data.fullName
+          .toLowerCase()
+          .includes(this.state.fullName.toLowerCase()) &&
+        data.company.toLowerCase().includes(this.state.company.toLowerCase()) &&
+        data.personnelCategory
+          .toLowerCase()
+          .includes(this.state.personnelCategory.toLowerCase()) &&
+        data.subdivision
+          .toLowerCase()
+          .includes(this.state.subdivision.toLowerCase()) &&
+        data.position
+          .toLowerCase()
+          .includes(this.state.position.toLowerCase()) &&
+        data.theoreticalTraining
+          .toLowerCase()
+          .includes(this.state.theoreticalTraining.toLowerCase()) &&
+        data.practicalTraining
+          .toLowerCase()
+          .includes(this.state.practicalTraining.toLowerCase()) &&
+        data.internship
+          .toLowerCase()
+          .includes(this.state.internship.toLowerCase()) &&
+        data.fullNameProgram
+          .toLowerCase()
+          .includes(this.state.fullNameProgram.toLowerCase()) &&
+        new Date(this.state.startTermOfTraining) <=
+          new Date(data.termOfTraining) &&
+        new Date(this.state.finishTermOfTraining) >=
+          new Date(data.termOfTraining) &&
+        new Date(this.state.startTrainingInTheUTC) <=
+          new Date(data.trainingInTheUTC) &&
+        new Date(this.state.finishTrainingInTheUTC) >=
+          new Date(data.trainingInTheUTC) &&
+        new Date(this.state.startTrainingInTheUnit) <=
+          new Date(data.trainingInTheUnit) &&
+        new Date(this.state.finishTrainingInTheUnit) >=
+          new Date(data.trainingInTheUnit) &&
+        new Date(this.state.startRegistrationDateOfTheProgram) <=
+          new Date(data.registrationDateOfTheProgram) &&
+        new Date(this.state.finishRegistrationDateOfTheProgram) >=
+          new Date(data.registrationDateOfTheProgram) &&
+        new Date(this.state.startDateOfDelivery) <=
+          new Date(data.dateOfDelivery) &&
+        new Date(this.state.finishDateOfDelivery) >=
+          new Date(data.dateOfDelivery)
+    );
 
-    this.props.searchDocuments(searchData)
-    this.props.showQuickSearch(false)
-    this.props.showTable(false)
-    this.props.showSearhForm(false)
-    this.props.showSearchTable(true)
-  }
+    this.props.searchDocuments(searchData);
+    this.props.showQuickSearch(false);
+    this.props.showTable(false);
+    this.props.showSearhForm(false);
+    this.props.showSearchTable(true);
+  };
   render() {
     return (
       <div className="animated fadeInLeft SearchForm">
@@ -678,8 +710,6 @@ class SearchForm extends Component {
             />
           </div>
         </div>
-
-
 
         <div className="row">
           <div className="col-xs-6 col-sm-3">
@@ -836,6 +866,6 @@ export default connect(
     },
     showSearchTable: state => {
       dispatch({ type: "SHOW_SEARCHTABLE", payload: state });
-    },
+    }
   })
 )(SearchForm);

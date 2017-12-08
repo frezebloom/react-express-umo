@@ -3,16 +3,10 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 class UpdateValidation extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      message: "Все данные успешно обновлены",
-      danger: false
-    };
-
-    this.clickOkay = this.clickOkay.bind(this);
-  }
+  state = {
+    message: "Все данные успешно обновлены",
+    danger: false
+  };
 
   componentDidMount() {
     let count = 0;
@@ -77,7 +71,7 @@ class UpdateValidation extends Component {
     }
   }
 
-  clickOkay(event) {
+  clickOkay = event => {
     if (this.state.danger === true) {
       this.props.updateValidation(false);
       this.props.updateDocument(true);
@@ -114,7 +108,7 @@ class UpdateValidation extends Component {
           console.log(error);
         });
     }
-  }
+  };
 
   render() {
     return (

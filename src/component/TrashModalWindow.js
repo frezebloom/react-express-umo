@@ -3,19 +3,12 @@ import { connect } from "react-redux";
 import axios from "axios";
 
 class TrashModalWindow extends Component {
-  constructor(props) {
-    super(props);
-
-    this.clickYes = this.clickYes.bind(this);
-    this.clickNo = this.clickNo.bind(this);
-  }
-
-  clickNo() {
+  clickNo = () => {
     this.props.newStateUpdateForm(true);
     this.props.newStateTrashModalWindow(false);
-  }
+  };
 
-  clickYes() {
+  clickYes = () => {
     var value = this.props.data.updateDocument[
       this.props.data.updateDocument.length - 1
     ];
@@ -52,7 +45,7 @@ class TrashModalWindow extends Component {
 
     this.props.newStateTrashModalWindow(false);
     this.props.showTrashMessage(true);
-  }
+  };
 
   render() {
     return (

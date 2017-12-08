@@ -2,22 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class TrashMessage extends Component {
-  clickOkay() {
+  clickOkay = () => {
     this.props.showTrashMessage(false);
-  }
+  };
 
   render() {
     return (
       <div className="animated fadeInLeft validation">
         <div className="validationHeader">Сообщение</div>
-        <div className="messageAction">
-          Документ успешно удален
-        </div>
+        <div className="messageAction">Документ успешно удален</div>
         <div className="buttonSuccess">
           <button
             type="button"
             className="btn btn-success btn-lg btn-block"
-            onClick={this.clickOkay.bind(this)}
+            onClick={this.clickOkay}
           >
             Окей!
           </button>
