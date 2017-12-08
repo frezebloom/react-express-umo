@@ -18,8 +18,6 @@ import showSearchTable from './showSearchTable'
 import distributionOfTraining from './distributionOfTraining'
 import showInfo from './showInfo'
 import coordinates from './coordinates'
-import showBack from './showBack'
-
 
 export default combineReducers({
    showAddForm,
@@ -40,5 +38,4 @@ export default combineReducers({
    distributionOfTraining,
    showInfo,
    coordinates,
-   showBack
 })

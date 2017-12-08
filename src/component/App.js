@@ -90,7 +90,6 @@ class App extends Component {
       <div>
 
           <Header />
-          <div className="back" style={{display: this.props.data.showBack ? "block" : "none"}}></div> 
           {table}
           {updateForm}
           {addValidation}
