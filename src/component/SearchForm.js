@@ -528,7 +528,7 @@ class SearchForm extends Component {
   }
   render() {
     return (
-      <div className="SearchForm">
+      <div className="animated fadeInLeft SearchForm">
         <div className="headerWindow">Поиск документов</div>
 
         <div className="row">

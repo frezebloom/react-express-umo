@@ -486,7 +486,7 @@ class DocForm extends Component {
     //  console.log(this.state)
     //bounceInDown bounceInUp bounceInLeft
     return (
-      <div className="animated fadeInUpBig DocForm">
+      <div className="animated fadeInLeft DocForm">
         <div className="headerWindow">Добавить новый документ</div>
         <div className="row">
           <div className="col-xs-6">

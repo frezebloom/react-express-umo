@@ -118,7 +118,7 @@ class UpdateValidation extends Component {
 
   render() {
     return (
-      <div className="validation">
+      <div className="animated fadeInLeft validation">
         <div className="validationHeader">Изменение</div>
         <div className="messageAction">{this.state.message}</div>
         <div className="buttonSuccess">

@@ -56,7 +56,7 @@ class TrashModalWindow extends Component {
 
   render() {
     return (
-      <div className="validation">
+      <div className="animated fadeInLeft validation">
         <div className="validationHeader">Удаление</div>
         <div className="messageAction">
           Вы действительно хотите удалить документ?

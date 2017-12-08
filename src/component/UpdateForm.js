@@ -542,7 +542,7 @@ class DocForm extends Component {
       this.props.data.updateDocument.length - 1
     ];
     return (
-      <div className="updateForm">
+      <div className="animated fadeInLeft updateForm">
         <div className="headerWindow">Изменить текущий документ</div>
         <div className="row">
           <div className="col-xs-6 col-sm-3">

@@ -8,7 +8,7 @@ class TrashMessage extends Component {
 
   render() {
     return (
-      <div className="validation">
+      <div className="animated fadeInLeft validation">
         <div className="validationHeader">Сообщение</div>
         <div className="messageAction">
           Документ успешно удален
