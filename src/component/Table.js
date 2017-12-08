@@ -59,6 +59,7 @@ class Table extends Component {
     this.props.showInfo(false)
   }
 
+  //Форматирование даты
   formatDate = (date) => {
     let day = date.substring(8, 10);
     let month = date.substring(5, 7);
