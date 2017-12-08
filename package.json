@@ -16,6 +16,9 @@
     "redux": "^3.7.2",
     "sort-by": "^1.2.0"
   },
+  "devDependencies": {
+    "babel-polyfill": "^6.26.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
