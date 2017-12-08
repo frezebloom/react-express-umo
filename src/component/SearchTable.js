@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import edit from "../img/edit.png";
 import links from "../img/link.png";
+import eye from "../img/eye.png";
 
 class SearchTable extends Component {
 
@@ -45,7 +46,17 @@ class SearchTable extends Component {
             <td className="cap">Категория персонала</td>
             <td className="cap">Подразделение</td>
             <td className="cap">Должность</td>
-            <td className="cap">Распределение обучения</td>
+            <td className="cap">
+              Распределение обучения<div className="eye">
+                <img
+                  src={eye}
+                  height="16px"
+                  width="16px"
+                  alt="Наведите курсор"
+                  title="Наведите курсор на ячейку для просмотра данных (Теоретическая подготовка, Практическая подготовка, Стажировка)"
+                />
+              </div>
+            </td>
             <td className="cap">Срок подготовки обучения</td>
             <td className="cap">Обучение в УТЦ</td>
             <td className="cap">Обучение в подразделении</td>
@@ -71,7 +82,7 @@ class SearchTable extends Component {
               <td>{doc.personnelCategory}</td>
               <td>{doc.subdivision}</td>
               <td>{doc.position}</td>
-              <td>{doc.distributionOfTraining}</td>
+              <td className="distributionOfTraining" id={index} onMouseOut={this.closeInfo} onMouseEnter={this.info}>{Number(doc.theoreticalTraining) + Number(doc.practicalTraining) + Number(doc.internship)}</td>
               <td>{doc.termOfTraining}</td>
               <td>{doc.trainingInTheUTC}</td>
               <td>{doc.trainingInTheUnit}</td>
