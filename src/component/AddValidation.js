@@ -102,15 +102,17 @@ class AddValidation extends Component {
           console.log(error);
         });
 
-      axios.post('/', {})
-        .then(function (response) {
-          this.props.allDocuments(response.data);
-          }.bind(this))
-
-        .catch(function (error) {
+      axios
+        .post("/", {})
+        .then(
+          function(response) {
+            this.props.allDocuments(response.data);
+          }.bind(this)
+        )
+        .catch(function(error) {
           console.log(error);
         });
-      }
+    }
   };
 
   render() {

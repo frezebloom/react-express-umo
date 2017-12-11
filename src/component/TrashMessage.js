@@ -1,9 +1,21 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import axios from "axios";
 
 class TrashMessage extends Component {
   clickOkay = () => {
     this.props.showTrashMessage(false);
+
+    axios
+      .post("/", {})
+      .then(
+        function(response) {
+          this.props.allDocuments(response.data);
+        }.bind(this)
+      )
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   render() {
@@ -30,6 +42,9 @@ export default connect(
   dispatch => ({
     showTrashMessage: state => {
       dispatch({ type: "SHOW_TRASHMESSAGE", payload: state });
+    },
+    allDocuments: state => {
+      dispatch({ type: "ALL_DOCUMENTS", payload: state });
     }
   })
 )(TrashMessage);

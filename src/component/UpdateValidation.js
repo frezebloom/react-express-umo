@@ -108,6 +108,17 @@ class UpdateValidation extends Component {
           console.log(error);
         });
     }
+
+    axios
+      .post("/", {})
+      .then(
+        function(response) {
+          this.props.allDocuments(response.data);
+        }.bind(this)
+      )
+      .catch(function(error) {
+        console.log(error);
+      });
   };
 
   render() {
@@ -143,6 +154,9 @@ export default connect(
     },
     updateValidation: state => {
       dispatch({ type: "SHOW_UPDATEVALIDATION", payload: state });
+    },
+    allDocuments: state => {
+      dispatch({ type: "ALL_DOCUMENTS", payload: state });
     }
   })
 )(UpdateValidation);

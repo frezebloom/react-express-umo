@@ -15,16 +15,17 @@ import SearchTable from "./SearchTable.js";
 
 class App extends Component {
   componentDidMount() {
-
-     axios.post('/', {})
-      .then(function (response) {
-        this.props.allDocuments(response.data);
-      }.bind(this))
-
-      .catch(function (error) {
+    axios
+      .post("/", {})
+      .then(
+        function(response) {
+          this.props.allDocuments(response.data);
+        }.bind(this)
+      )
+      .catch(function(error) {
         console.log(error);
       });
-    }
+  }
 
   //   var allDocuments = [
   //     {
