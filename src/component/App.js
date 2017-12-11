@@ -15,21 +15,22 @@ import SearchTable from "./SearchTable.js";
 
 class App extends Component {
   componentDidMount() {
-    //  axios.post('/', {})
-    //   .then(function (response) {
-    //     this.props.allDocuments(response.data);
-    //   }.bind(this))
-    //
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    // }
+    
+//      axios.post('/', {})
+//       .then(function (response) {
+//         this.props.allDocuments(response.data);
+//       }.bind(this))
+//
+//       .catch(function (error) {
+//         console.log(error);
+//       });
+//     }
 
     var allDocuments = [
       {
         id: 22,
         programmNumber: "18365",
-        fullName: "Ярема Михаил Николаевич",
+        fullName: "ярема Михаил Николаевич",
         company: "ЛАЭС-1",
         personnelCategory: "Оперативный",
         subdivision: "реакторный цех",

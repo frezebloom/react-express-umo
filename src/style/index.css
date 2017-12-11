@@ -209,12 +209,12 @@ table {
   -moz-box-shadow: 0 1px 2px #d1d1d1;
   -webkit-box-shadow: 0 1px 2px #d1d1d1;
   box-shadow: 0 1px 2px #d1d1d1;
+  text-transform: capitalize;
 }
 table th {
   padding: 21px 25px 22px 25px;
   border-top: 1px solid #fafafa;
   border-bottom: 1px solid #e0e0e0;
-
   background: #ededed;
   background: -webkit-gradient(
     linear,

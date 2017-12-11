@@ -10,7 +10,7 @@ const sortBy = require("sort-by");
 
 const app = express();
 
-const PORT = 3000;
+const PORT = 1818;
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -29,7 +29,7 @@ app.get("/", function(req, res) {
 
 //получение всех документов
 app.post("/", function(req, res) {
-  var sql = "SELECT * FROM `umodoc` WHERE status = 1";
+  var sql = "SELECT * FROM `programm` WHERE status = 1";
   connection.query(sql, function(err, result) {
     let reuslt = result.sort(sortBy("-id"));
     res.send(result);
@@ -39,7 +39,7 @@ app.post("/", function(req, res) {
 //добавление нового документа
 app.post("/newdoc", (req, res) => {
   var sql =
-    "INSERT INTO umodoc (programmNumber, fullName, company, personnelCategory, subdivision, position, theoreticalTraining, practicalTraining, internship, termOfTraining, trainingInTheUTC, trainingInTheUnit, registrationDateOfTheProgram, dateOfDelivery, fullNameProgram, link, status) VALUES ?";
+    "INSERT INTO programm (programmNumber, fullName, company, personnelCategory, subdivision, position, theoreticalTraining, practicalTraining, internship, termOfTraining, trainingInTheUTC, trainingInTheUnit, registrationDateOfTheProgram, dateOfDelivery, fullNameProgram, link, status) VALUES ?";
   var values = [
     [
       req.body.programmNumber,
@@ -74,7 +74,7 @@ app.post("/newdoc", (req, res) => {
 //изменения документа
 app.post("/update", (req, res) => {
   var sql =
-    "UPDATE umodoc SET programmNumber = ?, fullName = ?, company = ?, personnelCategory = ?, subdivision = ?, position = ?, theoreticalTraining = ?, practicalTraining = ?, internship = ?, termOfTraining = ?, trainingInTheUTC = ?, trainingInTheUnit = ?, registrationDateOfTheProgram = ?, dateOfDelivery = ?, fullNameProgram = ?, link = ?, status = ? WHERE id = ?";
+    "UPDATE programm SET programmNumber = ?, fullName = ?, company = ?, personnelCategory = ?, subdivision = ?, position = ?, theoreticalTraining = ?, practicalTraining = ?, internship = ?, termOfTraining = ?, trainingInTheUTC = ?, trainingInTheUnit = ?, registrationDateOfTheProgram = ?, dateOfDelivery = ?, fullNameProgram = ?, link = ?, status = ? WHERE id = ?";
   var values = [
     req.body.programmNumber,
     req.body.fullName,
