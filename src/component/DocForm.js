@@ -16,7 +16,6 @@ class DocForm extends Component {
   //Открывание и закрывание формы
   newStateAddForm = () => {
     this.props.newStateAddForm(false);
-    this.props.showBack(false);
   };
 
   //Дата срока подготовки обучения
@@ -710,8 +709,5 @@ export default connect(
     newDocument: state => {
       dispatch({ type: "ADD_VALIDATION", payload: state });
     },
-    showBack: state => {
-      dispatch({ type: "SHOW_BACK", payload: state });
-    }
   })
 )(DocForm);

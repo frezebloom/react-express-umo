@@ -10,7 +10,6 @@ class Header extends Component {
     this.props.showQuickSearch(true);
     this.props.showSearchTable(false);
     this.props.showTable(true);
-    this.props.showBack(true);
     this.props.showInfo(false);
   };
 
@@ -23,7 +22,6 @@ class Header extends Component {
   //Форма поиска
   newStateSearchForm = () => {
     this.props.showSearhForm(true);
-    this.props.showBack(true);
     this.props.newStateAddForm(false);
     this.props.newStateUpdateForm(false);
     this.props.showQuickSearch(false);
@@ -129,8 +127,5 @@ export default connect(
     showUpdateValidation: state => {
       dispatch({ type: "SHOW_UPDATEVALIDATION", payload: state });
     },
-    showBack: state => {
-      dispatch({ type: "SHOW_BACK", payload: state });
-    }
   })
 )(Header);

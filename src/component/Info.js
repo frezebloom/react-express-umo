@@ -11,13 +11,15 @@ class Info extends Component {
     document.getElementById("doft").style.left = coordinates.positionX + "px";
   }
 
+  close = () => this.props.showInfo(false);
+
   render() {
     var distributionOfTraining = this.props.data.distributionOfTraining[
       this.props.data.distributionOfTraining.length - 1
     ];
     return (
       <div className="info" id="doft">
-        <div className="X">X</div>
+        <div className="X" onClick={this.close}>X</div>
         <ul>
           {Object.keys(distributionOfTraining).map(key => (
             <li key={key}>{distributionOfTraining[key]}</li>
@@ -32,5 +34,9 @@ export default connect(
   state => ({
     data: state
   }),
-  dispatch => ({})
+  dispatch => ({
+    showInfo: state => {
+      dispatch({ type: "SHOW_INFO", payload: state });
+    },
+  })
 )(Info);
