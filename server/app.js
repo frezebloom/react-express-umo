@@ -6,7 +6,7 @@ const mysql = require("mysql");
 
 const bodyParser = require("body-parser");
 
-const sortBy = require('sort-by');
+const sortBy = require("sort-by");
 
 const app = express();
 
@@ -31,7 +31,7 @@ app.get("/", function(req, res) {
 app.post("/", function(req, res) {
   var sql = "SELECT * FROM `umodoc` WHERE status = 1";
   connection.query(sql, function(err, result) {
-    let reuslt = result.sort(sortBy('-id'));
+    let reuslt = result.sort(sortBy("-id"));
     res.send(result);
   });
 });

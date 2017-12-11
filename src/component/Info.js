@@ -17,6 +17,7 @@ class Info extends Component {
     ];
     return (
       <div className="info" id="doft">
+        <div className="X">X</div>
         <ul>
           {Object.keys(distributionOfTraining).map(key => (
             <li key={key}>{distributionOfTraining[key]}</li>
