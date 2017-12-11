@@ -73,7 +73,6 @@ class SearchTable extends Component {
     var searchData = this.props.data.searchDocuments[
       this.props.data.searchDocuments.length - 1
     ];
-    console.log(searchData);
     var keys = new Date().getTime();
     return (
       <div>

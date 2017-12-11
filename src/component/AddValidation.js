@@ -101,7 +101,16 @@ class AddValidation extends Component {
         .catch(function(error) {
           console.log(error);
         });
-    }
+
+      axios.post('/', {})
+        .then(function (response) {
+          this.props.allDocuments(response.data);
+          }.bind(this))
+
+        .catch(function (error) {
+          console.log(error);
+        });
+      }
   };
 
   render() {
@@ -137,6 +146,9 @@ export default connect(
     },
     addValidation: state => {
       dispatch({ type: "SHOW_ADDVALIDATION", payload: state });
+    },
+    allDocuments: state => {
+      dispatch({ type: "ALL_DOCUMENTS", payload: state });
     }
   })
 )(AddValidation);
