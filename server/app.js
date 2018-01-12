@@ -12,7 +12,7 @@ const app = express();
 
 const PORT = 1818;
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
   host: "localhost",
   user: "root",
   password: "",
