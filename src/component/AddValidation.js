@@ -33,7 +33,6 @@ class AddValidation extends Component {
     ];
 
     let collectionDate = [
-      value.termOfTraining,
       value.trainingInTheUTC,
       value.trainingInTheUnit,
       value.registrationDateOfTheProgram,
@@ -60,7 +59,7 @@ class AddValidation extends Component {
       }
       count++;
     });
-    if (count !== 16) {
+    if (count < 15) {
       this.setState({
         message: "Заполните все необходимые поля",
         danger: true

@@ -18,13 +18,6 @@ class DocForm extends Component {
     this.props.newStateAddForm(false);
   };
 
-  //Дата срока подготовки обучения
-  termOfTraining = date => {
-    this.setState({
-      termOfTraining: date
-    });
-  };
-
   //Дата обучения в УТЦ
   trainingInTheUTC = date => {
     this.setState({
@@ -45,7 +38,7 @@ class DocForm extends Component {
       registrationDateOfTheProgram: date
     });
   };
-  //Дата сдачи программы
+  //Дата окончания обучения
   dateOfDelivery = date => {
     this.setState({
       dateOfDelivery: date
@@ -606,11 +599,12 @@ class DocForm extends Component {
             />
           </div>
           <div className="col-xs-6">
-            <DatePickerInput
+          <input
+              className="form-control"
+              type="text"
               name="termOfTraining"
-              className="my-custom-datepicker-component"
-              placeholder="Срок подготовки обучения"
-              onChange={this.termOfTraining}
+              placeholder="Дата распоряжения на подготовку"
+              onChange={this.handleUserInput}
             />
           </div>
         </div>
@@ -645,7 +639,7 @@ class DocForm extends Component {
             <DatePickerInput
               name="dateOfDelivery"
               className="my-custom-datepicker-component"
-              placeholder="Дата сдачи программы"
+              placeholder="Дата окончания обучения"
               onChange={this.dateOfDelivery}
             />
           </div>

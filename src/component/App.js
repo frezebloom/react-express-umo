@@ -15,62 +15,62 @@ import SearchTable from "./SearchTable.js";
 
 class App extends Component {
   componentDidMount() {
-    axios
-      .post("/", {})
-      .then(
-        function(response) {
-          this.props.allDocuments(response.data);
-        }.bind(this)
-      )
-      .catch(function(error) {
-        console.log(error);
-      });
-  }
-
-  //   var allDocuments = [
-  //     {
-  //       id: 22,
-  //       programmNumber: "18365",
-  //       fullName: "ярема Михаил Николаевич",
-  //       company: "ЛАЭС-1",
-  //       personnelCategory: "Оперативный",
-  //       subdivision: "реакторный цех",
-  //       position: "3",
-  //       theoreticalTraining: "4",
-  //       practicalTraining: "5",
-  //       internship: "6",
-  //       termOfTraining: "2017-12-18 10:41:01",
-  //       trainingInTheUTC: "2017-12-17 10:41:01",
-  //       trainingInTheUnit: "2017-12-15 10:41:01",
-  //       registrationDateOfTheProgram: "2017-12-13 10:41:01",
-  //       dateOfDelivery: "2017-12-10 10:41:01",
-  //       fullNameProgram: "5",
-  //       link: "4",
-  //       status: 1
-  //     },
-  //     {
-  //       id: 23,
-  //       programmNumber: "18366",
-  //       fullName: "Барисполь Валентин Иванович",
-  //       company: "ЛАЭС-2",
-  //       personnelCategory: "Рабочие",
-  //       subdivision: "3",
-  //       position: "3",
-  //       theoreticalTraining: "4",
-  //       practicalTraining: "5",
-  //       internship: "2",
-  //       termOfTraining: "2016-08-31 10:41:09",
-  //       trainingInTheUTC: "2018-07-19 10:41:09",
-  //       trainingInTheUnit: "2015-02-28 10:41:09",
-  //       registrationDateOfTheProgram: "2012-04-15 10:41:09",
-  //       dateOfDelivery: "2017-05-20 10:41:09",
-  //       fullNameProgram: "2",
-  //       link: "2",
-  //       status: 0
-  //     }
-  //   ];
-  //   this.props.allDocuments(allDocuments);
+  //   axios
+  //     .post("/", {})
+  //     .then(
+  //       function(response) {
+  //         this.props.allDocuments(response.data);
+  //       }.bind(this)
+  //     )
+  //     .catch(function(error) {
+  //       console.log(error);
+  //     });
   // }
+
+    var allDocuments = [
+      {
+        id: 22,
+        programmNumber: "18365",
+        fullName: "ярема Михаил Николаевич",
+        company: "ЛАЭС-1",
+        personnelCategory: "Оперативный",
+        subdivision: "реакторный цех",
+        position: "3",
+        theoreticalTraining: "4",
+        practicalTraining: "5",
+        internship: "6",
+        termOfTraining: "53",
+        trainingInTheUTC: "2017-12-17 10:41:01",
+        trainingInTheUnit: "2017-12-15 10:41:01",
+        registrationDateOfTheProgram: "2017-12-13 10:41:01",
+        dateOfDelivery: "2017-12-10 10:41:01",
+        fullNameProgram: "5",
+        link: "4",
+        status: 1
+      },
+      {
+        id: 23,
+        programmNumber: "18366",
+        fullName: "Барисполь Валентин Иванович",
+        company: "ЛАЭС-2",
+        personnelCategory: "Рабочие",
+        subdivision: "3",
+        position: "3",
+        theoreticalTraining: "4",
+        practicalTraining: "5",
+        internship: "2",
+        termOfTraining: "54",
+        trainingInTheUTC: "2018-07-19 10:41:09",
+        trainingInTheUnit: "2015-02-28 10:41:09",
+        registrationDateOfTheProgram: "2012-04-15 10:41:09",
+        dateOfDelivery: "2017-05-20 10:41:09",
+        fullNameProgram: "2",
+        link: "2",
+        status: 0
+      }
+    ];
+    this.props.allDocuments(allDocuments);
+  }
 
   render() {
     var updateForm,

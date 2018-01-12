@@ -21,8 +21,7 @@ class SearchForm extends Component {
     practicalTraining: "",
     internship: "",
     fullNameProgram: "",
-    startTermOfTraining: "1970-01-01 10:41:01",
-    finishTermOfTraining: "2100-01-01 10:41:01",
+    termOfTraining: "",
     startTrainingInTheUTC: "1970-01-01 10:41:01",
     finishTrainingInTheUTC: "2100-01-01 10:41:01",
     startTrainingInTheUnit: "1970-01-01 10:41:01",
@@ -33,18 +32,7 @@ class SearchForm extends Component {
     finishDateOfDelivery: "2100-01-01 10:41:01"
   };
 
-  //Дата срока подготовки обучения
-  startTermOfTraining = date => {
-    this.setState({
-      startTermOfTraining: date
-    });
-  };
-  finishTermOfTraining = date => {
-    this.setState({
-      finishTermOfTraining: date
-    });
-  };
-
+  
   //Дата обучения в УТЦ
   startTrainingInTheUTC = date => {
     this.setState({
@@ -81,7 +69,7 @@ class SearchForm extends Component {
     });
   };
 
-  //Дата сдачи программы
+  //Дата окончания обучения
   startDateOfDelivery = date => {
     this.setState({
       startDateOfDelivery: date
@@ -530,10 +518,13 @@ class SearchForm extends Component {
         data.fullNameProgram
           .toLowerCase()
           .includes(this.state.fullNameProgram.toLowerCase()) &&
-        new Date(this.state.startTermOfTraining) <=
-          new Date(data.termOfTraining) &&
-        new Date(this.state.finishTermOfTraining) >=
-          new Date(data.termOfTraining) &&
+        data.termOfTraining
+          .toLowerCase()
+          .includes(this.state.termOfTraining.toLowerCase()) &&
+          
+       
+
+          
         new Date(this.state.startTrainingInTheUTC) <=
           new Date(data.trainingInTheUTC) &&
         new Date(this.state.finishTrainingInTheUTC) >=
@@ -710,29 +701,17 @@ class SearchForm extends Component {
             />
           </div>
         </div>
-
         <div className="row">
-          <div className="col-xs-6 col-sm-3">
-            <label>Срок подготовки обучения:</label>
-          </div>
-          <div className="col-xs-6 col-sm-3">
-            <DatePickerInput
-              name="StartTermOfTraining"
-              className="my-custom-datepicker-component"
-              placeholder="С указанной даты"
-              onChange={this.startTermOfTraining}
-            />
-          </div>
-          <div className="col-xs-6 col-sm-3">
-            <DatePickerInput
-              name="FinishTermOfTraining"
-              className="my-custom-datepicker-component"
-              placeholder="До указанной даты"
-              onChange={this.finishTermOfTraining}
+          <div className="col-xs-6">
+            <input
+              className="form-control"
+              type="text"
+              name="termOfTraining"
+              placeholder="Дата распоряжения на подготовку"
+              onChange={this.handleUserInput}
             />
           </div>
         </div>
-
         <div className="row">
           <div className="col-xs-6 col-sm-3">
             <label>Обучение в УТЦ:</label>
@@ -801,7 +780,7 @@ class SearchForm extends Component {
 
         <div className="row">
           <div className="col-xs-6 col-sm-3">
-            <label>Дата сдачи программы:</label>
+            <label>Дата окончания обучения:</label>
           </div>
           <div className="col-xs-6 col-sm-3">
             <DatePickerInput

@@ -98,11 +98,11 @@ class SearchTable extends Component {
                   />
                 </div>
               </td>
-              <td className="cap">Срок подготовки обучения</td>
+              <td className="cap">Дата распоряжения на подготовку</td>
               <td className="cap">Обучение в УТЦ</td>
               <td className="cap">Обучение в подразделении</td>
               <td className="cap">Дата регистрации программы</td>
-              <td className="cap">Дата сдачи программы</td>
+              <td className="cap">Дата окончания обучения</td>
               <td className="cap">Ф.И.О.</td>
               <td className="cap">Ссылка</td>
             </tr>
@@ -133,7 +133,7 @@ class SearchTable extends Component {
                     Number(doc.practicalTraining) +
                     Number(doc.internship)}
                 </td>
-                <td>{this.formatDate(doc.termOfTraining)}</td>
+                <td>{doc.termOfTraining}</td>
                 <td>{this.formatDate(doc.trainingInTheUTC)}</td>
                 <td>{this.formatDate(doc.trainingInTheUnit)}</td>
                 <td>{this.formatDate(doc.registrationDateOfTheProgram)}</td>
